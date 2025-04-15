@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  padding: 20px 0px;
+  height: 160px;
+}
+.topElement {
+  display: flex;
+  align-items: center;
+}
