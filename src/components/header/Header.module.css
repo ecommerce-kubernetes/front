@@ -1,9 +1,17 @@
 .container {
-  width: 100%;
-  padding: 20px 0px;
-  height: 160px;
+  width: 70%;
+  margin: auto;
+  height: 120px;
+  box-sizing: border-box;
 }
 .topElement {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.logoSearchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }

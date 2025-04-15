@@ -1,0 +1,41 @@
+.accountNavWrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.navList li {
+  margin-right: 15px;
+  position: relative;
+}
+
+.navList li::after {
+  content: "|";
+  color: var(--border-1);
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.navList li:last-child::after {
+  content: "";
+}
+.navList li:last-child {
+  margin-right: 0;
+}
+.link {
+  color: black;
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link:visited {
+  color: inherit;
+}
