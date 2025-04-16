@@ -1,0 +1,25 @@
+.container {
+  width: 30%;
+}
+.wrapper {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: start;
+}
+.title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.wrapper ul {
+  display: flex;
+  align-items: start;
+  margin: 10px 0 0 0;
+  padding: 0;
+  list-style: none;
+  gap: 20px;
+}
+
+.wrapper a {
+  display: flex;
+}

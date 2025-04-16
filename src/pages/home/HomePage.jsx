@@ -1,7 +1,11 @@
 import MainLayout from "../../layout/mainLayout";
 
 const HomePage = () => {
-  return <MainLayout></MainLayout>;
+  return (
+    <MainLayout>
+      <div style={{ height: "500px" }}></div>
+    </MainLayout>
+  );
 };
 
 export default HomePage;
