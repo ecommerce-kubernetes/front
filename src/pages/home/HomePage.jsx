@@ -1,9 +1,10 @@
 import MainLayout from "../../layout/mainLayout";
+import MainBanner from "./components/banner/MainBanner";
 
 const HomePage = () => {
   return (
     <MainLayout>
-      <div style={{ height: "500px" }}></div>
+      <MainBanner />
     </MainLayout>
   );
 };

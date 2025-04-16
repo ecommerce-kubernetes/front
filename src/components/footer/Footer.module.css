@@ -1,5 +1,6 @@
 .rootContainer {
   border-top: solid var(--gray-2);
+  user-select: none;
 }
 .container {
   width: 70%;
