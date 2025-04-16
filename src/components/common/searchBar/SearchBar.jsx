@@ -1,5 +1,5 @@
 import styles from "./SearchBar.module.css";
-import searchIcon from "../../assets/images/search.svg";
+import searchIcon from "../../../assets/images/search.svg";
 const SearchBar = () => {
   return (
     <form>

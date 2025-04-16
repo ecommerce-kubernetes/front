@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  position: relative;
+}
+.categoryButton {
+  background-color: white;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.buttonText {
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.categoryWrapper {
+  position: absolute;
+  top: 100%;
+  width: 200px;
+  line-height: normal;
+  border: solid var(--gray-3) 1px;
+}
+
+.categoryWrapper ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.categoryWrapper li {
+  text-align: start;
+  width: 100%;
+}
+.categoryItem {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.categoryItem:hover {
+  background-color: var(--gray-2);
+}
