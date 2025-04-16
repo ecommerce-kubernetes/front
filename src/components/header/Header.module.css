@@ -21,7 +21,7 @@
 
 .bottomElement {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   margin-top: 15px;
   line-height: 50px;
   text-align: center;
