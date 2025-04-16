@@ -3,10 +3,12 @@ import styles from "./Header.module.css";
 import Logo from "../common/logo/Logo";
 import UserNav from "./userNav/UserNav";
 import AccountNav from "./accountNav/AccountNav";
+import CategoryNav from "./categoryNav/CategoryNav";
+import MainNav from "./mainNav/MainNav";
 
 const Header = () => {
   return (
-    <div>
+    <div className={styles.rootContainer}>
       <div className={styles.container}>
         <AccountNav />
         <div className={styles.topElement}>
@@ -15,6 +17,10 @@ const Header = () => {
             <SearchBar />
           </div>
           <UserNav />
+        </div>
+        <div className={styles.bottomElement}>
+          <CategoryNav />
+          <MainNav />
         </div>
       </div>
     </div>

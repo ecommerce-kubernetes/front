@@ -1,7 +1,10 @@
+.rootContainer {
+  border-bottom: solid var(--gray-2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
 .container {
   width: 70%;
   margin: auto;
-  height: 120px;
   box-sizing: border-box;
 }
 .topElement {
@@ -13,5 +16,14 @@
 .logoSearchWrapper {
   display: flex;
   align-items: center;
+  gap: 30px;
+}
+
+.bottomElement {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  line-height: 50px;
+  text-align: center;
   gap: 30px;
 }

@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+}
+.categoryButton {
+  background-color: white;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.buttonText {
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}

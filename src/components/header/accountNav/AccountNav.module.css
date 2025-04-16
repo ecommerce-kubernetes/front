@@ -16,7 +16,7 @@
 
 .navList li::after {
   content: "|";
-  color: var(--border-1);
+  color: var(--gray-5);
   position: absolute;
   right: -10px;
   top: 50%;
