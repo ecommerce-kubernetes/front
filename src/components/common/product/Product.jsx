@@ -5,7 +5,7 @@ const Product = ({ product, size = "md" }) => {
       <div className={styles.wrapper}>
         <div className={styles.productImageWrapper}>
           <img
-            className={styles.productImage}
+            className={`${styles.productImage} ${styles[size]}`}
             src={product.imageUrl}
             draggable="false"
           />

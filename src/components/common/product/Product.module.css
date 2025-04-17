@@ -20,6 +20,17 @@
   border-radius: 5px;
 }
 
+.productImage.lg {
+  height: 300px;
+}
+
+.productImage.md {
+  height: 280px;
+}
+
+.productImage.sm {
+  height: 250px;
+}
 .productInfoWrapper {
   display: flex;
   flex-direction: column;
