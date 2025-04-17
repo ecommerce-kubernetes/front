@@ -1,4 +1,5 @@
 .rootContainer {
+  margin-top: 50px;
   border-top: solid var(--gray-2);
   user-select: none;
 }
