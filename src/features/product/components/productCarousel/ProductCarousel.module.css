@@ -1,0 +1,66 @@
+.container {
+  padding: 40px 0;
+  width: 100%;
+}
+.titleWrapper {
+  display: flex;
+}
+.title {
+  font-weight: bold;
+  font-size: 25px;
+}
+.swiperContainer {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  overflow: visible;
+}
+.viewport {
+  width: 100%;
+  overflow-y: hidden;
+}
+.swiperTrack {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.swiperTrack > * {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.swiperTrack > *:last-child {
+  margin-right: 0;
+}
+.navButton {
+  position: absolute;
+  padding: 10px;
+  display: flex;
+  border-radius: 100%;
+  top: 30%;
+  border: solid 0.7px var(--gray-4);
+  background-color: white;
+  cursor: pointer;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
+}
+
+.navButton:hover {
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
+}
+
+.navButton.prev {
+  left: -25px;
+  transform: rotate(180deg);
+}
+
+.navButton.next {
+  right: -25px;
+}
+
+.arrowImage {
+  width: 26px;
+  height: 26px;
+}

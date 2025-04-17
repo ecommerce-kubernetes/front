@@ -1,0 +1,15 @@
+.rootContainer {
+  margin-top: 50px;
+  border-top: solid var(--gray-2);
+  user-select: none;
+}
+.container {
+  width: 70%;
+  margin: auto;
+  box-sizing: border-box;
+}
+.wrapper {
+  display: flex;
+  padding: 20px 0px;
+  justify-content: space-between;
+}

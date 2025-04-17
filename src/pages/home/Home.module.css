@@ -1,0 +1,25 @@
+.rootContainer {
+  width: 100%;
+}
+.productCarouselSection {
+  width: 1060px;
+  margin: auto;
+}
+.productCarouselWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.productCardSection {
+  width: 1060px;
+  margin: auto;
+}
+.productCardWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+  gap: 20px;
+}
+.cardTitle {
+  font-size: 25px;
+  font-weight: 600;
+}
