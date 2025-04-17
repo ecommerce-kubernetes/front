@@ -1,0 +1,11 @@
+.rootContainer {
+  width: 100%;
+}
+.mainContainer {
+  width: 1060px;
+  margin: auto;
+}
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+}

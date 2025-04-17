@@ -1,0 +1,41 @@
+.container {
+  user-select: none;
+}
+.lg {
+  width: 350px;
+}
+.md {
+  width: 300px;
+}
+.sm {
+  width: 250px;
+}
+.productImageWrapper {
+  width: 100%;
+}
+
+.productImage {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.productInfoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.productDescription {
+  margin-top: 10px;
+}
+
+.productDescription span {
+  font-size: 18px;
+}
+
+.productPrice {
+  margin-top: 5px;
+}
+
+.productPrice span {
+  font-weight: bold;
+}

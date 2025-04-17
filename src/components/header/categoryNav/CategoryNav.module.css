@@ -26,6 +26,8 @@
   width: 200px;
   line-height: normal;
   border: solid var(--gray-3) 1px;
+  z-index: 2;
+  background-color: white;
 }
 
 .categoryWrapper ul {

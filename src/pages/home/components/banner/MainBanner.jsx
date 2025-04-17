@@ -9,7 +9,6 @@ const MainBanner = () => {
   const fadeRef = useRef(null);
   const containerRef = useRef(null);
   const startAutoFade = () => {
-    console.log("start");
     if (fadeRef.current) return;
     fadeRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % banners.length);
@@ -47,12 +46,13 @@ const MainBanner = () => {
             }`}
             src={banner}
             key={index}
+            draggable="false"
           />
         ))}
       </div>
       <div className={styles.navWrapper}>
         <div className={styles.imageCount}>
-          {banners.length}/{currentIndex + 1}
+          {banners.length} / {currentIndex + 1}
         </div>
         <div className={styles.buttonWrapper}>
           <button

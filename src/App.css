@@ -3,7 +3,9 @@
   --gray-3: #dee2e6;
   --gray-4: #ced4da;
   --gray-5: #adb5bd;
-  --gray-5-transparent: rgba(173, 181, 189, 0.5);
   --gray-6: #868e96;
   --gray-7: #495057;
+
+  --gray-4-transparent: rgba(206, 212, 218, 0.5);
+  --gray-5-transparent: rgba(173, 181, 189, 0.5);
 }
