@@ -1,0 +1,86 @@
+.container {
+  width: 350px;
+  margin: 50px auto 30px;
+}
+.titleWrapper {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.formContainer {
+  margin-top: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputField {
+  padding: 10px;
+  border: solid 1px var(--gray-6);
+  border-radius: 3px;
+  outline: none;
+  font-size: 15px;
+}
+.inputField:focus {
+  border: solid 1.5px var(--brand-color);
+}
+
+.loginButton {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px 5px;
+  background-color: var(--brand-color);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  background-color: var(--brand-color-hover);
+}
+
+.loginActionNav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: end;
+}
+
+.authWrapper {
+  margin-top: 5px;
+}
+
+.loginActionNav li {
+  margin-right: 15px;
+  position: relative;
+}
+
+.loginActionNav li::after {
+  content: "|";
+  color: var(--gray-5);
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.loginActionNav li:last-child::after {
+  content: "";
+}
+.loginActionNav li:last-child {
+  margin-right: 0;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}

@@ -8,4 +8,7 @@
 
   --gray-4-transparent: rgba(206, 212, 218, 0.5);
   --gray-5-transparent: rgba(173, 181, 189, 0.5);
+
+  --brand-color: #9f8473;
+  --brand-color-hover: #927a6a;
 }
