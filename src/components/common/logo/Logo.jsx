@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogoIcon from "../../../assets/images/logo.svg";
+import LogoIcon from "../../../assets/images/logo1.svg";
 const Logo = ({ logoWidth }) => {
   return (
     <Link to="/main">
