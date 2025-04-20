@@ -1,0 +1,75 @@
+.container {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.introductionWrapper {
+  display: flex;
+  border-bottom: solid 1px var(--gray-3);
+}
+
+.nameWrapper {
+  padding: 30px;
+  width: 50%;
+  border-right: solid 1px var(--gray-3);
+}
+
+.remainBalanceWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  width: 50%;
+}
+
+.memberName {
+  color: var(--brand-color);
+}
+.remainBalance {
+  color: var(--brand-color);
+}
+.introductionWrapper span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.myMenuWrapper {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.myMenuIconWrapper {
+  display: flex;
+  padding: 8px;
+  background-color: var(--gray-2);
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.menuIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.link {
+  display: flex;
+  text-decoration: none;
+}
+
+.myMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menuName {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+}
+
+.menuValue {
+  font-size: 16px;
+  color: var(--brand-color);
+  font-weight: 600;
+}
