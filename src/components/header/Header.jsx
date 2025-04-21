@@ -14,7 +14,7 @@ const Header = () => {
         <div className={styles.topElement}>
           <div className={styles.logoSearchWrapper}>
             <Logo logoWidth={150} />
-            <SearchBar />
+            <SearchBar placeholder={"상품을 입력해주세요"} />
           </div>
           <UserNav />
         </div>

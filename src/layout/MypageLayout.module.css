@@ -1,0 +1,21 @@
+.container {
+  width: 1010px;
+  margin: auto;
+}
+
+.wrapper {
+  display: flex;
+  padding: 30px 0;
+  gap: 24px;
+}
+.leftContentContainer {
+  flex: 1;
+}
+.rightContentContainer {
+  width: 700px;
+}
+.rightContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

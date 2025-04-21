@@ -6,6 +6,10 @@
   display: flex;
   gap: 5px;
 }
+.container:focus-within {
+  border-color: var(--brand-color); /* 포커스 시 변경될 색상 */
+}
+
 .searchInput {
   flex: 1;
   outline: none;

@@ -5,7 +5,7 @@ import cartIcon from "../../../assets/images/cart.svg";
 const UserNav = () => {
   return (
     <div className={styles.iconWrapper}>
-      <Link className={styles.icon} to={"/mypage"}>
+      <Link className={styles.icon} to={"/my/orders"}>
         <img src={myPageIcon} />
       </Link>
       <Link className={styles.icon} to={"/cart"}>

@@ -1,4 +1,6 @@
 :root {
+  --gray-0: #f8f9fa;
+  --gray-1: #f1f3f5;
   --gray-2: #e9ecef;
   --gray-3: #dee2e6;
   --gray-4: #ced4da;
@@ -8,4 +10,7 @@
 
   --gray-4-transparent: rgba(206, 212, 218, 0.5);
   --gray-5-transparent: rgba(173, 181, 189, 0.5);
+
+  --brand-color: #9f8473;
+  --brand-color-hover: #927a6a;
 }
