@@ -1,14 +1,14 @@
-import MemberInfo from "../../../features/member/components/memberInfo/MemberInfo";
+import OrderList from "../../../features/member/components/orderList/OrderList";
 import MyPageLayout from "../../../layout/MyPageLayout";
 import styles from "./OrderList.module.css";
-const OrderList = () => {
+const OrderListPage = () => {
   return (
     <MyPageLayout>
       <div className={styles.container}>
-        <MemberInfo />
+        <OrderList />
       </div>
     </MyPageLayout>
   );
 };
 
-export default OrderList;
+export default OrderListPage;

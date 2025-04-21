@@ -1,3 +1,137 @@
 .container {
   width: 100%;
 }
+
+.listContainer {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.head {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listHeadWrapper {
+  padding: 20px 30px;
+  border-bottom: 1px solid var(--gray-3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.selectContainer {
+  border: 1px solid var(--gray-5);
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  padding: 0 7px;
+  width: 80px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.selectWrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectIcon {
+  width: 15px;
+  height: 15px;
+  transform: rotate(90deg);
+}
+
+.selectItemContainer {
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  top: 45px;
+  left: 0;
+  padding: 5px 0;
+  width: 100%;
+  border: 1px solid var(--gray-5);
+}
+
+.selectItemWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 2px;
+}
+
+.selectItemWrapper li {
+  padding: 5px 10px;
+}
+.selectItemWrapper li:hover {
+  background-color: var(--gray-3);
+}
+
+.orderListContainer {
+  min-height: 400px;
+}
+
+.orderListWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 30px;
+}
+
+.orderWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 25px 0;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.orderWrapper:last-child {
+  border-bottom: none;
+  padding: 15px 0 15px 0;
+}
+
+.orderHeadWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.orderDate {
+  font-size: 20px;
+  font-weight: bold;
+}
+.orderDetailLink {
+  color: var(--gray-7);
+}
+.orderContentWrapper {
+  margin-top: 15px;
+  display: flex;
+}
+.orderDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemName {
+  font-size: 16px;
+  font-weight: 600;
+}
+.itemDescription {
+  font-size: 15px;
+}
+.itemQuantity {
+  font-size: 15px;
+  color: var(--gray-6);
+}
+.itemPrice {
+  font-size: 16px;
+  font-weight: 600;
+}

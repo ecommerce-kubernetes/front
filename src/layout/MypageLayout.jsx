@@ -1,6 +1,7 @@
 import MypageNav from "../components/common/mypageNav/MypageNav";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
+import MemberInfo from "../features/member/components/memberInfo/MemberInfo";
 import styles from "./MypageLayout.module.css";
 const MyPageLayout = ({ children }) => {
   return (
@@ -12,7 +13,12 @@ const MyPageLayout = ({ children }) => {
             <div className={styles.leftContentContainer}>
               <MypageNav />
             </div>
-            <div className={styles.rightContentContainer}>{children}</div>
+            <div className={styles.rightContentContainer}>
+              <div className={styles.rightContentWrapper}>
+                <MemberInfo />
+                {children}
+              </div>
+            </div>
           </div>
         </div>
       </div>
