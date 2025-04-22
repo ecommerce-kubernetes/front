@@ -5,10 +5,12 @@ const MypageNav = () => {
     <div className={styles.container}>
       <div className={styles.navWrapper}>
         <div className={styles.linkWrapper}>
-          <Link className={`${styles.link} ${styles.headLine}`}>주문 내역</Link>
-        </div>
-        <div className={styles.linkWrapper}>
-          <Link className={`${styles.link} ${styles.headLine}`}>장바구니</Link>
+          <Link
+            className={`${styles.link} ${styles.headLine}`}
+            to={"/my/orders"}
+          >
+            주문 내역
+          </Link>
         </div>
         <div className={styles.linkWrapper}>
           <Link className={`${styles.link} ${styles.headLine}`}>쿠폰</Link>

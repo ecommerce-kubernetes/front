@@ -67,12 +67,7 @@ const OrderList = () => {
             </div>
             <div className={styles.orderContentWrapper}>
               <img
-                style={{
-                  width: "150px",
-                  height: "100px",
-                  borderRadius: "5px",
-                  marginRight: "20px",
-                }}
+                className={styles.itemImg}
                 src="http://static.megamart.com/product/editor/8809/8809280//13141009_009.jpg"
               />
               <div className={styles.orderDescription}>
@@ -84,12 +79,7 @@ const OrderList = () => {
             </div>
             <div className={styles.orderContentWrapper}>
               <img
-                style={{
-                  width: "150px",
-                  height: "100px",
-                  borderRadius: "5px",
-                  marginRight: "20px",
-                }}
+                className={styles.itemImg}
                 src="http://static.megamart.com/product/editor/8809/8809280//13141009_009.jpg"
               />
               <div className={styles.orderDescription}>
@@ -108,12 +98,7 @@ const OrderList = () => {
             </div>
             <div className={styles.orderContentWrapper}>
               <img
-                style={{
-                  width: "150px",
-                  height: "100px",
-                  borderRadius: "5px",
-                  marginRight: "20px",
-                }}
+                className={styles.itemImg}
                 src="https://cwfruit.com:446/data/editor/2112/f53fa845f04aed02cfa72653c55ec452_1640071334_4033.JPG"
               />
               <div className={styles.orderDescription}>
