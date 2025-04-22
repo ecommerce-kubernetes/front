@@ -18,7 +18,7 @@ const MemberInfo = () => {
         </div>
       </div>
       <div className={styles.myMenuWrapper}>
-        <Link className={styles.link}>
+        <Link className={styles.link} to={"/my/orders"}>
           <div className={styles.myMenuIconWrapper}>
             <img className={styles.menuIcon} src={orderIcon} />
           </div>
@@ -27,7 +27,7 @@ const MemberInfo = () => {
             <span className={styles.menuValue}>10건 </span>
           </div>
         </Link>
-        <Link className={styles.link}>
+        <Link className={styles.link} to={"/cart"}>
           <div className={styles.myMenuIconWrapper}>
             <img className={styles.menuIcon} src={cartIcon} />
           </div>

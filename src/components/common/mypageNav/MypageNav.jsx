@@ -13,10 +13,25 @@ const MypageNav = () => {
           </Link>
         </div>
         <div className={styles.linkWrapper}>
-          <Link className={`${styles.link} ${styles.headLine}`}>쿠폰</Link>
+          <Link
+            className={`${styles.link} ${styles.headLine}`}
+            to={"/my/coupon/redeem"}
+          >
+            쿠폰
+          </Link>
           <div className={styles.detailWrapper}>
-            <Link className={`${styles.link} ${styles.detail}`}>쿠폰 등록</Link>
-            <Link className={`${styles.link} ${styles.detail}`}>쿠폰 조회</Link>
+            <Link
+              className={`${styles.link} ${styles.detail}`}
+              to={"/my/coupon/redeem"}
+            >
+              쿠폰 등록
+            </Link>
+            <Link
+              className={`${styles.link} ${styles.detail}`}
+              to={"/my/coupon"}
+            >
+              쿠폰 조회
+            </Link>
           </div>
         </div>
         <div className={styles.linkWrapper}>
