@@ -12,7 +12,7 @@ function CouponTabs({ activeTab, onSelect }) {
           }`}
           onClick={() => onSelect(tab)}
         >
-          <span>{tab === "owned" ? "보유중" : "사용 완료"}</span>
+          <span>{tab === "owned" ? "사용 가능" : "사용 완료"}</span>
         </div>
       ))}
     </div>

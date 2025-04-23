@@ -7,6 +7,8 @@ import OrderListPage from "./pages/mypage/order/OrderListPage";
 import CartPage from "./pages/cart/CartPage";
 import RedeemCouponPage from "./pages/mypage/coupon/redeem/RedeemCouponPage";
 import MyCouponPage from "./pages/mypage/coupon/my/MyCouponPage";
+import DeliveryAddressPage from "./pages/mypage/deliveryAddress/DeliveryAddressPage";
+import RegistDeliveryAddressPage from "./pages/mypage/deliveryAddress/regist/RegistDeliveryAddressPage";
 
 function App() {
   return (
@@ -19,6 +21,11 @@ function App() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/my/coupon/redeem" element={<RedeemCouponPage />} />
       <Route path="/my/coupon" element={<MyCouponPage />} />
+      <Route path="/my/delivery" element={<DeliveryAddressPage />} />
+      <Route
+        path="/my/delivery/regist"
+        element={<RegistDeliveryAddressPage />}
+      />
     </Routes>
   );
 }

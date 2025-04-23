@@ -40,7 +40,10 @@ const MypageNav = () => {
             <Link className={`${styles.link} ${styles.detail}`}>
               개인정보 확인/수정
             </Link>
-            <Link className={`${styles.link} ${styles.detail}`}>
+            <Link
+              className={`${styles.link} ${styles.detail}`}
+              to={"/my/delivery"}
+            >
               배송지 관리
             </Link>
           </div>
