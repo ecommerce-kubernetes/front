@@ -1,7 +1,14 @@
+import { useCenterPops } from "../../../hooks/useCenterPops";
 import MyPageLayout from "../../../layout/MyPageLayout";
 import styles from "./DeliveryAddress.module.css";
 
 const DeliveryAddressPage = () => {
+  const openRegisterWindow = useCenterPops({ width: 600, height: 600 });
+
+  const handleOpenRegisterWindow = () => {
+    const url = `${window.location.origin}/my/delivery/regist`;
+    openRegisterWindow(url, "DeliveryRegister");
+  };
   return (
     <MyPageLayout>
       <div className={styles.container}>
@@ -9,7 +16,12 @@ const DeliveryAddressPage = () => {
           <div className={styles.titleWrapper}>
             <span className={styles.title}>배송지 관리</span>
             <div className={styles.deliveryRegistBtnWrapper}>
-              <button className={styles.deliveryRegistBtn}>배송지 등록</button>
+              <button
+                className={styles.deliveryRegistBtn}
+                onClick={handleOpenRegisterWindow}
+              >
+                배송지 등록
+              </button>
             </div>
           </div>
           <div className={styles.deliveryAddressWrapper}>

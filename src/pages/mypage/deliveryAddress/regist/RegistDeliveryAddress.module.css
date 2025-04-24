@@ -1,0 +1,107 @@
+.container {
+  width: 100%;
+}
+.titleWrapper {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 2px solid;
+  justify-content: center;
+}
+
+.contentWrapper {
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fieldCategory {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.category {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.inputWrapper {
+  flex: 1;
+}
+
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.input {
+  padding: 5px;
+  border: 1px solid var(--gray-5);
+  border-radius: 5px;
+  outline: none;
+}
+
+.phoneSelect {
+  padding: 5px;
+  border: 1px solid var(--gray-5);
+  border-radius: 5px;
+  width: 80px;
+  outline: none;
+}
+.default {
+  width: 250px;
+}
+.phone {
+  width: 80px;
+}
+.address {
+  width: 200px;
+}
+
+.addressWrapper {
+  display: flex;
+  gap: 10px;
+}
+.findBtn {
+  padding: 5px;
+  background-color: var(--gray-1);
+  border: solid 1px var(--gray-5);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitWrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.actionBtn {
+  padding: 10px 60px;
+  font-size: 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit {
+  border: none;
+  background-color: var(--gray-7);
+  color: white;
+}
+.cancel {
+  border: 1px solid var(--gray-5);
+}
+.defaultDeliveryWrapper {
+  margin-top: 15px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
