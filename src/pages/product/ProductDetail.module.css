@@ -1,0 +1,136 @@
+.container {
+  width: 1010px;
+  margin: auto;
+  user-select: none;
+}
+
+.wrapper {
+  display: flex;
+  padding: 40px 0;
+  gap: 50px;
+}
+
+.productImage {
+  width: 450px;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.productDescriptionWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-size: 25px;
+  font-weight: 550;
+}
+.productDescription {
+  margin: 0;
+  padding-top: 5px;
+  color: var(--gray-7);
+}
+.productPriceWrapper {
+  padding-top: 20px;
+}
+.productPrice {
+  font-size: 25px;
+  font-weight: bold;
+}
+.productReviewWrapper {
+  padding-top: 30px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.rating {
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 5px;
+}
+.review {
+  font-size: 16px;
+  padding-top: 5px;
+  color: var(--gray-7);
+}
+.productOptionContainer {
+  margin-top: 20px;
+}
+.productOptionWrapper {
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-3);
+  display: flex;
+}
+.productOptionWrapper.lastChild {
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.productOptionCategory {
+  width: 100px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.quantityButtonWrapper {
+  display: flex;
+  border: solid 1px var(--gray-3);
+  justify-content: space-between;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.quantity {
+  width: 30px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.quantityBtn {
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+.quantityBtnIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.totalPriceWrapper {
+  display: flex;
+  margin-top: 40px;
+  justify-content: end;
+  gap: 20px;
+  align-items: end;
+}
+
+.totalPrice {
+  font-size: 30px;
+  font-weight: 1000;
+}
+
+.cartBtnWrapper {
+  margin-top: 20px;
+}
+
+.cartBtn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--brand-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 550;
+}
+
+.cartBtn:hover {
+  background-color: var(--brand-color-hover);
+}

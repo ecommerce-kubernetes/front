@@ -2,9 +2,11 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 
 const AddressPage = () => {
   const handleComplete = (data) => {
-    // send data back to opener window
     if (window.opener) {
-      window.opener.postMessage(data, window.location.origin);
+      window.opener.postMessage(
+        { type: "SELECT_ADDRESS", address: data.address },
+        window.location.origin
+      );
       window.close();
     }
   };

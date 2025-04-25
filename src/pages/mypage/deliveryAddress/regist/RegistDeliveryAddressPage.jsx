@@ -13,8 +13,11 @@ const RegistDeliveryAddressPage = () => {
   useEffect(() => {
     const handleMessage = (event) => {
       if (event.origin !== window.location.origin) return;
-      const { address: addr } = event.data;
-      setAddress(addr ?? "");
+      const payload = event.data;
+      // type 체크
+      if (payload?.type === "SELECT_ADDRESS" && payload.address) {
+        setAddress(payload.address);
+      }
     };
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
