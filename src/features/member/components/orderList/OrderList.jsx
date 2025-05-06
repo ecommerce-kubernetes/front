@@ -18,6 +18,7 @@ const OrderList = () => {
   };
 
   const item1 = {
+    id: 1,
     name: "청송사과",
     description: "청송사과 3EA",
     quantity: 3,
@@ -27,6 +28,7 @@ const OrderList = () => {
   };
 
   const item2 = {
+    id: 2,
     name: "바나나",
     description: "바나나 3EA",
     quantity: 5,

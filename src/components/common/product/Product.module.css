@@ -40,19 +40,32 @@
   margin-top: 10px;
 }
 
-.productDescription span {
-  font-size: 18px;
+.productDescription {
+  font-size: 16px;
 }
 
 .productPrice {
   margin-top: 5px;
-}
-
-.productPrice span {
+  font-size: 18px;
   font-weight: bold;
 }
 
 .link {
   text-decoration: none;
   color: black;
+}
+.productReviewWrapper {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.rating {
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 5px;
+}
+.review {
+  font-size: 16px;
+  padding-top: 5px;
+  color: var(--gray-7);
 }

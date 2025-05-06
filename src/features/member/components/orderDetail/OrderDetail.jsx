@@ -2,6 +2,7 @@ import styles from "../../../../pages/mypage/order/detail/OrderDetail.module.css
 import OrderContent from "../OrderContent";
 const OrderDetail = () => {
   const item1 = {
+    id: 1,
     name: "청송사과",
     description: "청송사과 3EA",
     quantity: 3,
@@ -11,6 +12,7 @@ const OrderDetail = () => {
   };
 
   const item2 = {
+    id: 2,
     name: "바나나",
     description: "바나나 3EA",
     quantity: 5,

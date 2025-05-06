@@ -1,6 +1,8 @@
 .orderContentWrapper {
   margin-top: 15px;
   display: flex;
+  text-decoration: none;
+  color: black;
 }
 .orderDescription {
   display: flex;
