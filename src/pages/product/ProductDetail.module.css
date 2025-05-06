@@ -4,10 +4,11 @@
   user-select: none;
 }
 
-.wrapper {
+.productWrapper {
   display: flex;
   padding: 40px 0;
   gap: 50px;
+  border-bottom: 1px solid var(--gray-3);
 }
 
 .productImage {
@@ -133,4 +134,25 @@
 
 .cartBtn:hover {
   background-color: var(--brand-color-hover);
+}
+
+.reviewWrapper {
+  padding: 30px 0;
+}
+
+.reviewHead {
+  font-size: 23px;
+  font-weight: 600;
+}
+.reviewCount {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--gray-6);
+}
+.reviewOrderContainer {
+  margin-top: 30px;
+}
+.reviewOrderWrapper {
+  display: flex;
+  justify-content: space-between;
 }

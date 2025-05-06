@@ -1,21 +1,14 @@
 import styles from "../../../../pages/mypage/order/list/OrderList.module.css";
 import SearchBar from "../../../../components/common/searchBar/SearchBar";
-import arrow from "../../../../assets/images/arrow.svg";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import OrderContent from "../OrderContent";
+import SelectBox from "../../../../components/common/selectBox/SelectBox";
 
 const yearOptions = [2025, 2024, 2023, 2022, 2021, 2020];
 
 const OrderList = () => {
-  const [selectState, setSelectState] = useState(false);
   const [selectedYear, setSelectedYear] = useState(yearOptions[0]);
-
-  const handleSelect = (year) => {
-    setSelectedYear(year);
-    setSelectState(false);
-  };
 
   const item1 = {
     id: 1,
@@ -42,40 +35,12 @@ const OrderList = () => {
         <span className={styles.head}>주문목록</span>
         <div className={styles.filterWrapper}>
           <SearchBar placeholder={"주문한 상품을 입력하세요"} />
-          <div
-            className={styles.selectContainer}
-            onClick={() => setSelectState((prev) => !prev)}
-          >
-            <div className={styles.selectWrapper}>
-              <span>{selectedYear}년</span>
-              <img className={styles.selectIcon} src={arrow} />
-            </div>
-            <AnimatePresence>
-              {selectState && (
-                <motion.div
-                  className={styles.selectItemContainer}
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ul className={styles.selectItemWrapper}>
-                    {yearOptions.map((year) => (
-                      <li
-                        key={year}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSelect(year);
-                        }}
-                      >
-                        {year}년
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <SelectBox
+            options={yearOptions}
+            selected={selectedYear}
+            onSelect={(year) => setSelectedYear(year)}
+            renderLabel={(year) => `${year}년`}
+          />
         </div>
       </div>
       <div className={styles.orderListContainer}>

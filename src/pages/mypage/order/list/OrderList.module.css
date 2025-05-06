@@ -25,58 +25,6 @@
   gap: 20px;
 }
 
-.selectContainer {
-  border: 1px solid var(--gray-5);
-  position: relative;
-  border-radius: 5px;
-  display: flex;
-  padding: 0 7px;
-  width: 80px;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  font-weight: 550;
-}
-.selectWrapper {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.selectIcon {
-  width: 15px;
-  height: 15px;
-  transform: rotate(90deg);
-}
-
-.selectItemContainer {
-  position: absolute;
-  border-radius: 5px;
-  background-color: white;
-  top: 45px;
-  left: 0;
-  padding: 5px 0;
-  width: 100%;
-  border: 1px solid var(--gray-5);
-}
-
-.selectItemWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  gap: 2px;
-}
-
-.selectItemWrapper li {
-  padding: 5px 10px;
-}
-.selectItemWrapper li:hover {
-  background-color: var(--gray-3);
-}
-
 .orderListContainer {
   min-height: 400px;
 }

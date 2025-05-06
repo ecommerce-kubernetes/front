@@ -3,6 +3,10 @@ import styles from "./ProductDetail.module.css";
 import star from "../../assets/images/star.svg";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
+import arrow from "../../assets/images/arrow.svg";
+import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
+const selectOptions = ["최신순", "추천순", "별점 높은순", "별점 낮은순"];
 const ProductDetailPage = () => {
   const product = {
     productId: 1,
@@ -14,11 +18,16 @@ const ProductDetailPage = () => {
     imageUrl:
       "http://static.megamart.com/product/editor/8809/8809280//13141009_009.jpg",
   };
-
+  const [selectState, setSelectState] = useState(false);
+  const [selectedOption, setSelectedOption] = useState();
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+    setSelectState(false);
+  };
   return (
     <MainLayout>
       <div className={styles.container}>
-        <div className={styles.wrapper}>
+        <div className={styles.productWrapper}>
           <img className={styles.productImage} src={product.imageUrl} />
           <div className={styles.productDescriptionWrapper}>
             <div>
@@ -92,6 +101,15 @@ const ProductDetailPage = () => {
             </div>
             <div className={styles.cartBtnWrapper}>
               <button className={styles.cartBtn}>장바구니 담기</button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.reviewWrapper}>
+          <span className={styles.reviewHead}>상품 후기</span>
+          <div className={styles.reviewOrderContainer}>
+            <div className={styles.reviewOrderWrapper}>
+              <span className={styles.reviewCount}>총 1010개</span>
+              <div className={styles.reviewSortContainer}></div>
             </div>
           </div>
         </div>
