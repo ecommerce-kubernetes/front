@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+}
+
+.detailContainer {
+  border-radius: 10px;
+  background-color: white;
+}
+.headWrapper {
+  padding: 30px;
+  border-bottom: 1px solid var(--gray-3);
+}
+.head {
+  font-size: 20px;
+  font-weight: 600;
+}
+.contentWrapper {
+  padding: 0 30px;
+}
+.orderTop {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--gray-3);
+  gap: 10px;
+  padding: 20px 0;
+}
+.orderId {
+  font-size: 14px;
+  color: var(--gray-6);
+}
+.ordererWrapper {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-bottom: 1px solid var(--gray-3);
+}
+.deliveryInfo {
+  display: flex;
+  font-size: 14px;
+  flex-direction: column;
+  gap: 5px;
+}
+.orderPaymentWrapper {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--gray-3);
+}
+.payInfoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderPayment {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px 0 0 0;
+}
+.payPrice {
+  font-size: 16px;
+  font-weight: 600;
+}
+.discount {
+  color: #f05650;
+}
+
+.orderItemsWrapper {
+  padding: 20px 0;
+}

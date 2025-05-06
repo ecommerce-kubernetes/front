@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import MyPageLayout from "../../../../layout/MyPageLayout";
 import styles from "./MyCoupon.module.css";
 import CouponTabs from "./tab/CouponTabs";
 import CouponContent from "./content/CouponContent";
+import MyPageLayout from "../../../../layout/MypageLayout";
 const MyCouponPage = () => {
   const [activeTab, setActiveTab] = useState("owned");
 

@@ -3,7 +3,7 @@ import "./App.css";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
-import OrderListPage from "./pages/mypage/order/OrderListPage";
+import OrderListPage from "./pages/mypage/order/list/OrderListPage";
 import CartPage from "./pages/cart/CartPage";
 import RedeemCouponPage from "./pages/mypage/coupon/redeem/RedeemCouponPage";
 import MyCouponPage from "./pages/mypage/coupon/my/MyCouponPage";
@@ -11,6 +11,7 @@ import DeliveryAddressPage from "./pages/mypage/deliveryAddress/DeliveryAddressP
 import RegistDeliveryAddressPage from "./pages/mypage/deliveryAddress/regist/RegistDeliveryAddressPage";
 import AddressPage from "./pages/mypage/deliveryAddress/regist/AddressPage";
 import ProductDetailPage from "./pages/product/ProductDetailPage";
+import OrderDetailPage from "./pages/mypage/order/detail/OrderDetailPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       />
       <Route path="/my/delivery/regist/address" element={<AddressPage />} />
       <Route path="/product/:productId" element={<ProductDetailPage />} />
+      <Route path="/my/orders/:orderId/detail" element={<OrderDetailPage />} />
     </Routes>
   );
 }

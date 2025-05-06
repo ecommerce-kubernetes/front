@@ -45,7 +45,7 @@ const MemberInfo = () => {
             <span className={styles.menuValue}>10000원</span>
           </div>
         </Link>
-        <Link className={styles.link}>
+        <Link to={"/my/coupon"} className={styles.link}>
           <div className={styles.myMenuIconWrapper}>
             <img className={styles.menuIcon} src={couponIcon} />
           </div>

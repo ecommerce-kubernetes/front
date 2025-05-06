@@ -1,5 +1,5 @@
-import OrderList from "../../../features/member/components/orderList/OrderList";
-import MyPageLayout from "../../../layout/MyPageLayout";
+import OrderList from "../../../../features/member/components/orderList/OrderList.jsx";
+import MyPageLayout from "../../../../layout/MypageLayout.jsx";
 import styles from "./OrderList.module.css";
 const OrderListPage = () => {
   return (
