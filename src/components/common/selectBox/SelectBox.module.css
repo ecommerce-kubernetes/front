@@ -3,8 +3,8 @@
   position: relative;
   border-radius: 5px;
   display: flex;
-  padding: 0 7px;
-  width: 80px;
+  padding: 7px;
+  width: 100px;
   align-items: center;
   cursor: pointer;
   user-select: none;

@@ -39,7 +39,7 @@
   font-size: 25px;
   font-weight: bold;
 }
-.productReviewWrapper {
+.productRatingWrapper {
   padding-top: 30px;
   gap: 5px;
   display: flex;
@@ -50,7 +50,7 @@
   font-size: 16px;
   padding-top: 5px;
 }
-.review {
+.reviewCount {
   font-size: 16px;
   padding-top: 5px;
   color: var(--gray-7);
@@ -155,4 +155,83 @@
 .reviewOrderWrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.reviewListContainer {
+  margin-top: 20px;
+  border-top: 2px solid black;
+}
+
+.reviewRatingWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.reviewListWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewerName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reviewDate {
+  font-size: 14px;
+  color: var(--gray-6);
+}
+
+.reviewProductName {
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--gray-6);
+}
+
+.reviewContentWrapper {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.reviewContentWrapper:last-child {
+  border-bottom: none;
+}
+
+.reviewContent {
+  margin-top: 10px;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.recommendBtnWrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.recommendBtn {
+  border: 1px solid var(--gray-3);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: white;
+  color: var(--gray-6);
+  cursor: pointer;
+}
+
+.recommendBtnContent {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.recommendBtn:hover {
+  color: black;
 }

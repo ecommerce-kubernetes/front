@@ -3,11 +3,12 @@ import styles from "./ProductDetail.module.css";
 import star from "../../assets/images/star.svg";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
-import arrow from "../../assets/images/arrow.svg";
-import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-const selectOptions = ["최신순", "추천순", "별점 높은순", "별점 낮은순"];
+import SelectBox from "../../components/common/selectBox/SelectBox";
+import ReviewList from "../../features/review/components/ReviewList";
+const sortOptions = ["최신순", "추천순", "별점 높은순", "별점 낮은순"];
 const ProductDetailPage = () => {
+  const [selectedOption, setSelectedOption] = useState(sortOptions[0]);
   const product = {
     productId: 1,
     name: "노카라 페미닌 페이크 포켓 트위드 자켓 (EA3JK014D)",
@@ -17,12 +18,6 @@ const ProductDetailPage = () => {
     categoryId: 1,
     imageUrl:
       "http://static.megamart.com/product/editor/8809/8809280//13141009_009.jpg",
-  };
-  const [selectState, setSelectState] = useState(false);
-  const [selectedOption, setSelectedOption] = useState();
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-    setSelectState(false);
   };
   return (
     <MainLayout>
@@ -34,10 +29,13 @@ const ProductDetailPage = () => {
               <span className={styles.productName}>{product.name}</span>
               <p className={styles.productDescription}>{product.description}</p>
             </div>
-            <div className={styles.productReviewWrapper}>
+            <div
+              className={`${styles.reviewRatingWrapper}`}
+              style={{ paddingTop: "30px", gap: "5px" }}
+            >
               <img style={{ width: "18px", height: "18px" }} src={star} />
               <span className={styles.rating}>4.2</span>
-              <span className={styles.review}>리뷰 1010개</span>
+              <span className={styles.reviewCount}>리뷰 1010개</span>
             </div>
             <div className={styles.productPriceWrapper}>
               <span className={styles.productPrice}>{product.price}원</span>
@@ -109,8 +107,30 @@ const ProductDetailPage = () => {
           <div className={styles.reviewOrderContainer}>
             <div className={styles.reviewOrderWrapper}>
               <span className={styles.reviewCount}>총 1010개</span>
-              <div className={styles.reviewSortContainer}></div>
+              <SelectBox
+                options={sortOptions}
+                selected={selectedOption}
+                onSelect={(sort) => setSelectedOption(sort)}
+                renderLabel={(sort) => sort}
+              />
             </div>
+            <div className={styles.reviewRatingWrapper}>
+              <span>평균 :</span>
+              <div
+                className={styles.reviewRatingWrapper}
+                style={{
+                  paddingBottom: "5px",
+                }}
+              >
+                <img style={{ width: "24px", height: "24px" }} src={star} />
+                <span style={{ paddingTop: "5px", fontWeight: "bold" }}>
+                  4.2
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.reviewListContainer}>
+            <ReviewList />
           </div>
         </div>
       </div>
