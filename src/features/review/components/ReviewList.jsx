@@ -1,4 +1,4 @@
-import styles from "../../../pages/product/ProductDetail.module.css";
+import styles from "../../../pages/product/detail/ProductDetail.module.css";
 import star from "../../../assets/images/star.svg";
 import thumb from "../../../assets/images/thumb.svg";
 const ReviewList = () => {

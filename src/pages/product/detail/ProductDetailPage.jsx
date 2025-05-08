@@ -1,11 +1,11 @@
-import MainLayout from "../../layout/mainLayout";
+import MainLayout from "../../../layout/mainLayout";
 import styles from "./ProductDetail.module.css";
-import star from "../../assets/images/star.svg";
-import minus from "../../assets/images/minus.svg";
-import plus from "../../assets/images/plus.svg";
+import star from "../../../assets/images/star.svg";
+import minus from "../../../assets/images/minus.svg";
+import plus from "../../../assets/images/plus.svg";
 import { useState } from "react";
-import SelectBox from "../../components/common/selectBox/SelectBox";
-import ReviewList from "../../features/review/components/ReviewList";
+import SelectBox from "../../../components/common/selectBox/SelectBox";
+import ReviewList from "../../../features/review/components/ReviewList";
 const sortOptions = ["최신순", "추천순", "별점 높은순", "별점 낮은순"];
 const ProductDetailPage = () => {
   const [selectedOption, setSelectedOption] = useState(sortOptions[0]);

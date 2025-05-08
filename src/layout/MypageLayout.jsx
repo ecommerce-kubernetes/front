@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import MypageNav from "../components/common/mypageNav/MypageNav";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import styles from "./MypageLayout.module.css";
 import MemberInfo from "../features/member/components/memberInfo/MemberInfo";
+import MypageNav from "../components/common/sideBar/mypageNav/MypageNav";
 const MyPageLayout = ({ children }) => {
   // const headerEl = useMemo(() => <Header />, []);
   // const footerEl = useMemo(() => <Footer />, []);
