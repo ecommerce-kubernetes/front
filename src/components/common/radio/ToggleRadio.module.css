@@ -1,0 +1,54 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.wrapper input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.inner {
+  position: relative;
+  padding-left: 36px;
+  line-height: 1;
+}
+
+.inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--gray-3); /* 기본 회색 테두리 */
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.inner::after {
+  content: "";
+  position: absolute;
+  left: 4.5px; /* 테두리(2px) + 여유(4px) */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.wrapper input[type="radio"]:checked + .inner::before {
+  border-color: var(--brand-color);
+}
+
+.wrapper input[type="radio"]:checked + .inner::after {
+  background: var(--brand-color);
+}

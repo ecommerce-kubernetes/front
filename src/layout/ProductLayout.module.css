@@ -5,4 +5,15 @@
 
 .wrapper {
   display: flex;
+  padding: 30px 0;
+  gap: 30px;
+}
+
+.leftContentContainer {
+  width: 200px;
+}
+
+.rightContentContainer {
+  flex: 1;
+  background-color: antiquewhite;
 }

@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tagWrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1.5px solid var(--gray-3);
+  padding: 10px 0;
+}
+
+.tagHead {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+.tagUlWrapper {
+  margin: 0;
+  padding: 0 50px 0 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.subCategory li {
+  cursor: pointer;
+  user-select: none;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.starWrapper {
+  display: flex;
+  gap: 2px;
+}
+
+.ratingLabelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

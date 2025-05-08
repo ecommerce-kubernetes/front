@@ -7,8 +7,8 @@ const ProductLayout = ({ SideBar, children }) => {
       <Header />
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <aside>{SideBar}</aside>
-          <main>{children}</main>
+          <aside className={styles.leftContentContainer}>{SideBar}</aside>
+          <main className={styles.rightContentContainer}>{children}</main>
         </div>
       </div>
       <Footer />
