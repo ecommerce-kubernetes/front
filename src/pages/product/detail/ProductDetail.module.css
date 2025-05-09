@@ -1,5 +1,5 @@
 .container {
-  width: 1010px;
+  width: 1100px;
   margin: auto;
   user-select: none;
 }
@@ -7,7 +7,7 @@
 .productWrapper {
   display: flex;
   padding: 40px 0;
-  gap: 50px;
+  gap: 120px;
   border-bottom: 1px solid var(--gray-3);
 }
 

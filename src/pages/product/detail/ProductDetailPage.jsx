@@ -43,14 +43,6 @@ const ProductDetailPage = () => {
             <div className={styles.productOptionContainer}>
               <div className={styles.productOptionWrapper}>
                 <div className={styles.productOptionCategory}>
-                  <span>적립</span>
-                </div>
-                <div>
-                  <span>319원</span>
-                </div>
-              </div>
-              <div className={styles.productOptionWrapper}>
-                <div className={styles.productOptionCategory}>
                   <span>배송</span>
                 </div>
                 <div>

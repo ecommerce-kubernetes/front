@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
 import star from "../../../../assets/images/star.svg";
-const Product = ({ product, size = "md" }) => {
+const Product = ({ product, size = "lg" }) => {
   return (
     <div className={`${styles.container} ${styles[size]}`}>
       <Link className={styles.link} to={`/product/${product.productId}`}>
