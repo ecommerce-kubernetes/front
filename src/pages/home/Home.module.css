@@ -2,7 +2,7 @@
   width: 100%;
 }
 .productCarouselSection {
-  width: 1060px;
+  width: 1100px;
   margin: auto;
 }
 .productCarouselWrapper {
@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 .productCardSection {
-  width: 1060px;
+  width: 1100px;
   margin: auto;
 }
 .productCardWrapper {

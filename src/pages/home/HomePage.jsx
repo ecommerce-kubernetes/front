@@ -62,7 +62,7 @@ const HomePage = () => {
         <div className={styles.productCardSection}>
           <div className={styles.productCardWrapper}>
             <span className={styles.cardTitle}>신상품</span>
-            <ProductCardWithComponent productList={mockProductList}>
+            <ProductCardWithComponent productList={mockProductList} size={"md"}>
               <ForwardPage tag={"전체보기"} path={"/"} />
             </ProductCardWithComponent>
           </div>

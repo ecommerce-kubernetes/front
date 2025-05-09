@@ -1,8 +1,19 @@
 import ProductCard from "./ProductCard";
-const ProductCardWithComponent = ({ children, productList }) => {
+const ProductCardWithComponent = ({
+  children,
+  productList,
+  size,
+  gap,
+  rowGap,
+}) => {
   return (
     <div>
-      <ProductCard productList={productList} />
+      <ProductCard
+        productList={productList}
+        size={size}
+        gap={gap}
+        rowGap={rowGap}
+      />
       {children}
     </div>
   );

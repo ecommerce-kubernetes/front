@@ -1,15 +1,18 @@
 import Product from "../product/Product";
 import styles from "./ProductCard.module.css";
-const ProductCard = ({ productList }) => {
+const ProductCard = ({ productList, size, gap, rowGap }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <Product product={productList[1]} key={1} size="md" />
-        <Product product={productList[1]} key={2} size="md" />
-        <Product product={productList[1]} key={3} size="md" />
-        <Product product={productList[1]} key={4} size="md" />
-        <Product product={productList[0]} key={5} size="md" />
-        <Product product={productList[0]} key={6} size="md" />
+      <div
+        style={{ gap: `${gap}`, rowGap: `${rowGap}` }}
+        className={styles.wrapper}
+      >
+        <Product product={productList[1]} key={1} size={size} />
+        <Product product={productList[1]} key={2} size={size} />
+        <Product product={productList[1]} key={3} size={size} />
+        <Product product={productList[1]} key={4} size={size} />
+        <Product product={productList[0]} key={5} size={size} />
+        <Product product={productList[0]} key={6} size={size} />
       </div>
     </div>
   );
