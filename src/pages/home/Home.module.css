@@ -23,3 +23,23 @@
   font-size: 25px;
   font-weight: 600;
 }
+
+.viewAllWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.viewAllButton {
+  padding: 10px 200px;
+  background-color: white;
+  border: solid 1px var(--gray-5);
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+.viewAllButton:hover {
+  border-color: black;
+}

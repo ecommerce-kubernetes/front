@@ -6,7 +6,9 @@ const CategoryNavDropBox = () => {
     <div className={styles.categoryWrapper}>
       <ul>
         <li>
-          <Link className={styles.categoryItem}>식품</Link>
+          <Link to={"/category/1"} className={styles.categoryItem}>
+            식품
+          </Link>
         </li>
         <li>
           <Link className={styles.categoryItem}>전자기기</Link>

@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  color: var(--gray-6);
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selected {
+  color: black !important;
+}
+
+.wrapper button + button {
+  border-left: none;
+}

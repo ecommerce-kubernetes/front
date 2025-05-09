@@ -1,9 +1,9 @@
 import MainLayout from "../../layout/mainLayout";
 import MainBanner from "./components/banner/MainBanner";
 import ProductCarousel from "../../features/product/components/productCarousel/ProductCarousel";
-
+import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import ProductCardWithViewAll from "../../features/product/components/productCard/ProductCardWithViewAll";
+import ProductCardWithComponent from "../../features/product/components/productCard/ProductCardWithComponent";
 
 const mockProductList = [
   {
@@ -28,6 +28,16 @@ const mockProductList = [
       "https://cwfruit.com:446/data/editor/2112/f53fa845f04aed02cfa72653c55ec452_1640071334_4033.JPG",
   },
 ];
+
+const ForwardPage = ({ tag, path }) => {
+  return (
+    <div className={styles.viewAllWrapper}>
+      <Link className={styles.viewAllButton} to={`${path}`}>
+        {tag} &gt;
+      </Link>
+    </div>
+  );
+};
 const HomePage = () => {
   return (
     <MainLayout>
@@ -52,7 +62,9 @@ const HomePage = () => {
         <div className={styles.productCardSection}>
           <div className={styles.productCardWrapper}>
             <span className={styles.cardTitle}>신상품</span>
-            <ProductCardWithViewAll productList={mockProductList} />
+            <ProductCardWithComponent productList={mockProductList}>
+              <ForwardPage tag={"전체보기"} path={"/"} />
+            </ProductCardWithComponent>
           </div>
         </div>
       </div>

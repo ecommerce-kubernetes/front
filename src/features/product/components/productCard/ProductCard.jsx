@@ -1,4 +1,4 @@
-import Product from "../../../../components/common/product/Product";
+import Product from "../product/Product";
 import styles from "./ProductCard.module.css";
 const ProductCard = ({ productList }) => {
   return (

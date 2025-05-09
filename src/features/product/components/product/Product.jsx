@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
-import star from "../../../assets/images/star.svg";
+import star from "../../../../assets/images/star.svg";
 const Product = ({ product, size = "md" }) => {
   return (
     <div className={`${styles.container} ${styles[size]}`}>

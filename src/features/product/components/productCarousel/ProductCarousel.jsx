@@ -1,7 +1,7 @@
-import Product from "../../../../components/common/product/Product";
 import styles from "./ProductCarousel.module.css";
 import arrow from "../../../../assets/images/arrow.svg";
 import { useRef } from "react";
+import Product from "../product/Product";
 const ProductCarousel = ({ title, productList }) => {
   const viewportRef = useRef(null);
   const swiperRef = useRef(null);
