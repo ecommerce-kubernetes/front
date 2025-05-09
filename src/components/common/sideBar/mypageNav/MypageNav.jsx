@@ -35,9 +35,17 @@ const MypageNav = () => {
           </div>
         </div>
         <div className={styles.linkWrapper}>
-          <Link className={`${styles.link} ${styles.headLine}`}>내정보</Link>
+          <Link
+            to={"/my/account/verify"}
+            className={`${styles.link} ${styles.headLine}`}
+          >
+            내정보
+          </Link>
           <div className={styles.detailWrapper}>
-            <Link className={`${styles.link} ${styles.detail}`}>
+            <Link
+              to={"/my/account/verify"}
+              className={`${styles.link} ${styles.detail}`}
+            >
               개인정보 확인/수정
             </Link>
             <Link

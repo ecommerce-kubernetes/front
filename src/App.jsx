@@ -1,4 +1,4 @@
-import { Navigate, Route, Router, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Router, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
@@ -13,6 +13,18 @@ import AddressPage from "./pages/mypage/deliveryAddress/regist/AddressPage";
 import OrderDetailPage from "./pages/mypage/order/detail/OrderDetailPage";
 import ProductDetailPage from "./pages/product/detail/ProductDetailPage";
 import CategoryPage from "./pages/product/category/CategoryPage";
+import AccountVerifyPage from "./pages/mypage/account/verify/AccountVerifyPage";
+import AccountModifyPage from "./pages/mypage/account/modify/AccountModifyPage";
+import { AccountVerifyProvider } from "./contexts/AccountVerifyContext";
+import { AccountModifyProtectedRoute } from "./components/route/AccountModifyProtectedRoute";
+
+function VerifyAccountArea() {
+  return (
+    <AccountVerifyProvider>
+      <Outlet />
+    </AccountVerifyProvider>
+  );
+}
 
 function App() {
   return (
@@ -34,6 +46,17 @@ function App() {
       <Route path="/product/:productId" element={<ProductDetailPage />} />
       <Route path="/my/orders/:orderId/detail" element={<OrderDetailPage />} />
       <Route path="/category/:categoryId" element={<CategoryPage />} />
+      <Route path="/my/account" element={<VerifyAccountArea />}>
+        <Route path="verify" element={<AccountVerifyPage />} />
+        <Route
+          path="modify"
+          element={
+            <AccountModifyProtectedRoute>
+              <AccountModifyPage />
+            </AccountModifyProtectedRoute>
+          }
+        />
+      </Route>
     </Routes>
   );
 }

@@ -1,0 +1,76 @@
+/* AccountVerify css 랑 동일해 합칠 수 있을듯 */
+.container {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-bottom: 1px solid var(--gray-3);
+}
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.contentWrapper {
+  padding: 30px;
+}
+.subTitleWrapper {
+  border-bottom: 2px solid black;
+  padding-bottom: 30px;
+}
+.subTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+.memberInfoWrapper {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--gray-3);
+  gap: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+}
+.input {
+  width: 300px;
+  font-size: 16px;
+  padding: 15px 15px;
+  outline: none;
+  user-select: none;
+}
+.inputLabel {
+  width: 25%;
+  display: flex;
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;
+}
+
+.confirmBtnWrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirmBtn {
+  padding: 20px 80px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: var(--brand-color);
+  color: white;
+  cursor: pointer;
+}
+.confirmBtn:hover {
+  background-color: var(--brand-color-hover);
+}

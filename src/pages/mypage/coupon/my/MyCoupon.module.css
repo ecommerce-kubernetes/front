@@ -1,7 +1,6 @@
 .container {
   background-color: white;
   border-radius: 10px 10px 5px 5px;
-  padding: 10px 0;
 }
 
 .titleWrapper {
@@ -80,6 +79,10 @@
 .couponWrapper {
   display: flex;
   border-bottom: 1px solid var(--gray-3);
+}
+
+.couponWrapper:last-child {
+  border-bottom: none;
 }
 
 .couponTitle {
