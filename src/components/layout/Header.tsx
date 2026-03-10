@@ -1,14 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "../common/Logo";
 import { Search, X, User, ShoppingCart, Menu } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
   const [keyword, setKeyword] = useState("");
-  const handleClear = () => {
-    setKeyword("");
+  const handleClear = () => setKeyword("");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const [navInitialTop, setNavInitialTop] = useState(0);
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      router.push(`/search?q=${encodeURIComponent(keyword)}`);
+    }
   };
+
+  useEffect(() => {
+    if (navRef.current) {
+      setNavInitialTop(navRef.current.offsetTop);
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > navInitialTop) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [navInitialTop]);
+
   return (
     <>
       {/** 상단 헤더 */}
@@ -29,7 +55,10 @@ export default function Header() {
           </div>
           <div className="flex justify-between items-center mt-5">
             <Logo className="w-40 text-brand-primary flex-shrink-0" />
-            <form className="border border-brand-primary rounded-full h-12 w-130 flex justify-between items-center">
+            <form
+              onSubmit={handleSearch}
+              className="border border-brand-primary rounded-full h-12 w-130 flex justify-between items-center"
+            >
               <div className="relative flex-1 h-full flex items-center">
                 <input
                   type="text"
@@ -67,7 +96,10 @@ export default function Header() {
         </div>
       </header>
       {/** 네비게이션 바 */}
-      <nav className="w-full bg-white border-b border-base-line sticky top-0 z-50 shadow-sm font-pretendard font-medium text-lg select-none">
+      <nav
+        ref={navRef}
+        className="w-full bg-white border-b border-base-line sticky top-0 z-50 shadow-sm font-pretendard font-medium text-lg select-none"
+      >
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
           <div className="w-25 h-full flex items-center">
             <button className="flex w-full items-center gap-2 justify-between cursor-pointer">
@@ -87,6 +119,37 @@ export default function Header() {
                 <Link href="/">신규 상품</Link>
               </li>
             </ul>
+            {isScrolled && (
+              <form
+                onSubmit={handleSearch}
+                className="ml-auto border border-brand-primary rounded-full h-10 w-70 flex justify-between items-center"
+              >
+                <div className="relative flex-1 h-full flex items-center">
+                  <input
+                    type="text"
+                    placeholder="상품을 검색하세요"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
+                    className="outline-none flex-1 h-full bg-transparent px-3 text-sm font-normal"
+                  />
+                  {keyword && (
+                    <button
+                      type="button"
+                      onClick={handleClear}
+                      className="absolute cursor-pointer right-2 text-gray-400 hover:text-brand-primary transition-colors"
+                    >
+                      <X size={20} />
+                    </button>
+                  )}
+                </div>
+                <button
+                  type="submit"
+                  className="px-4 h-full cursor-pointer rounded-r-full bg-brand-primary"
+                >
+                  <Search className="text-white" size={16} strokeWidth={2} />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </nav>
