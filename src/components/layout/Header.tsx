@@ -78,19 +78,13 @@ export default function Header() {
           <div className="flex flex-1 justify-start h-full items-center">
             <ul className="flex ml-10">
               <li className="w-32 flex justify-center">
-                <Link href="/">
-                  <span>인기 상품</span>
-                </Link>
+                <Link href="/">인기 상품</Link>
               </li>
               <li className="w-32 flex justify-center">
-                <Link href="/">
-                  <span>특가 상품</span>
-                </Link>
+                <Link href="/">특가 상품</Link>
               </li>
               <li className="w-32 flex justify-center">
-                <Link href="/">
-                  <span>신규 상품</span>
-                </Link>
+                <Link href="/">신규 상품</Link>
               </li>
             </ul>
           </div>
