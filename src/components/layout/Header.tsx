@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Logo from "../common/Logo";
-import { Search, X, User, ShoppingCart } from "lucide-react";
+import { Search, X, User, ShoppingCart, Menu } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
@@ -11,7 +11,8 @@ export default function Header() {
   };
   return (
     <>
-      <header className="w-full bg-white">
+      {/** 상단 헤더 */}
+      <header className="w-full bg-white select-none">
         <div className="w-full max-w-250 mx-auto">
           <div className="flex justify-end h-8">
             <ul className="flex text-xs text-black h-full">
@@ -49,7 +50,7 @@ export default function Header() {
               </div>
               <button
                 type="submit"
-                className="px-4 h-full cursor-pointer rounded-r-full bg-brand-primary font-bold"
+                className="px-4 h-full cursor-pointer rounded-r-full bg-brand-primary"
               >
                 <Search className="text-white" size={24} strokeWidth={2} />
               </button>
@@ -65,9 +66,35 @@ export default function Header() {
           </div>
         </div>
       </header>
-
-      <nav className="w-full bg-white border-b sticky top-0 z-50 shadow-sm">
-        네비게이션 (카테고리, 베스트 등)
+      {/** 네비게이션 바 */}
+      <nav className="w-full bg-white border-b border-base-line sticky top-0 z-50 shadow-sm font-pretendard font-medium text-lg select-none">
+        <div className="w-full max-w-250 mx-auto h-15 flex items-center">
+          <div className="w-25 h-full flex items-center">
+            <button className="flex w-full items-center gap-2 justify-between cursor-pointer">
+              <Menu size={24} />
+              <span>카테고리</span>
+            </button>
+          </div>
+          <div className="flex flex-1 justify-start h-full items-center">
+            <ul className="flex ml-10">
+              <li className="w-32 flex justify-center">
+                <Link href="/">
+                  <span>인기 상품</span>
+                </Link>
+              </li>
+              <li className="w-32 flex justify-center">
+                <Link href="/">
+                  <span>특가 상품</span>
+                </Link>
+              </li>
+              <li className="w-32 flex justify-center">
+                <Link href="/">
+                  <span>신규 상품</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </>
   );
