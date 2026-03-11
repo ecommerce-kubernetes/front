@@ -47,7 +47,7 @@ export default function Header() {
             </ul>
           </div>
           <div className="flex justify-between items-center mt-5">
-            <Logo className="w-40 text-brand-primary flex-shrink-0" />
+            <Logo className="w-40 text-brand-primary shrink-0" />
             <SearchBar
               keyword={keyword}
               onChange={setKeyword}
@@ -90,15 +90,25 @@ export default function Header() {
               </li>
             </ul>
             {isScrolled && (
-              <SearchBar
-                keyword={keyword}
-                onChange={setKeyword}
-                onClear={handleClear}
-                onSubmit={handleSearch}
-                wrapperClassName="h-10 w-70 transition-all animate-in fade-in"
-                inputClassName="px-3 text-sm"
-                iconSize={16}
-              />
+              <div className="h-full flex items-center flex-1 justify-between">
+                <SearchBar
+                  keyword={keyword}
+                  onChange={setKeyword}
+                  onClear={handleClear}
+                  onSubmit={handleSearch}
+                  wrapperClassName="h-10 w-70 transition-all animate-in fade-in"
+                  inputClassName="pl-3 pr-8 text-sm"
+                  iconSize={20}
+                />
+                <div className="flex gap-5">
+                  <Link href="/">
+                    <User size={30} />
+                  </Link>
+                  <Link href="/">
+                    <ShoppingCart size={30} />
+                  </Link>
+                </div>
+              </div>
             )}
           </div>
         </div>
