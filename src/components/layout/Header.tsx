@@ -24,7 +24,7 @@ const USER_MENU_DATA = [
 ];
 
 const UserMenu = () => (
-  <ul className="flex gap-5">
+  <ul data-testid="user-menu" className="flex gap-5">
     {USER_MENU_DATA.map((data) => {
       const IconComponent = data.icon;
       return (

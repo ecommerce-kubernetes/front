@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={pretendardFont.variable}>
-      <body className="min-h-screen flex flex-col min-w-[1024px]">
+      <body className="min-h-screen flex flex-col min-w-5xl">
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />

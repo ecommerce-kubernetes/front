@@ -8,7 +8,7 @@ export function useSearch() {
   const handleClear = () => setKeyword("");
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault;
+    e.preventDefault();
     if (keyword.trim()) {
       router.push(`/search?q=${encodeURIComponent(keyword)}`);
     }
