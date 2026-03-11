@@ -6,6 +6,7 @@ import Link from "next/link";
 import SearchBar from "../../common/SearchBar";
 import { useSearch } from "@/src/hooks/useSearch";
 import { UserMenu } from "./UserMenu";
+import { CategoryNavigation } from "./CategoryNavigation";
 
 const UTILITY_NAV_DATA = [
   { name: "회원가입", href: "/" },
@@ -81,12 +82,7 @@ export default function Header() {
         className="w-full bg-white border-b border-base-line sticky top-0 z-50 shadow-sm font-pretendard font-medium text-lg select-none"
       >
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
-          <div className="w-25 h-full flex items-center">
-            <button className="flex w-full items-center gap-2 justify-between cursor-pointer">
-              <Menu size={24} />
-              <span>카테고리</span>
-            </button>
-          </div>
+          <CategoryNavigation />
           <div className="flex flex-1 justify-start h-full items-center">
             <ul className="flex ml-10">
               {MAIN_NAV_DATA.map((data) => (
