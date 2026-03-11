@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Logo from "../common/Logo";
+import Logo from "../../common/Logo";
 import { User, ShoppingCart, Menu } from "lucide-react";
 import Link from "next/link";
-import SearchBar from "../common/SearchBar";
+import SearchBar from "../../common/SearchBar";
 import { useSearch } from "@/src/hooks/useSearch";
+import { UserMenu } from "./UserMenu";
 
 const UTILITY_NAV_DATA = [
   { name: "회원가입", href: "/" },
@@ -22,21 +23,6 @@ const USER_MENU_DATA = [
   { name: "마이페이지", icon: User, href: "/" },
   { name: "장바구니", icon: ShoppingCart, href: "/" },
 ];
-
-const UserMenu = () => (
-  <ul data-testid="user-menu" className="flex gap-5">
-    {USER_MENU_DATA.map((data) => {
-      const IconComponent = data.icon;
-      return (
-        <li key={data.name}>
-          <Link href={data.href}>
-            <IconComponent size={30} />
-          </Link>
-        </li>
-      );
-    })}
-  </ul>
-);
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,7 +71,7 @@ export default function Header() {
               onClear={handleClear}
               onSubmit={handleSearch}
             />
-            <UserMenu />
+            <UserMenu items={USER_MENU_DATA} />
           </div>
         </div>
       </header>
@@ -120,7 +106,7 @@ export default function Header() {
                   inputClassName="pl-3 pr-8 text-sm"
                   iconSize={20}
                 />
-                <UserMenu />
+                <UserMenu items={USER_MENU_DATA} />
               </div>
             )}
           </div>
