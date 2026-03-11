@@ -6,6 +6,17 @@ import Link from "next/link";
 import SearchBar from "../common/SearchBar";
 import { useSearch } from "@/src/hooks/useSearch";
 
+const UserMenu = () => (
+  <div className="flex gap-5">
+    <Link href="/">
+      <User size={30} />
+    </Link>
+    <Link href="/">
+      <ShoppingCart size={30} />
+    </Link>
+  </div>
+);
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -54,14 +65,7 @@ export default function Header() {
               onClear={handleClear}
               onSubmit={handleSearch}
             />
-            <div className="flex gap-5">
-              <Link href="/">
-                <User size={30} />
-              </Link>
-              <Link href="/">
-                <ShoppingCart size={30} />
-              </Link>
-            </div>
+            <UserMenu />
           </div>
         </div>
       </header>
@@ -100,14 +104,7 @@ export default function Header() {
                   inputClassName="pl-3 pr-8 text-sm"
                   iconSize={20}
                 />
-                <div className="flex gap-5">
-                  <Link href="/">
-                    <User size={30} />
-                  </Link>
-                  <Link href="/">
-                    <ShoppingCart size={30} />
-                  </Link>
-                </div>
+                <UserMenu />
               </div>
             )}
           </div>
