@@ -1,23 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../common/Logo";
-import { Search, X, User, ShoppingCart, Menu } from "lucide-react";
+import { User, ShoppingCart, Menu } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import SearchBar from "../common/SearchBar";
+import { useSearch } from "@/src/hooks/useSearch";
 
 export default function Header() {
-  const router = useRouter();
-  const [keyword, setKeyword] = useState("");
-  const handleClear = () => setKeyword("");
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const [navInitialTop, setNavInitialTop] = useState(0);
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (keyword.trim()) {
-      router.push(`/search?q=${encodeURIComponent(keyword)}`);
-    }
-  };
+  const { keyword, setKeyword, handleClear, handleSearch } = useSearch();
 
   useEffect(() => {
     if (navRef.current) {
@@ -55,35 +48,12 @@ export default function Header() {
           </div>
           <div className="flex justify-between items-center mt-5">
             <Logo className="w-40 text-brand-primary flex-shrink-0" />
-            <form
+            <SearchBar
+              keyword={keyword}
+              onChange={setKeyword}
+              onClear={handleClear}
               onSubmit={handleSearch}
-              className="border border-brand-primary rounded-full h-12 w-130 flex justify-between items-center"
-            >
-              <div className="relative flex-1 h-full flex items-center">
-                <input
-                  type="text"
-                  placeholder="상품을 검색하세요"
-                  value={keyword}
-                  onChange={(e) => setKeyword(e.target.value)}
-                  className="outline-none flex-1 h-full bg-transparent px-5 pr-10"
-                />
-                {keyword && (
-                  <button
-                    type="button"
-                    onClick={handleClear}
-                    className="absolute cursor-pointer right-2 text-gray-400 hover:text-brand-primary transition-colors"
-                  >
-                    <X size={20} />
-                  </button>
-                )}
-              </div>
-              <button
-                type="submit"
-                className="px-4 h-full cursor-pointer rounded-r-full bg-brand-primary"
-              >
-                <Search className="text-white" size={24} strokeWidth={2} />
-              </button>
-            </form>
+            />
             <div className="flex gap-5">
               <Link href="/">
                 <User size={30} />
@@ -120,35 +90,15 @@ export default function Header() {
               </li>
             </ul>
             {isScrolled && (
-              <form
+              <SearchBar
+                keyword={keyword}
+                onChange={setKeyword}
+                onClear={handleClear}
                 onSubmit={handleSearch}
-                className="ml-auto border border-brand-primary rounded-full h-10 w-70 flex justify-between items-center"
-              >
-                <div className="relative flex-1 h-full flex items-center">
-                  <input
-                    type="text"
-                    placeholder="상품을 검색하세요"
-                    value={keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    className="outline-none flex-1 h-full bg-transparent px-3 text-sm font-normal"
-                  />
-                  {keyword && (
-                    <button
-                      type="button"
-                      onClick={handleClear}
-                      className="absolute cursor-pointer right-2 text-gray-400 hover:text-brand-primary transition-colors"
-                    >
-                      <X size={20} />
-                    </button>
-                  )}
-                </div>
-                <button
-                  type="submit"
-                  className="px-4 h-full cursor-pointer rounded-r-full bg-brand-primary"
-                >
-                  <Search className="text-white" size={16} strokeWidth={2} />
-                </button>
-              </form>
+                wrapperClassName="h-10 w-70 transition-all animate-in fade-in"
+                inputClassName="px-3 text-sm"
+                iconSize={16}
+              />
             )}
           </div>
         </div>
