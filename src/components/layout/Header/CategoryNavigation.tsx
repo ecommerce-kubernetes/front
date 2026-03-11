@@ -1,7 +1,9 @@
+import { useCategoryQuery } from "@/src/hooks/queries/useCategoryQuery";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu } from "lucide-react";
 
 export const CategoryNavigation = () => {
+  const { data: categories = [], isLoading, isError } = useCategoryQuery();
   return (
     <div className="w-25 h-full flex items-center">
       <NavigationMenu.Root
