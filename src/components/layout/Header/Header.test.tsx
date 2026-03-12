@@ -5,6 +5,12 @@ import { useSearch } from "@/src/hooks/useSearch";
 
 // useSearch 훅 모킹
 vi.mock("@/src/hooks/useSearch");
+vi.mock("@/src/hooks/queries/useCategoryQuery", () => ({
+  useCategoryQuery: () => ({
+    data: [],
+    isLoading: false,
+  }),
+}));
 
 describe("Header 단위 테스트", () => {
   // useSearch 훅 함수 모킹
