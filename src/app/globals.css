@@ -1,12 +1,36 @@
 @import "tailwindcss";
 
 @theme {
+  --animate-slide-right: slideRight 0.2s ease-in-out forwards;
+  --animate-fade-in: fadeIn 0.5s ease forwards;
   --font-pretendard: var(--font-pretendard), ui-sans-serif, system-ui, sans-serif;
   --color-base-line: #e5e7eb;
   --color-brand-primary: #9f8473;
 }
 
+@keyframes slideRight {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 14rem;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @layer base {
+
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
