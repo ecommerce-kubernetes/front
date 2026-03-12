@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import Header from ".";
+import Header from "../";
 import { useSearch } from "@/src/hooks/useSearch";
 
 // useSearch 훅 모킹
