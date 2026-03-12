@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 
 export const CategoryNavigation = () => {
   const { data: categories = [], isLoading, isError } = useCategoryQuery();
+  console.log(categories.map((data) => data.name));
   return (
     <div className="w-25 h-full flex items-center">
       <NavigationMenu.Root
