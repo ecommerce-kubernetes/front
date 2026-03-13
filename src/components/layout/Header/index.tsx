@@ -1,29 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Logo from "../../common/Logo";
-import { User, ShoppingCart, Menu } from "lucide-react";
 import Link from "next/link";
 import SearchBar from "../../common/SearchBar";
 import { useSearch } from "@/src/hooks/useSearch";
 import { UserMenu } from "./UserMenu";
 import { CategoryNavigation } from "./CategoryNavigation";
-
-const UTILITY_NAV_DATA = [
-  { name: "회원가입", href: "/" },
-  { name: "로그인", href: "/" },
-  { name: "고객센터", href: "/" },
-];
-
-const MAIN_NAV_DATA = [
-  { name: "인기 상품", href: "/" },
-  { name: "특가 상품", href: "/" },
-  { name: "신규 상품", href: "/" },
-];
-
-const USER_MENU_DATA = [
-  { name: "마이페이지", icon: User, href: "/" },
-  { name: "장바구니", icon: ShoppingCart, href: "/" },
-];
+import {
+  UTILITY_NAV_DATA,
+  MAIN_NAV_DATA,
+  USER_MENU_DATA,
+} from "@/src/constants/header-navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);

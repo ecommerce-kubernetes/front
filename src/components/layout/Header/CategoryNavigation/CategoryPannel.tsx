@@ -1,6 +1,7 @@
 import { useCategoryPath } from "@/src/hooks/useCategoryPath";
 import { CategoryTree } from "@/src/types/category";
 import Image from "next/image";
+import Link from "next/link";
 
 export const CategoryPannel = ({
   rootCategories,
@@ -24,7 +25,8 @@ export const CategoryPannel = ({
                   className="shrink-0 px-5 cursor-pointer hover:text-brand-primary h-12 flex items-center hover:bg-gray-100"
                   onMouseEnter={() => handleMouseEnter(category, depthIndex)}
                 >
-                  <div
+                  <Link
+                    href={`/categories/${category.id}`}
                     className={`flex items-center flex-1 ${depthIndex === 0 ? "" : "animate-fade-in"}`}
                   >
                     {depthIndex === 0 &&
@@ -40,7 +42,7 @@ export const CategoryPannel = ({
                         <div className="w-6 h-6 bg-gray-200 rounded-full" />
                       ))}
                     <span className="flex-1 pl-3 pr-5">{category.name}</span>
-                  </div>
+                  </Link>
                 </li>
               );
             })}
