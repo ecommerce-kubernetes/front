@@ -53,7 +53,7 @@ export default function Header() {
       {/** 네비게이션 바 */}
       <nav
         ref={navRef}
-        className="w-full bg-white border-b border-base-line sticky top-0 z-50 shadow-sm font-pretendard font-medium text-lg select-none"
+        className="w-full bg-white border-b border-base-line sticky top-0 z-header shadow-sm font-pretendard font-medium text-lg select-none"
       >
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
           <CategoryNavigation />

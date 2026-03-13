@@ -6,6 +6,9 @@
   --font-pretendard: var(--font-pretendard), ui-sans-serif, system-ui, sans-serif;
   --color-base-line: #e5e7eb;
   --color-brand-primary: #9f8473;
+
+  --z-index-base: 0;
+  --z-index-header: 50;
 }
 
 @keyframes slideRight {
