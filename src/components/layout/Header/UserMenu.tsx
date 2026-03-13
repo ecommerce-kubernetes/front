@@ -1,20 +1,11 @@
-import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
-interface UserMenuItem {
-  name: string;
-  icon: LucideIcon;
-  href: string;
-}
+import { USER_MENU_DATA } from "@/src/constants/header-navigation";
 
-interface UserMenuProps {
-  items: UserMenuItem[];
-}
-
-export const UserMenu = ({ items }: UserMenuProps) => {
+export const UserMenu = () => {
   return (
     <ul data-testid="user-menu" className="flex gap-5">
-      {items.map((data) => {
+      {USER_MENU_DATA.map((data) => {
         const IconComponent = data.icon;
         return (
           <li key={data.name}>

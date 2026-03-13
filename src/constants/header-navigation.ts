@@ -1,6 +1,6 @@
 import { ShoppingCart, User } from "lucide-react";
 
-export const UTILITY_NAV_DATA = [
+export const UTILITY_MENU_DATA = [
   { name: "회원가입", href: "/" },
   { name: "로그인", href: "/login" },
   { name: "고객센터", href: "/" },
