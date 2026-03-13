@@ -44,9 +44,11 @@ export default function Header() {
               {UTILITY_NAV_DATA.map((data) => (
                 <li
                   key={data.name}
-                  className="after:content-['|'] after:mx-2 after:text-gray-300 last:after:content-none h-full flex items-center cursor-pointer"
+                  className="after:content-['|'] after:mx-2 after:text-gray-300 last:after:content-none h-full flex items-center"
                 >
-                  <Link href={data.href}>{data.name}</Link>
+                  <Link className="cursor-pointer" href={data.href}>
+                    {data.name}
+                  </Link>
                 </li>
               ))}
             </ul>
