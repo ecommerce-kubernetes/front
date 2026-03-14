@@ -1,5 +1,4 @@
 import { fetchCategoryTree } from "@/src/api/category";
-import { CategoryTree } from "@/src/types/category";
 import { useQuery } from "@tanstack/react-query";
 
 export const useCategoryQuery = () => {

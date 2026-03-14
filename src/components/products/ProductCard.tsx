@@ -1,9 +1,13 @@
 import { Product } from "@/src/types/product";
 import { MessageCircle, Star } from "lucide-react";
+import Link from "next/link";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="w-full flex flex-col">
+    <Link
+      href={`/products/${product.productId}`}
+      className="w-full flex flex-col"
+    >
       <div className="aspect-[3/4] overflow-hidden rounded-sm select-none">
         <img
           src={product.thumbnail}
@@ -52,6 +56,6 @@ export const ProductCard = ({ product }: { product: Product }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

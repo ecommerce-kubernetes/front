@@ -14,6 +14,7 @@ export default function Header() {
   const [navInitialTop, setNavInitialTop] = useState(0);
   const { keyword, setKeyword, handleClear, handleSearch } = useSearch();
 
+  //TODO 새로고침 시에는 유저 메뉴와 서치바가 네비게이션 바에 사라지는 현상 수정
   useEffect(() => {
     if (navRef.current) {
       setNavInitialTop(navRef.current.offsetTop);

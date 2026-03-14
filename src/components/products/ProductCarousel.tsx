@@ -7,10 +7,15 @@ import { useCarousel } from "@/src/hooks/useCarousel";
 
 interface ProductCarouselProps {
   title: string;
+  href: string;
   products: Product[];
 }
 
-export const ProductCarousel = ({ title, products }: ProductCarouselProps) => {
+export const ProductCarousel = ({
+  title,
+  href,
+  products,
+}: ProductCarouselProps) => {
   const { emblaRef, scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
     useCarousel({ loop: false, align: "start", slidesToScroll: 1 });
 
@@ -18,7 +23,7 @@ export const ProductCarousel = ({ title, products }: ProductCarouselProps) => {
     <div className="w-full flex flex-col">
       <div className="flex pl-5 items-center justify-between">
         <h1 className="font-pretendard font-bold text-2xl">{title}</h1>
-        <Link href={"/"} className="h-full flex items-center gap-1.5">
+        <Link href={href} className="h-full flex items-center gap-1.5">
           <span className="font-medium font-pretendard text-gray-600">
             전체보기
           </span>
