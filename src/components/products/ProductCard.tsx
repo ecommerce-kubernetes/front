@@ -3,15 +3,15 @@ import { MessageCircle, Star } from "lucide-react";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="w-full flex flex-col p-2 select-none">
-      <div className="aspect-[3/4] overflow-hidden rounded-sm">
+    <div className="w-full flex flex-col">
+      <div className="aspect-[3/4] overflow-hidden rounded-sm select-none">
         <img
           src={product.thumbnail}
           alt={product.name}
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="mt-2 flex flex-col">
+      <div className="mt-2 flex flex-col select-none">
         <h2 className="line-clamp-2 mb-1 break-words text-lg font-medium font-pretendard leading-snug">
           {product.name}
         </h2>

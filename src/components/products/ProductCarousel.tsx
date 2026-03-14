@@ -1,7 +1,7 @@
 "use client";
 import { Product } from "@/src/types/product";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "./ProductCard";
 
@@ -30,18 +30,30 @@ export const ProductCarousel = ({ title, products }: ProductCarouselProps) => {
           </div>
         </Link>
       </div>
-      <div className="mt-5">
-        <div className="w-full overflow-hidden group relative" ref={emblaRef}>
-          <div className="flex h-full">
+      <div className="relative w-full group mt-5">
+        <div className="w-full overflow-hidden" ref={emblaRef}>
+          <div className="flex h-full -ml-4">
             {products.map((product) => (
               <div
                 key={product.productId}
-                className="flex-[0_0_25%] min-w-0 h-full flex"
+                className="flex-[0_0_25%] min-w-0 h-full flex pl-4"
               >
                 <ProductCard product={product} />
               </div>
             ))}
           </div>
+          <button
+            type="button"
+            className="absolute cursor-pointer top-1/3 -left-5 p-2 rounded-full bg-white border border-gray-500"
+          >
+            <ChevronLeft size={30} className="text-black" />
+          </button>
+          <button
+            type="button"
+            className="absolute cursor-pointer top-1/3 -right-5 p-2 rounded-full bg-white border border-gray-500"
+          >
+            <ChevronRight size={30} className="text-black" />
+          </button>
         </div>
       </div>
     </div>
