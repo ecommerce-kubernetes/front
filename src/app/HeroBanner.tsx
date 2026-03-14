@@ -1,10 +1,14 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useHeroBanner } from "../hooks/useHeroBanner";
+import { useCarousel } from "../hooks/useCarousel";
+import Autoplay from "embla-carousel-autoplay";
 
-export const HeroBanner = () => {
-  const { banners, emblaRef, scrollPrev, scrollNext, totalCount, selectIndex } =
-    useHeroBanner();
+//TODO 배너 타입 정의
+export const HeroBanner = ({ banners }) => {
+  const { emblaRef, scrollPrev, scrollNext, selectIndex, totalCount } =
+    useCarousel({ loop: true }, [
+      Autoplay({ delay: 4000, stopOnInteraction: false }),
+    ]);
   return (
     <div className="w-full h-100 overflow-hidden group relative" ref={emblaRef}>
       <div className="flex h-full">

@@ -89,15 +89,26 @@ const data: Product[] = [
   },
 ];
 
+const BANNERS = [
+  { id: 1, color: "#9CA3AF", text: "첫 번째 배너" },
+  { id: 2, color: "#EF4444", text: "두 번째 배너" },
+  { id: 3, color: "#3B82F6", text: "세 번째 배너" },
+];
+
 export default function HomePage() {
   return (
-    <div className="w-full h-500 flex flex-col">
+    <div className="w-full flex flex-col">
       <section className="w-full">
-        <HeroBanner />
+        <HeroBanner banners={BANNERS} />
       </section>
       <section className="w-full max-w-250 mx-auto">
-        <div className="flex flex-col py-10">
+        <div className="flex flex-col py-20 gap-25">
           <ProductCarousel title="지금 제일 인기있는 상품" products={data} />
+          <ProductCarousel
+            title="특가! 할인 상품을 만나보세요"
+            products={data}
+          />
+          <ProductCarousel title="새 상품이 들어왔어요" products={data} />
         </div>
       </section>
     </div>

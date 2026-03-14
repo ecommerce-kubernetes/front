@@ -8,7 +8,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <img
           src={product.thumbnail}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
         />
       </div>
       <div className="mt-2 flex flex-col select-none">

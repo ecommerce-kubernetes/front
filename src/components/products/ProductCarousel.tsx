@@ -1,9 +1,9 @@
 "use client";
 import { Product } from "@/src/types/product";
-import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "./ProductCard";
+import { useCarousel } from "@/src/hooks/useCarousel";
 
 interface ProductCarouselProps {
   title: string;
@@ -11,11 +11,8 @@ interface ProductCarouselProps {
 }
 
 export const ProductCarousel = ({ title, products }: ProductCarouselProps) => {
-  const [emblaRef] = useEmblaCarousel({
-    loop: false,
-    align: "start",
-    slidesToScroll: 1,
-  });
+  const { emblaRef, scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
+    useCarousel({ loop: false, align: "start", slidesToScroll: 1 });
 
   return (
     <div className="w-full flex flex-col">
@@ -44,13 +41,17 @@ export const ProductCarousel = ({ title, products }: ProductCarouselProps) => {
           </div>
           <button
             type="button"
-            className="absolute cursor-pointer top-1/3 -left-5 p-2 rounded-full bg-white border border-gray-500"
+            className={`absolute cursor-pointer top-1/3 -left-5 p-2 rounded-full bg-white border border-gray-500 
+              ${canScrollPrev ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            onClick={scrollPrev}
           >
             <ChevronLeft size={30} className="text-black" />
           </button>
           <button
             type="button"
-            className="absolute cursor-pointer top-1/3 -right-5 p-2 rounded-full bg-white border border-gray-500"
+            className={`absolute cursor-pointer top-1/3 -right-5 p-2 rounded-full bg-white border border-gray-500 
+              ${canScrollNext ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            onClick={scrollNext}
           >
             <ChevronRight size={30} className="text-black" />
           </button>
