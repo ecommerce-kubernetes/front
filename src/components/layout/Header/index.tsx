@@ -10,26 +10,25 @@ import { MainMenu } from "./MainMenu";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const [navInitialTop, setNavInitialTop] = useState(0);
   const { keyword, setKeyword, handleClear, handleSearch } = useSearch();
 
-  //TODO 새로고침 시에는 유저 메뉴와 서치바가 네비게이션 바에 사라지는 현상 수정
   useEffect(() => {
-    if (navRef.current) {
-      setNavInitialTop(navRef.current.offsetTop);
-    }
-
+    const THRESHOLD = 120;
     const handleScroll = () => {
-      if (window.scrollY > navInitialTop) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > THRESHOLD);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navInitialTop]);
+
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 100);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <>
@@ -52,10 +51,7 @@ export default function Header() {
         </div>
       </header>
       {/** 네비게이션 바 */}
-      <nav
-        ref={navRef}
-        className="w-full bg-white border-b border-base-line sticky top-0 z-header shadow-sm font-pretendard font-medium text-lg select-none"
-      >
+      <nav className="w-full bg-white border-b border-base-line sticky top-0 z-header shadow-sm font-pretendard font-medium text-lg select-none">
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
           <CategoryNavigation />
           <div className="flex flex-1 justify-start h-full items-center">
