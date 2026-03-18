@@ -2,12 +2,20 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: process.env.NODE_ENV === 'development',
     remotePatterns: [
-      // 나중에 백엔드 API 서버나 S3 버킷 주소가 생기면 여기에 추가하시면 됩니다!
-      // {
-      //   protocol: 'https',
-      //   hostname: 'image.buynest.com',
-      // },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '9000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '9000',
+        pathname: '/**',
+      },
     ],
   },
 };
