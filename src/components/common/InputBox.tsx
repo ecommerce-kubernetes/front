@@ -1,27 +1,35 @@
 import { LucideIcon } from "lucide-react";
+import { forwardRef, InputHTMLAttributes } from "react";
 
-interface InputBoxProps {
+interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   headImg: LucideIcon;
-  value: string;
-  placeHolder: string;
-  type: string;
+  errorMessage?: string;
 }
 
-export default function InputBox({
-  headImg,
-  value,
-  placeHolder,
-  type,
-}: InputBoxProps) {
-  const IconComponent = headImg;
-  return (
-    <div className="w-full border border-gray-300 flex rounded-sm px-2 py-3 focus-within:border-brand-primary bg-white">
-      <IconComponent size={26} />
-      <input
-        className="flex-1 pl-2 outline-none text-sm"
-        type={type}
-        placeholder={placeHolder}
-      />
-    </div>
-  );
-}
+const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
+  ({ headImg: IconComponent, errorMessage, ...props }, ref) => {
+    return (
+      <div className="flex flex-col w-full gap-1">
+        <div
+          className={`w-full border flex rounded-sm px-2 py-3 bg-white
+        ${errorMessage ? "border-red-500 focus-within:border-red-500" : "border-gray-300 focus-within:border-brand-primary"}`}
+        >
+          <IconComponent size={26} />
+          <input
+            ref={ref}
+            className="flex-1 pl-2 outline-none text-sm placeholder:text-gray-400"
+            {...props}
+          />
+        </div>
+        {errorMessage && (
+          <span className="text-xs pl-1 text-red-500 font-medium">
+            {errorMessage}
+          </span>
+        )}
+      </div>
+    );
+  },
+);
+
+InputBox.displayName = "InputBox";
+export default InputBox;
