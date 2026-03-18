@@ -10,6 +10,7 @@ export const useLogin = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
@@ -28,8 +29,9 @@ export const useLogin = () => {
       onSuccess: () => {
         router.push("/");
       },
-      //로그인 실패시 추가 작업
-      onError: () => {},
+      onError: () => {
+        reset();
+      },
     });
   };
 

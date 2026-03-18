@@ -1,8 +1,9 @@
-import { login } from "@/src/api/auth";
+import { login, logout } from "@/src/api/auth";
 import { useAuthStore } from "@/src/store/useAuthStore";
 import { AuthUser, LoginPayload, LoginRequest } from "@/src/types/auth";
 import { useMutation } from "@tanstack/react-query";
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
 
 export const useLoginMutation = () => {
   const { setAuth } = useAuthStore();
@@ -28,6 +29,24 @@ export const useLoginMutation = () => {
     onError: (error) => {
       console.error("로그인 실패", error);
       alert("로그인 실패");
+    },
+  });
+};
+
+export const useLogoutMutation = () => {
+  const { clearAuth } = useAuthStore();
+  const router = useRouter();
+  const handleLogoutSuccess = () => {
+    clearAuth();
+    router.push("/");
+  };
+  return useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      handleLogoutSuccess();
+    },
+    onError: () => {
+      handleLogoutSuccess();
     },
   });
 };

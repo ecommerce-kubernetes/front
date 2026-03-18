@@ -3,6 +3,10 @@ import { http, HttpResponse } from "msw";
 const BASE_URL = "http://127.0.0.1:8000";
 
 export const handlers = [
+  http.post(`${BASE_URL}/user-service/auth/logout`, () => {
+    return HttpResponse.json(null, { status: 204 });
+  }),
+
   http.post(`${BASE_URL}/user-service/auth/login`, () => {
     return HttpResponse.json({
       accessToken:

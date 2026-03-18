@@ -7,3 +7,9 @@ export const login = async (data: LoginRequest): Promise<LoginResponse> => {
     body: JSON.stringify(data),
   });
 };
+
+export const logout = async () => {
+  return apiFetch("/user-service/auth/logout", {
+    method: "POST",
+  });
+};
