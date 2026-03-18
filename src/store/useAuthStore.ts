@@ -1,19 +1,13 @@
 import { create } from "zustand";
-
-export interface User {
-  id: number;
-  email: string;
-  name: string;
-  role: string;
-}
+import { AuthUser } from "../types/auth";
 
 interface AuthState {
-  user: User | null;
+  user: AuthUser | null;
   accessToken: string | null;
   isLoggedIn: boolean;
 
-  login: (user: User, token: string) => void;
-  logout: () => void;
+  setAuth: (user: AuthUser, token: string) => void;
+  clearAuth: () => void;
   setAccessToken: (token: string) => void;
 }
 
@@ -22,14 +16,14 @@ export const useAuthStore = create<AuthState>((set) => ({
   accessToken: null,
   isLoggedIn: false,
 
-  login: (user, token) =>
+  setAuth: (user, token) =>
     set({
       user,
       accessToken: token,
       isLoggedIn: true,
     }),
 
-  logout: () =>
+  clearAuth: () =>
     set({
       user: null,
       accessToken: null,

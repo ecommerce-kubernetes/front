@@ -5,7 +5,8 @@ const BASE_URL = "http://127.0.0.1:8000";
 export const handlers = [
   http.post(`${BASE_URL}/user-service/auth/login`, () => {
     return HttpResponse.json({
-      accessToken: "accessToken",
+      accessToken:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXluZXN0LXVzZXItc2VydmljZSIsInN1YiI6MSwiaWF0IjoxNzEwODMwMDAwLCJleHAiOjE3MTA4MzM2MDAsImVtYWlsIjoibGE5ODE0QG5hdmVyLmNvbSIsIm5hbWUiOiLstZzrr7zsi50iLCJyb2xlIjoiUk9MRV9BRE1JTiIsInRva2VuX3R5cGUiOiJBQ0NFU1MifQ.NuwrjBvsQU2gI54hEgeh4QwjofghfCbBKHw0AgUsSiY",
     });
   }),
 

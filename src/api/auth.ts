@@ -1,4 +1,4 @@
-import { LoginResponse, LoginRequest } from "../types/login";
+import { LoginResponse, LoginRequest } from "../types/auth";
 import { apiFetch } from "./client";
 
 export const login = async (data: LoginRequest): Promise<LoginResponse> => {

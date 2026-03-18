@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import { LoginFormType, loginSchema } from "../validations/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "./queries/useAuthQuery";
-import { LoginRequest } from "../types/login";
+import { LoginRequest } from "../types/auth";
+import { useRouter } from "next/navigation";
 
 export const useLogin = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,7 +24,13 @@ export const useLogin = () => {
       password: data.password,
     };
 
-    loginMutate(requestBody);
+    loginMutate(requestBody, {
+      onSuccess: () => {
+        router.push("/");
+      },
+      //로그인 실패시 추가 작업
+      onError: () => {},
+    });
   };
 
   return {
