@@ -12,8 +12,8 @@ export const MSWComponent = ({ children }: { children: React.ReactNode }) => {
       ) {
         const { worker } = await import("@/src/mocks/browser");
         await worker.start({ onUnhandledRequest: "bypass" });
-        setMswReady(true);
       }
+      setMswReady(true);
     };
     if (!mswReady) {
       init();
