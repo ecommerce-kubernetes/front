@@ -7,4 +7,12 @@ router.post("/auth/login", (req, res) => {
   res.json(token);
 });
 
+router.post("/auth/logout", (req, res) => {
+  res.sendStatus(204);
+})
+
+router.post("/auth/refresh", (req, res) => {
+  res.json(token);
+})
+
 module.exports = router;

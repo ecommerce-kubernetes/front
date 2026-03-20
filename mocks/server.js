@@ -9,6 +9,7 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.use("/product-service", productRouter);
+server.use("/user-service", userRouter);
 
 server.listen(8000, () => {
   console.log("mock API 게이트웨이 실행");
