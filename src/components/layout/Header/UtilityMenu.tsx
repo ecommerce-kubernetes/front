@@ -2,9 +2,11 @@ import { useAuthStore } from "@/src/store/useAuthStore";
 import Link from "next/link";
 
 import { UTILITY_MENU_DATA } from "@/src/constants/header-navigation";
+import { useLogoutMutation } from "@/src/hooks/queries/useAuthQuery";
 
 export const UtilityMenu = () => {
   const { isLoggedIn, user } = useAuthStore();
+  const { mutate: logout, isPending } = useLogoutMutation();
   return (
     <ul className="flex text-xs text-black h-full">
       {isLoggedIn ? (
@@ -15,7 +17,9 @@ export const UtilityMenu = () => {
             </Link>
             <button
               type="button"
-              className="border px-0.5 text-gray-400 cursor-pointer"
+              disabled={isPending}
+              onClick={() => logout()}
+              className="border px-0.5 text-gray-400 cursor-pointer outline-none"
             >
               로그아웃
             </button>

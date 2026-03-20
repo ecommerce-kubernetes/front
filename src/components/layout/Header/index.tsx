@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../common/Logo";
 import SearchBar from "../../common/SearchBar";
 import { useSearch } from "@/src/hooks/useSearch";
@@ -7,8 +7,13 @@ import { UserMenu } from "./UserMenu";
 import { CategoryNavigation } from "./CategoryNavigation";
 import { UtilityMenu } from "./UtilityMenu";
 import { MainMenu } from "./MainMenu";
+import { CategoryTree } from "@/src/types/category";
 
-export default function Header() {
+export default function Header({
+  initCategories,
+}: {
+  initCategories: CategoryTree[];
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { keyword, setKeyword, handleClear, handleSearch } = useSearch();
 
@@ -53,7 +58,7 @@ export default function Header() {
       {/** 네비게이션 바 */}
       <nav className="w-full bg-white border-b border-base-line sticky top-0 z-header shadow-sm font-pretendard font-medium text-lg select-none">
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
-          <CategoryNavigation />
+          <CategoryNavigation rootCategories={initCategories} />
           <div className="flex flex-1 justify-start h-full items-center">
             <ul className="flex ml-10">
               <MainMenu />
