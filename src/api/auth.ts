@@ -1,5 +1,5 @@
 import { LoginResponse, LoginRequest } from "../types/auth";
-import { apiFetch } from "./client";
+import { apiFetch, authFetch } from "./client";
 
 export const login = async (data: LoginRequest): Promise<LoginResponse> => {
   return apiFetch("/user-service/auth/login", {
@@ -10,7 +10,7 @@ export const login = async (data: LoginRequest): Promise<LoginResponse> => {
 };
 
 export const logout = async () => {
-  return apiFetch("/user-service/auth/logout", {
+  return authFetch("/user-service/auth/logout", {
     method: "POST",
     credentials: "include",
   });
