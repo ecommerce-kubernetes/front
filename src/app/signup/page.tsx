@@ -1,3 +1,4 @@
+import BirthDateBox from "@/src/components/common/BirthDateBox";
 import InputBox from "@/src/components/common/InputBox";
 import RadioBox from "@/src/components/common/RadioBox";
 import { Lock, LockKeyhole, Mail, Phone, User } from "lucide-react";
@@ -14,21 +15,17 @@ export default function SignupPage() {
           type="password"
           placeholder="비밀번호 확인"
         />
-        <div>
-          <RadioBox name="gender" value="MALE" />
-          <RadioBox name="gender" value="FEMALE" />
+        <div className="flex items-center justify-around py-3">
+          <div className="flex gap-3">
+            <RadioBox name="gender" value="MALE" />
+            <span>남자</span>
+          </div>
+          <div className="flex gap-3">
+            <RadioBox name="gender" value="FEMALE" />
+            <span>여자</span>
+          </div>
         </div>
-        <div>
-          <select>
-            <option>asdfasd</option>
-          </select>
-          <select>
-            <option>asdfasd</option>
-          </select>
-          <select>
-            <option>asdfasd</option>
-          </select>
-        </div>
+        <BirthDateBox />
         <InputBox headImg={User} type="text" placeholder="이름" />
         <InputBox headImg={Phone} type="text" placeholder="전화번호" />
       </form>
