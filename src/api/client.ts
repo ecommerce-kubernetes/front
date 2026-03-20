@@ -63,4 +63,10 @@ export const authFetch = async (url: string, options: RequestInit = {}) => {
       throw error;
     }
   }
+
+  if (!response.ok) {
+    throw new Error("API 요청 실패");
+  }
+
+  return response.json();
 };
