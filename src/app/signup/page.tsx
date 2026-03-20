@@ -1,4 +1,5 @@
 import InputBox from "@/src/components/common/InputBox";
+import RadioBox from "@/src/components/common/RadioBox";
 import { Lock, LockKeyhole, Mail, Phone, User } from "lucide-react";
 
 export default function SignupPage() {
@@ -14,8 +15,8 @@ export default function SignupPage() {
           placeholder="비밀번호 확인"
         />
         <div>
-          <input type="radio" name="gender" value="MALE" />
-          <input type="radio" name="gender" value="FEMALE" />
+          <RadioBox name="gender" value="MALE" />
+          <RadioBox name="gender" value="FEMALE" />
         </div>
         <div>
           <select>
