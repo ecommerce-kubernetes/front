@@ -1,11 +1,13 @@
-import { useCategoryQuery } from "@/src/hooks/queries/useCategoryQuery";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu } from "lucide-react";
 import { CategoryPannel } from "./CategoryPannel";
-import Loading from "@/src/components/common/Loading";
+import { CategoryTree } from "@/src/types/category";
 
-export const CategoryNavigation = () => {
-  const { data: rootCategories = [], isLoading } = useCategoryQuery();
+export const CategoryNavigation = ({
+  rootCategories,
+}: {
+  rootCategories: CategoryTree[];
+}) => {
   return (
     <div className="w-25 h-full flex items-center">
       <NavigationMenu.Root
@@ -19,13 +21,7 @@ export const CategoryNavigation = () => {
               <span>카테고리</span>
             </NavigationMenu.Trigger>
             <NavigationMenu.Content>
-              {isLoading ? (
-                <div className="w-56 h-12 flex items-center justify-center bg-white border border-gray-200">
-                  <Loading />
-                </div>
-              ) : (
-                <CategoryPannel rootCategories={rootCategories} />
-              )}
+              <CategoryPannel rootCategories={rootCategories} />
             </NavigationMenu.Content>
           </NavigationMenu.Item>
         </NavigationMenu.List>
