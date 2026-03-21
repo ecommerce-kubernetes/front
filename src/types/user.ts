@@ -15,3 +15,10 @@ export interface CreateResponse {
   gender: string;
   phoneNumber: string;
 }
+
+export interface AuthUser {
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+}

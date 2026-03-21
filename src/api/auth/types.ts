@@ -1,10 +1,10 @@
-export interface LoginResponse {
-  accessToken: string;
-}
-
 export interface LoginRequest {
   email: string;
   password: string;
+}
+
+export interface LoginResponse {
+  accessToken: string;
 }
 
 export interface LoginPayload {
@@ -17,11 +17,4 @@ export interface LoginPayload {
   name: string;
   role: string;
   token_type: string;
-}
-
-export interface AuthUser {
-  id: number;
-  email: string;
-  name: string;
-  role: string;
 }
