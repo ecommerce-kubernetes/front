@@ -1,8 +1,6 @@
-const express = require("express");
+import express from "express";
+import token from "../data/auth/auth.json" with { type: "json" };
 const router = express.Router();
-
-const token = require("../data/auth/auth.json");
-const createUserRes = require("../data/auth/auth.json");
 
 router.post("/auth/login", (req, res) => {
   res.json(token);
@@ -16,8 +14,4 @@ router.post("/auth/refresh", (req, res) => {
   res.json(token);
 });
 
-router.post("/users", (req, res) => {
-  res.json(createUserRes);
-});
-
-module.exports = router;
+export default router;
