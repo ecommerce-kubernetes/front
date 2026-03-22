@@ -2,7 +2,10 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const apiFetch = async (url: string, options: RequestInit = {}) => {
+export const apiFetch = async <T>(
+  url: string,
+  options: RequestInit = {},
+): Promise<T> => {
   const response = await fetch(`${BASE_URL}${url}`, {
     ...options,
     headers: {
@@ -17,7 +20,10 @@ export const apiFetch = async (url: string, options: RequestInit = {}) => {
   return response.json();
 };
 
-export const authFetch = async (url: string, options: RequestInit = {}) => {
+export const authFetch = async <T>(
+  url: string,
+  options: RequestInit = {},
+): Promise<T> => {
   const { accessToken, clearAuth, setAccessToken } = useAuthStore.getState();
 
   const headers: HeadersInit = {

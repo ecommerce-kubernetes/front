@@ -1,7 +1,7 @@
 import { ShoppingCart, User } from "lucide-react";
 
 export const UTILITY_MENU_DATA = [
-  { name: "회원가입", href: "/" },
+  { name: "회원가입", href: "/signup" },
   { name: "로그인", href: "/login" },
   { name: "고객센터", href: "/" },
 ];

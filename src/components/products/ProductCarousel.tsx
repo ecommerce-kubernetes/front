@@ -37,7 +37,7 @@ export const ProductCarousel = ({
           <div className="flex h-full -ml-4">
             {products.map((product) => (
               <div
-                key={product.productId}
+                key={product.id}
                 className="flex-[0_0_25%] min-w-0 h-full flex pl-4"
               >
                 <ProductCard product={product} />

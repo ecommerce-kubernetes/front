@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { LoginFormType, loginSchema } from "../validations/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "./queries/useAuthQuery";
-import { LoginRequest } from "../types/auth";
 import { useRouter } from "next/navigation";
+import { LoginRequest } from "../api/auth/types";
 
 export const useLogin = () => {
   const router = useRouter();

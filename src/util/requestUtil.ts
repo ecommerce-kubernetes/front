@@ -8,3 +8,10 @@ export const parseParamsToUrl = (params: object) => {
 
   return queryParams.toString();
 };
+
+export const formatPhoneNumber = (phoneNumber: string) => {
+  const cleaned = phoneNumber.replace(/\D/g, "");
+  return cleaned.startsWith("02")
+    ? cleaned.replace(/(\d{2})(\d{3,4})(\d{4})/, "$1-$2-$3")
+    : cleaned.replace(/(\d{3})(\d{3,4})(\d{4})/, "$1-$2-$3");
+};
