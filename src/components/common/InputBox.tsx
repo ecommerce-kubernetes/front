@@ -4,10 +4,11 @@ import { forwardRef, InputHTMLAttributes } from "react";
 interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   headImg: LucideIcon;
   errorMessage?: string;
+  successMessage?: string;
 }
 
 const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
-  ({ headImg: IconComponent, errorMessage, ...props }, ref) => {
+  ({ headImg: IconComponent, errorMessage, successMessage, ...props }, ref) => {
     return (
       <div className="flex flex-col w-full gap-1">
         <div
@@ -21,11 +22,15 @@ const InputBox = forwardRef<HTMLInputElement, InputBoxProps>(
             {...props}
           />
         </div>
-        {errorMessage && (
+        {errorMessage ? (
           <span className="text-xs pl-1 text-red-500 font-medium">
             {errorMessage}
           </span>
-        )}
+        ) : successMessage ? (
+          <span className="text-xs pl-1 text-green-500 font-medium">
+            {successMessage}
+          </span>
+        ) : null}
       </div>
     );
   },

@@ -6,7 +6,14 @@ import { useSignup } from "@/src/hooks/useSignup";
 import { Lock, LockKeyhole, Mail, Phone, User } from "lucide-react";
 
 export default function SignupPage() {
-  const { register, handleSubmit, errors, isPending } = useSignup();
+  const {
+    register,
+    isEmailAvailable,
+    emailRegister,
+    handleSubmit,
+    errors,
+    signupPending,
+  } = useSignup();
   const birthDateError =
     errors.birthDate?.year?.message ||
     errors.birthDate?.month?.message ||
@@ -20,7 +27,13 @@ export default function SignupPage() {
           type="text"
           placeholder="이메일"
           errorMessage={errors.email?.message}
-          {...register("email")}
+          successMessage={
+            !errors.email && isEmailAvailable
+              ? "사용 가능한 이메일입니다"
+              : undefined
+          }
+          {...emailRegister}
+          {...emailRegister}
         />
         <InputBox
           headImg={Lock}
@@ -82,7 +95,7 @@ export default function SignupPage() {
         />
         <button
           type="submit"
-          disabled={isPending}
+          disabled={signupPending}
           className="w-full py-3 cursor-pointer text-white bg-brand-primary rounded-sm"
         >
           가입하기

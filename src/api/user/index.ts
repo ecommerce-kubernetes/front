@@ -10,3 +10,14 @@ export const signup = async (data: SignupRequest): Promise<User> => {
   });
   return mapUserToDomain(response);
 };
+
+export const emailAvailability = async (email: string): Promise<boolean> => {
+  const response = await apiFetch<{ available: boolean }>(
+    `/user-service/users/email-availability?email=${email}`,
+    {
+      method: "GET",
+    },
+  );
+
+  return response.available;
+};

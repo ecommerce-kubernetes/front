@@ -19,4 +19,9 @@ router.post("/users", (req, res) => {
   res.json(createUser);
 });
 
+router.get("/users/email-availability", (req, res) => {
+  const { email } = req.query;
+  const available = email !== "duplicate@naver.com";
+  res.json({ available });
+});
 export default router;
