@@ -23,17 +23,17 @@ export default async function HomePage() {
         <div className="flex flex-col py-20 gap-25">
           <ProductCarousel
             title="지금 제일 인기있는 상품"
-            products={popularPage.content}
+            products={popularPage.items}
             href={"/menu/popular"}
           />
           <ProductCarousel
             title="특가! 할인 상품을 만나보세요"
-            products={salePage.content}
+            products={salePage.items}
             href="/menu/special-sale"
           />
           <ProductCarousel
             title="새 상품이 들어왔어요"
-            products={newPage.content}
+            products={newPage.items}
             href="/menu/new"
           />
         </div>

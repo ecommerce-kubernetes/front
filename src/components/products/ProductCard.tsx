@@ -4,13 +4,11 @@ import Link from "next/link";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <Link
-      href={`/products/${product.productId}`}
-      className="w-full flex flex-col"
-    >
+    <Link href={`/products/${product.id}`} className="w-full flex flex-col">
       <div className="aspect-[3/4] overflow-hidden rounded-sm select-none">
+        {/** TODO cdn 이미지 태그로 변경 */}
         <img
-          src={product.thumbnail}
+          src={product.thumbnailUrl}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
         />
@@ -27,12 +25,12 @@ export const ProductCard = ({ product }: { product: Product }) => {
             <span className="flex items-baseline gap-1">
               <span className="text-xs">최대</span>
               <span className="text-brand-primary font-bold text-lg">
-                {product.maxDiscountRate}%
+                {product.discountRate}%
               </span>
             </span>
           </div>
           <span className="font-bold text-lg items-center">
-            {Number(product.displayPrice).toLocaleString()}원
+            {Number(product.price).toLocaleString()}원
           </span>
           <div className="flex justify-start gap-3">
             <div className="flex items-center gap-0.5">

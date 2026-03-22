@@ -1,14 +1,23 @@
 export type ProductStatus = "ON_SALE" | "STOP_SALE" | "PREPARING";
 
+export interface ProductFilterState {
+  page?: number;
+  size?: number;
+  sort?: string;
+  categoryId?: number;
+  name?: string;
+  rating?: number;
+}
+
 export interface Product {
-  productId: number;
+  id: number;
   name: string;
-  thumbnail: string;
-  displayPrice: number;
+  thumbnailUrl: string;
+  price: number;
   originalPrice: number;
-  maxDiscountRate: number;
+  discountRate: number;
   categoryId: number;
-  publishedAt: string;
+  publishedDate: string;
   rating: number;
   reviewCount: number;
   status: ProductStatus;
