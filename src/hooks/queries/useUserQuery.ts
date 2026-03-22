@@ -1,11 +1,11 @@
-import { create } from "@/src/api/user";
+import { signup } from "@/src/api/user";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
-export const useCreateMutation = () => {
+export const useSignupMutation = () => {
   const router = useRouter();
   return useMutation({
-    mutationFn: create,
+    mutationFn: signup,
     onSuccess: () => {
       router.push("/");
     },

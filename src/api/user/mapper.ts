@@ -1,7 +1,7 @@
 import { User } from "@/src/types/user";
-import { CreateResponse } from "./types";
+import { SignupResponse } from "./types";
 
-export const mapUserToDomain = (raw: CreateResponse): User => {
+export const mapUserToDomain = (raw: SignupResponse): User => {
   return {
     id: raw.id,
     email: raw.email,

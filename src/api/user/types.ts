@@ -1,4 +1,4 @@
-export interface CreateRequest {
+export interface SignupRequest {
   email: string;
   password: string;
   name: string;
@@ -7,7 +7,7 @@ export interface CreateRequest {
   phoneNumber: string;
 }
 
-export interface CreateResponse {
+export interface SignupResponse {
   id: number;
   email: string;
   name: string;

@@ -1,9 +1,26 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { SignupFormType, signupSchema } from "../validations/signupSchema";
-import { CreateRequest } from "../types/user";
-import { useCreateMutation } from "./queries/useUserQuery";
 import { useRouter } from "next/navigation";
+import { SignupRequest } from "../api/user/types";
+import { useSignupMutation } from "./queries/useUserQuery";
+import { formatPhoneNumber } from "../util/requestUtil";
+
+const mapFormToSignupRequest = (data: SignupFormType): SignupRequest => {
+  const { year, month, day } = data.birthDate;
+  const formattedMonth = month.padStart(2, "0");
+  const formattedDay = day.padStart(2, "0");
+  const finalBirthDate = `${year}-${formattedMonth}-${formattedDay}`;
+  const formattedPhoneNumber = formatPhoneNumber(data.phoneNumber);
+  return {
+    email: data.email,
+    password: data.password,
+    name: data.name,
+    birthDate: finalBirthDate,
+    gender: data.gender,
+    phoneNumber: formattedPhoneNumber,
+  };
+};
 
 export const useSignup = () => {
   const router = useRouter();
@@ -25,39 +42,16 @@ export const useSignup = () => {
     },
   });
 
-  const { mutate: create, isPending } = useCreateMutation();
+  const { mutate: signup, isPending } = useSignupMutation();
 
   const onSubmit = (data: SignupFormType) => {
-    const { year, month, day } = data.birthDate;
-    const formattedMonth = month.padStart(2, "0");
-    const formattedDay = day.padStart(2, "0");
-    const finalBirthDate = `${year}-${formattedMonth}-${formattedDay}`;
-
-    const formatPhoneNumber = (phoneNumber: string) => {
-      const cleaned = phoneNumber.replace(/\D/g, "");
-
-      if (cleaned.startsWith("02")) {
-        return cleaned.replace(/(\d{2})(\d{3,4})(\d{4})/, "$1-$2-$3");
-      }
-      return cleaned.replace(/(\d{3})(\d{3,4})(\d{4})/, "$1-$2-$3");
-    };
-    const formattedPhoneNumber = formatPhoneNumber(data.phoneNumber);
-
-    const requestBody: CreateRequest = {
-      email: data.email,
-      password: data.password,
-      name: data.name,
-      birthDate: finalBirthDate,
-      gender: data.gender,
-      phoneNumber: formattedPhoneNumber,
-    };
-
-    create(requestBody, {
+    const requestBody = mapFormToSignupRequest(data);
+    signup(requestBody, {
       onSuccess: () => {
         router.push("/");
       },
       onError: () => {
-        reset();
+        reset({ password: "", passwordConfirm: "" });
       },
     });
   };
