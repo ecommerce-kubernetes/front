@@ -1,32 +1,24 @@
-import { SelectBox } from "@/src/components/common/SelectBox";
+import { ProductImageView } from "@/src/components/products/ProductImageView";
+import { ProductImage } from "@/src/types/product";
 import { MessageCircle, Star, X } from "lucide-react";
 
 export default function ProductDetailPage() {
+  const mockImageData: ProductImage[] = [
+    {
+      url: "https://images.samsung.com/kdp/goods/2026/01/30/82762f71-3f37-49aa-ad39-bf6a12f88e1f.png?$Q90_330_330_F_PNG$",
+      thumbnail: true,
+      order: 1,
+    },
+    {
+      url: "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      thumbnail: false,
+      order: 2,
+    },
+  ];
   return (
     <div className="w-full max-w-250 mx-auto flex items-center py-5 flex-col">
       <section className="w-full flex gap-20">
-        <div className="w-112.5 flex flex-col">
-          <img src="https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png" />
-          <div className="mt-10">
-            <ul className="flex justify-center gap-3">
-              <li>
-                <button className="w-20 h-20 cursor-pointer border border-transparent hover:border-brand-primary">
-                  <img src="https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png" />
-                </button>
-              </li>
-              <li>
-                <button className="w-20 h-20 cursor-pointer border border-transparent hover:border-brand-primary">
-                  <img src="https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png" />
-                </button>
-              </li>
-              <li>
-                <button className="w-20 h-20 cursor-pointer border border-transparent hover:border-brand-primary">
-                  <img src="https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png" />
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ProductImageView images={mockImageData} />
         <div className="flex-1">
           <h1 className="text-xl font-medium font-pretendard mb-4">
             상품 이름

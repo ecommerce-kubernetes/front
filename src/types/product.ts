@@ -22,3 +22,9 @@ export interface Product {
   reviewCount: number;
   status: ProductStatus;
 }
+
+export interface ProductImage {
+  url: string;
+  order: number;
+  thumbnail: boolean;
+}
