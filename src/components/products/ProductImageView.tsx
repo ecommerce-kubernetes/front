@@ -11,7 +11,7 @@ export const ProductImageView = ({ images }: { images: ProductImage[] }) => {
     );
   });
   return (
-    <div className="w-112.5 flex flex-col">
+    <>
       <div className="w-full aspect-square bg-gray-50 overflow-hidden relative">
         <img
           src={selectedImage.url}
@@ -36,6 +36,6 @@ export const ProductImageView = ({ images }: { images: ProductImage[] }) => {
           })}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
