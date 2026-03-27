@@ -56,7 +56,26 @@ export default function ProductDetailPage() {
         thumbnail: false,
       },
     ],
-    variants: [],
+    variants: [
+      {
+        id: 1,
+        sku: "PROD_XL_256GB",
+        optionValueIds: [1, 3],
+        price: 100000,
+        discountedPrice: 90000,
+        discountRate: 10,
+        stockQuantity: 10,
+      },
+      {
+        id: 2,
+        sku: "PROD_L_256GB",
+        optionValueIds: [2, 3],
+        price: 100000,
+        discountedPrice: 90000,
+        discountRate: 10,
+        stockQuantity: 10,
+      },
+    ],
   };
   return (
     <div className="w-full max-w-250 mx-auto flex items-center py-5 flex-col">
