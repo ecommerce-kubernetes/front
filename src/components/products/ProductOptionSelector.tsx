@@ -1,6 +1,7 @@
 import { ProductDetail } from "@/src/types/product";
 import { X } from "lucide-react";
 import { SelectBox } from "../common/SelectBox";
+import { useMemo } from "react";
 
 export interface ProductOptionSelectorProps {
   product: Pick<ProductDetail, "name" | "optionGroups" | "variants">;
@@ -11,27 +12,35 @@ export const ProductOptionSelector = ({
 }: ProductOptionSelectorProps) => {
   const { name, optionGroups, variants } = product;
   const isSingleProduct = !optionGroups || optionGroups.length === 0;
+
+  const selectBoxDataList = useMemo(() => {
+    if (isSingleProduct) return [];
+
+    return optionGroups.map((group) => ({
+      id: group.optionTypeId,
+      label: group.name,
+      selectProps: {
+        type: group.name,
+        options: group.values.map((v) => ({
+          name: v.name,
+          value: v.optionValueId,
+        })),
+      },
+    }));
+  }, [optionGroups, isSingleProduct]);
+
   return (
     <div className="flex flex-col gap-6 w-full">
       {!isSingleProduct && (
         <div className="flex flex-col gap-3">
-          {optionGroups.map((group) => {
-            const mappedSelectProps = {
-              type: group.name,
-              options: group.values.map((v) => ({
-                name: v.name,
-                value: v.optionValueId,
-              })),
-            };
-            return (
-              <div key={group.optionTypeId} className="flex flex-col gap-1.5">
-                <label className="text-sm font-medium text-gray-700">
-                  {group.name}
-                </label>
-                <SelectBox selectProps={mappedSelectProps} />
-              </div>
-            );
-          })}
+          {selectBoxDataList.map((data) => (
+            <div key={data.id} className="flex flex-col gap-1.5">
+              <label className="text-sm font-medium text-gray-700">
+                {data.label}
+              </label>
+              <SelectBox selectProps={data.selectProps} />
+            </div>
+          ))}
         </div>
       )}
 
