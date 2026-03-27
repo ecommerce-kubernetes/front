@@ -1,5 +1,6 @@
 import { ProductDetail } from "@/src/types/product";
 import { X } from "lucide-react";
+import { SelectBox } from "../common/SelectBox";
 
 export interface ProductOptionSelectorProps {
   product: Pick<ProductDetail, "name" | "optionGroups" | "variants">;
@@ -12,27 +13,29 @@ export const ProductOptionSelector = ({
   const isSingleProduct = !optionGroups || optionGroups.length === 0;
   return (
     <div className="flex flex-col gap-6 w-full">
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-medium text-gray-700">색상</label>
-          <select className="w-full border border-gray-300 rounded-sm p-3 text-sm outline-none focus:border-brand-primary cursor-pointer appearance-none bg-white">
-            <option value="">색상을 선택하세요</option>
-            <option value="black">블랙</option>
-            <option value="white">화이트</option>
-          </select>
+      {!isSingleProduct && (
+        <div className="flex flex-col gap-3">
+          {optionGroups.map((group) => {
+            const mappedSelectProps = {
+              type: group.name,
+              options: group.values.map((v) => ({
+                name: v.name,
+                value: v.optionValueId,
+              })),
+            };
+            return (
+              <div key={group.optionTypeId} className="flex flex-col gap-1.5">
+                <label className="text-sm font-medium text-gray-700">
+                  {group.name}
+                </label>
+                <SelectBox selectProps={mappedSelectProps} />
+              </div>
+            );
+          })}
         </div>
+      )}
 
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-medium text-gray-700">사이즈</label>
-          <select className="w-full border border-gray-300 rounded-sm p-3 text-sm outline-none focus:border-brand-primary cursor-pointer appearance-none bg-white">
-            <option value="">사이즈를 선택하세요</option>
-            <option value="s">Small</option>
-            <option value="m">Medium</option>
-          </select>
-        </div>
-      </div>
-
-      <hr className="border-gray-200" />
+      {!isSingleProduct && <hr className="border-gray-200" />}
 
       <div className="flex flex-col gap-3">
         <div className="bg-gray-50 border border-gray-200 rounded-sm p-4 flex flex-col gap-4">

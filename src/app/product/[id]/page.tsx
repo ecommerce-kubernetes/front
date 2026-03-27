@@ -25,6 +25,7 @@ export default function ProductDetailPage() {
             optionValueId: 1,
             name: "XL",
           },
+          { optionValueId: 2, name: "L" },
         ],
       },
       {
@@ -33,8 +34,12 @@ export default function ProductDetailPage() {
         priority: 2,
         values: [
           {
-            optionValueId: 2,
+            optionValueId: 3,
             name: "256GB",
+          },
+          {
+            optionValueId: 4,
+            name: "512GB",
           },
         ],
       },
