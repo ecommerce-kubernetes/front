@@ -18,6 +18,7 @@ export const ProductOptionSelector = ({
 }: ProductOptionSelectorProps) => {
   const { name, optionGroups, variants } = product;
   const isSingleProduct = !optionGroups || optionGroups.length === 0;
+  const [openSelectId, setOpenSelectId] = useState<number | null>(null);
 
   const [selectedItems, setSelectedItems] = useState<SelectedItem[]>(() => {
     if (isSingleProduct && variants.length > 0) {
@@ -83,29 +84,48 @@ export const ProductOptionSelector = ({
 
         // ⭐️ 카드를 추가했으니, 셀렉트 박스들은 다시 "선택하세요" 초기 상태로 리셋!
         setCurrentSelection({});
-      } else {
-        alert("선택하신 옵션 조합의 상품이 없습니다.");
-        setCurrentSelection({}); // 리셋
       }
     }
   };
 
   const selectBoxDataList = isSingleProduct
     ? []
-    : optionGroups.map((group) => ({
-        id: group.optionTypeId,
-        label: group.name,
-        selectProps: {
-          type: group.name,
-          options: group.values.map((v) => ({
+    : optionGroups.map((group) => {
+        const mappedOptions = group.values.map((v) => {
+          const tempSelection = {
+            ...currentSelection,
+            [group.optionTypeId]: v.optionValueId,
+          };
+          const tempSelectedIds = Object.values(tempSelection);
+          const isAvailable = variants.some((variant) =>
+            tempSelectedIds.every((id) => variant.optionValueIds.includes(id)),
+          );
+
+          return {
             name: v.name,
             value: v.optionValueId,
-          })),
-          value: currentSelection[group.optionTypeId] || "",
-          onChange: (val: string | number) =>
-            handleOptionChange(group.optionTypeId, Number(val)),
-        },
-      }));
+            disabled: !isAvailable,
+          };
+        });
+
+        return {
+          id: group.optionTypeId,
+          label: group.name,
+          selectProps: {
+            type: group.name,
+            options: mappedOptions, // ⭐️ disabled 정보가 담긴 옵션 배열 전달
+            value: currentSelection[group.optionTypeId] || "",
+            onChange: (val: string | number) =>
+              handleOptionChange(group.optionTypeId, Number(val)),
+            isOpen: openSelectId === group.optionTypeId,
+            onToggle: () => {
+              setOpenSelectId((prevId) =>
+                prevId === group.optionTypeId ? null : group.optionTypeId,
+              );
+            },
+          },
+        };
+      });
 
   const totalPrice = selectedItems.reduce(
     (acc, item) => acc + item.discountedPrice * item.quantity,

@@ -75,6 +75,15 @@ export default function ProductDetailPage() {
         discountRate: 10,
         stockQuantity: 10,
       },
+      {
+        id: 2,
+        sku: "PROD_L_256GB",
+        optionValueIds: [1, 4],
+        price: 100000,
+        discountedPrice: 90000,
+        discountRate: 10,
+        stockQuantity: 10,
+      },
     ],
   };
   return (
