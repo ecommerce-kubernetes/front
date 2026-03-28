@@ -76,7 +76,7 @@ export default function ProductDetailPage() {
         stockQuantity: 10,
       },
       {
-        id: 2,
+        id: 3,
         sku: "PROD_L_256GB",
         optionValueIds: [1, 4],
         price: 100000,
