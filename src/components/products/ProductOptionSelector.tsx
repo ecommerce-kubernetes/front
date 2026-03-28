@@ -1,8 +1,9 @@
 "use client";
 import { ProductDetail } from "@/src/types/product";
-import { X } from "lucide-react";
 import { SelectBox } from "../common/SelectBox";
 import { useProductOptions } from "@/src/hooks/useProductOptions";
+import { useState } from "react";
+import { SelectedOptionItem } from "./SelectedOptionItem";
 
 export interface ProductOptionSelectorProps {
   product: Pick<ProductDetail, "name" | "optionGroups" | "variants">;
@@ -13,74 +14,56 @@ export const ProductOptionSelector = ({
 }: ProductOptionSelectorProps) => {
   const {
     isSingleProduct,
-    selectBoxDataList,
+    availableOptions,
     selectedItems,
     totalPrice,
     handleRemoveItem,
     handleUpdateQuantity,
   } = useProductOptions(product.optionGroups, product.variants, product.name);
+  const [openSelectId, setOpenSelectId] = useState<number | null>(null);
   return (
     <div className="flex flex-col gap-6 w-full">
+      {/* 옵션 선택 영역 */}
       {!isSingleProduct && (
         <div className="flex flex-col gap-3">
-          {selectBoxDataList.map((data) => (
-            <div key={data.id} className="flex flex-col gap-1.5">
+          {availableOptions.map((group) => (
+            <div key={group.id} className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-gray-700">
-                {data.label}
+                {group.label}
               </label>
-              <SelectBox selectProps={data.selectProps} />
+              <SelectBox
+                selectProps={{
+                  type: group.label,
+                  options: group.options,
+                  value: group.selectedValue,
+                  onChange: group.onChange,
+                  // ⭐️ 컴포넌트에서 상태를 내려줌
+                  isOpen: openSelectId === group.id,
+                  onToggle: () =>
+                    setOpenSelectId((prev) =>
+                      prev === group.id ? null : group.id,
+                    ),
+                }}
+              />
             </div>
           ))}
         </div>
       )}
 
       {!isSingleProduct && <hr className="border-gray-200" />}
+
+      {/* 선택된 아이템 리스트 영역 */}
       {selectedItems.length > 0 && (
         <>
           <div className="flex flex-col gap-3">
-            {selectedItems.map((item, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 border border-gray-200 rounded-sm p-4 flex flex-col gap-4"
-              >
-                <div className="flex justify-between items-start">
-                  <span className="text-sm font-medium text-gray-800">
-                    {item.optionName}
-                  </span>
-                  {!isSingleProduct && (
-                    <button
-                      onClick={() => handleRemoveItem(item.id)}
-                      className="text-gray-400 hover:text-gray-600 transition-colors"
-                    >
-                      <X size={16} />
-                    </button>
-                  )}
-                </div>
-
-                <div className="flex justify-between items-end">
-                  <div className="flex items-center border border-gray-300 rounded-sm bg-white">
-                    <button
-                      onClick={() => handleUpdateQuantity(item.id, -1)}
-                      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 border-r border-gray-300 transition-colors"
-                    >
-                      -
-                    </button>
-                    <span className="w-10 text-center text-sm font-medium">
-                      {item.quantity}
-                    </span>
-                    <button
-                      onClick={() => handleUpdateQuantity(item.id, 1)}
-                      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 border-l border-gray-300 transition-colors"
-                    >
-                      +
-                    </button>
-                  </div>
-                  {/* ⭐️ 개별 아이템 총 가격 */}
-                  <span className="font-bold text-gray-900">
-                    {(item.discountedPrice * item.quantity).toLocaleString()}원
-                  </span>
-                </div>
-              </div>
+            {selectedItems.map((item) => (
+              <SelectedOptionItem
+                key={item.id}
+                item={item}
+                onRemove={handleRemoveItem}
+                onUpdateQuantity={handleUpdateQuantity}
+                isSingleProduct={isSingleProduct}
+              />
             ))}
           </div>
 
