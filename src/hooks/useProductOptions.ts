@@ -1,10 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { ProductDetail, ProductVariant } from "../types/product";
-
-export interface SelectedItem extends ProductVariant {
-  quantity: number;
-  optionName: string;
-}
+import { ProductDetail, SelectedItem } from "../types/product";
 
 const getCombinedOptionName = (
   optionGroups: ProductDetail["optionGroups"],

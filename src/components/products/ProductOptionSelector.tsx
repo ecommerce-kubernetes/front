@@ -4,6 +4,8 @@ import { SelectBox } from "../common/SelectBox";
 import { useProductOptions } from "@/src/hooks/useProductOptions";
 import { useState } from "react";
 import { SelectedOptionItem } from "./SelectedOptionItem";
+import { Heart } from "lucide-react";
+import { useCartActions } from "@/src/hooks/useCartActions";
 
 export interface ProductOptionSelectorProps {
   product: Pick<ProductDetail, "name" | "optionGroups" | "variants">;
@@ -21,6 +23,7 @@ export const ProductOptionSelector = ({
     handleUpdateQuantity,
   } = useProductOptions(product.optionGroups, product.variants, product.name);
   const [openSelectId, setOpenSelectId] = useState<number | null>(null);
+  const { addToCart, buyNow } = useCartActions();
   return (
     <div className="flex flex-col gap-6 w-full">
       {!isSingleProduct && (
@@ -36,7 +39,6 @@ export const ProductOptionSelector = ({
                   options: group.options,
                   value: group.selectedValue,
                   onChange: group.onChange,
-                  // ⭐️ 컴포넌트에서 상태를 내려줌
                   isOpen: openSelectId === group.id,
                   onToggle: () =>
                     setOpenSelectId((prev) =>
@@ -68,11 +70,30 @@ export const ProductOptionSelector = ({
           <div className="flex justify-between items-end pt-2 border-t border-gray-900 mt-2">
             <span className="font-medium text-gray-700">총 상품 금액</span>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-brand-primary">
+              <span className="text-3xl font-bold text-brand-primary">
                 {totalPrice.toLocaleString()}
               </span>
               <span className="text-sm font-medium text-gray-600">원</span>
             </div>
+          </div>
+          <div className="flex gap-1.5">
+            <button className="w-14 h-14 flex items-center border justify-center rounded-lg cursor-pointer border-gray-300">
+              <Heart size={26} />
+            </button>
+            <button
+              className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
+              onClick={() => addToCart(selectedItems)}
+            >
+              <span className="text-white font-medium text-lg">
+                장바구니 담기
+              </span>
+            </button>
+            <button
+              className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
+              onClick={() => buyNow(selectedItems)}
+            >
+              <span className="text-white font-medium text-lg">주문하기</span>
+            </button>
           </div>
         </>
       )}

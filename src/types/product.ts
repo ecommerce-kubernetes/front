@@ -65,3 +65,8 @@ export interface ProductDetail {
   images: ProductImage[];
   variants: ProductVariant[];
 }
+
+export interface SelectedItem extends ProductVariant {
+  quantity: number;
+  optionName: string;
+}
