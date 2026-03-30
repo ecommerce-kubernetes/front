@@ -6,6 +6,32 @@ export interface SelectedItem extends ProductVariant {
   optionName: string;
 }
 
+const getCombinedOptionName = (
+  optionGroups: ProductDetail["optionGroups"],
+  selection: Record<number, number>,
+) => {
+  return optionGroups
+    .map(
+      (group) =>
+        group.values.find(
+          (v) => v.optionValueId === selection[group.optionTypeId],
+        )?.name,
+    )
+    .filter(Boolean)
+    .join(" / ");
+};
+
+const findMatchedVariant = (
+  variants: ProductDetail["variants"],
+  selectedValueIds: number[],
+) => {
+  return variants.find(
+    (variant) =>
+      variant.optionValueIds.length === selectedValueIds.length &&
+      variant.optionValueIds.every((id) => selectedValueIds.includes(id)),
+  );
+};
+
 export const useProductOptions = (
   optionGroups: ProductDetail["optionGroups"],
   variants: ProductDetail["variants"],
@@ -24,11 +50,11 @@ export const useProductOptions = (
     Record<number, number>
   >({});
 
-  const handleRemoveItem = (id: number) => {
+  const handleRemoveItem = useCallback((id: number) => {
     setSelectedItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  }, []);
 
-  const handleUpdateQuantity = (id: number, delta: number) => {
+  const handleUpdateQuantity = useCallback((id: number, delta: number) => {
     setSelectedItems((prev) =>
       prev.map((item) =>
         item.id === id
@@ -36,22 +62,7 @@ export const useProductOptions = (
           : item,
       ),
     );
-  };
-
-  const getCombinedOptionName = useCallback(
-    (selection: Record<number, number>) => {
-      return optionGroups
-        .map(
-          (group) =>
-            group.values.find(
-              (v) => v.optionValueId === selection[group.optionTypeId],
-            )?.name,
-        )
-        .filter(Boolean)
-        .join(" / ");
-    },
-    [optionGroups],
-  );
+  }, []);
 
   const handleOptionChange = useCallback(
     (optionTypeId: number, optionValueId: number) => {
@@ -60,39 +71,37 @@ export const useProductOptions = (
         [optionTypeId]: optionValueId,
       };
       setCurrentSelection(newSelection);
-      if (Object.keys(newSelection).length === optionGroups.length) {
-        const selectedValueIds = Object.values(newSelection);
-        const matchedVariant = variants.find(
-          (variant) =>
-            variant.optionValueIds.length === selectedValueIds.length &&
-            variant.optionValueIds.every((id) => selectedValueIds.includes(id)),
+      const isCompleted =
+        Object.keys(newSelection).length === optionGroups.length;
+      if (!isCompleted) return;
+      const selectValueIds = Object.values(newSelection);
+      const matchedVariant = findMatchedVariant(variants, selectValueIds);
+      if (matchedVariant) {
+        const combinedOptionName = getCombinedOptionName(
+          optionGroups,
+          newSelection,
         );
 
-        if (matchedVariant) {
-          const combinedOptionName = getCombinedOptionName(newSelection);
-          setSelectedItems((prev) => {
-            const existing = prev.findIndex(
-              (item) => item.id === matchedVariant.id,
-            );
-            if (existing > -1) {
-              const newItems = [...prev];
-              newItems[existing].quantity += 1;
-              return newItems;
-            }
-            return [
-              ...prev,
-              {
-                ...matchedVariant,
-                quantity: 1,
-                optionName: combinedOptionName,
-              },
-            ];
-          });
-          setCurrentSelection({});
-        }
+        setSelectedItems((prev) => {
+          const existingItemIndex = prev.findIndex(
+            (item) => item.id === matchedVariant.id,
+          );
+
+          if (existingItemIndex > -1) {
+            const newItems = [...prev];
+            newItems[existingItemIndex].quantity += 1;
+            return newItems;
+          }
+
+          return [
+            ...prev,
+            { ...matchedVariant, quantity: 1, optionName: combinedOptionName },
+          ];
+        });
+        setCurrentSelection({});
       }
     },
-    [currentSelection, optionGroups, variants, getCombinedOptionName],
+    [currentSelection, optionGroups, variants],
   );
 
   const availableOptions = useMemo(() => {

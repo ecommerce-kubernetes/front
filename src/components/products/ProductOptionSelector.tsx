@@ -23,7 +23,6 @@ export const ProductOptionSelector = ({
   const [openSelectId, setOpenSelectId] = useState<number | null>(null);
   return (
     <div className="flex flex-col gap-6 w-full">
-      {/* 옵션 선택 영역 */}
       {!isSingleProduct && (
         <div className="flex flex-col gap-3">
           {availableOptions.map((group) => (
@@ -52,7 +51,6 @@ export const ProductOptionSelector = ({
 
       {!isSingleProduct && <hr className="border-gray-200" />}
 
-      {/* 선택된 아이템 리스트 영역 */}
       {selectedItems.length > 0 && (
         <>
           <div className="flex flex-col gap-3">
@@ -67,7 +65,6 @@ export const ProductOptionSelector = ({
             ))}
           </div>
 
-          {/* 총 결제 금액 */}
           <div className="flex justify-between items-end pt-2 border-t border-gray-900 mt-2">
             <span className="font-medium text-gray-700">총 상품 금액</span>
             <div className="flex items-baseline gap-1">
