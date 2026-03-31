@@ -76,27 +76,25 @@ export const ProductOptionSelector = ({
               <span className="text-sm font-medium text-gray-600">원</span>
             </div>
           </div>
-          <div className="flex gap-1.5">
-            <button className="w-14 h-14 flex items-center border justify-center rounded-lg cursor-pointer border-gray-300">
-              <Heart size={26} />
-            </button>
-            <button
-              className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
-              onClick={() => addToCart(selectedItems)}
-            >
-              <span className="text-white font-medium text-lg">
-                장바구니 담기
-              </span>
-            </button>
-            <button
-              className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
-              onClick={() => buyNow(selectedItems)}
-            >
-              <span className="text-white font-medium text-lg">주문하기</span>
-            </button>
-          </div>
         </>
       )}
+      <div className="flex gap-1.5">
+        <button className="w-14 h-14 flex items-center border justify-center rounded-lg cursor-pointer border-gray-300">
+          <Heart size={26} />
+        </button>
+        <button
+          className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
+          onClick={() => addToCart(selectedItems)}
+        >
+          <span className="text-white font-medium text-lg">장바구니 담기</span>
+        </button>
+        <button
+          className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
+          onClick={() => buyNow(selectedItems)}
+        >
+          <span className="text-white font-medium text-lg">주문하기</span>
+        </button>
+      </div>
     </div>
   );
 };

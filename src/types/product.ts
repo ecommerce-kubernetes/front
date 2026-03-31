@@ -29,6 +29,11 @@ export interface ProductImage {
   thumbnail: boolean;
 }
 
+export interface ProductDetailImage {
+  url: string;
+  order: number;
+}
+
 export interface OptionValue {
   optionValueId: number;
   name: string;
@@ -61,6 +66,7 @@ export interface ProductDetail {
   rating: number;
   reviewCount: number;
   popularityScore: number;
+  detailImages: ProductDetailImage[];
   optionGroups: OptionGroup[];
   images: ProductImage[];
   variants: ProductVariant[];

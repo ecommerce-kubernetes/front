@@ -1,5 +1,8 @@
 import { ProductBasicInfo } from "@/src/components/products/ProductBasicInfo";
+import { ProductContentTab } from "@/src/components/products/ProductContentTab";
+import { ProductDetailImages } from "@/src/components/products/ProductDetailImages";
 import { ProductImageView } from "@/src/components/products/ProductImageView";
+import { ProductNavigation } from "@/src/components/products/ProductNavigation";
 import { ProductOptionSelector } from "@/src/components/products/ProductOptionSelector";
 import { ProductDetail } from "@/src/types/product";
 
@@ -56,6 +59,20 @@ export default function ProductDetailPage() {
         thumbnail: false,
       },
     ],
+    detailImages: [
+      {
+        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/83171118776182-5b45d589-e15f-4605-9ba0-994157f92b97.jpg",
+        order: 1,
+      },
+      {
+        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/3584975322182-e358376e-878c-469f-b261-c05961382a6a.jpg",
+        order: 2,
+      },
+      {
+        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/68021975115483-c2a260e7-442a-450e-8678-4c2adbf26e4c.jpg",
+        order: 3,
+      },
+    ],
     variants: [
       {
         id: 1,
@@ -88,7 +105,7 @@ export default function ProductDetailPage() {
   };
   return (
     <div className="w-full max-w-250 mx-auto flex items-center py-5 flex-col">
-      <section className="w-full flex gap-20">
+      <section className="w-full flex gap-20 mb-20">
         <div className="w-112.5 flex flex-col select-none">
           <ProductImageView images={mockProduct.images} />
         </div>
@@ -96,6 +113,9 @@ export default function ProductDetailPage() {
           <ProductBasicInfo product={mockProduct} />
           <ProductOptionSelector product={mockProduct} />
         </div>
+      </section>
+      <section className="w-full">
+        <ProductContentTab product={mockProduct} />
       </section>
     </div>
   );

@@ -78,14 +78,16 @@ export const useProductOptions = (
         );
 
         setSelectedItems((prev) => {
-          const existingItemIndex = prev.findIndex(
+          const existingItem = prev.find(
             (item) => item.id === matchedVariant.id,
           );
 
-          if (existingItemIndex > -1) {
-            const newItems = [...prev];
-            newItems[existingItemIndex].quantity += 1;
-            return newItems;
+          if (existingItem) {
+            return prev.map((item) =>
+              item.id === matchedVariant.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item,
+            );
           }
 
           return [
