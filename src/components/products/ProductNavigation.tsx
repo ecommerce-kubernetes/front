@@ -7,7 +7,6 @@ interface ProductNavigationProps {
 const TABS: { id: ProductContentTabType; label: string }[] = [
   { id: "description", label: "상품 설명" },
   { id: "reviews", label: "상품 리뷰" },
-  { id: "qna", label: "상품 문의" },
 ];
 export const ProductNavigation = ({
   active,

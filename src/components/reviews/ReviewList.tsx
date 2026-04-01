@@ -13,7 +13,6 @@ export const ReviewList = () => {
   const MAX_DISPLAY = 4;
   const hasMoreImage = mockImage.length > MAX_DISPLAY;
   const extraCount = mockImage.length - MAX_DISPLAY;
-
   const { isModalOpen, modalOpen, modalClose } = useModal();
 
   return (
@@ -64,14 +63,37 @@ export const ReviewList = () => {
       </div>
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 flex flex-col">
-          <button
-            onClick={modalClose}
-            className="absolute top-10 right-100 cursor-pointer hover:bg-black/80 p-3 rounded-full text-white text-2xl"
-          >
-            <X width={32} height={32} />
-          </button>
-          <div className="flex-1 flex items-center justify-center text-white">
-            <p>원본 이미지 캐러셀 뷰어가 뜹니다 (총 {mockImage.length}장)</p>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="w-200 h-170 bg-white rounded-2xl flex items-center justify-center relative">
+              <button
+                className="absolute top-3 right-3 cursor-pointer"
+                onClick={modalClose}
+              >
+                <X width={32} height={32} />
+              </button>
+              <div className="flex flex-col gap-10 items-center">
+                <div className="relative shrink-0 w-100 h-120 rounded-md overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover"
+                    src={
+                      "https://img-cf.kurly.com/hdims/resize/%5E%3E240x%3E240/cropcenter/240x240/quality/85/src/shop/data/review/20251102/116f50c9-b3d3-422d-9157-65fc62bc694e.jpg"
+                    }
+                  />
+                </div>
+                <div>
+                  <ul className="flex gap-2">
+                    {mockImage.map((image, index) => (
+                      <li key={index} className="w-12 h-12 cursor-pointer">
+                        <img
+                          className="w-full h-full object-cover"
+                          src={image}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -5,7 +5,7 @@ import { ProductNavigation } from "./ProductNavigation";
 import { useScrollToSection } from "@/src/hooks/useScrollToSection";
 import { ProductReview } from "../reviews/ProductReview";
 
-export type ProductContentTabType = "description" | "reviews" | "qna";
+export type ProductContentTabType = "description" | "reviews";
 export interface ProductContentTabProps {
   product: Pick<
     ProductDetail,
@@ -28,9 +28,6 @@ export const ProductContentTab = ({ product }: ProductContentTabProps) => {
             rating={product.rating}
             reviewCount={product.reviewCount}
           />
-        </div>
-        <div ref={setRef("qna")} className="border-t border-gray-300">
-          <div className="h-300">상품 문의</div>
         </div>
       </div>
     </div>
