@@ -7,7 +7,10 @@ import { ProductReview } from "../reviews/ProductReview";
 
 export type ProductContentTabType = "description" | "reviews" | "qna";
 export interface ProductContentTabProps {
-  product: Pick<ProductDetail, "id" | "detailImages">;
+  product: Pick<
+    ProductDetail,
+    "id" | "detailImages" | "rating" | "reviewCount"
+  >;
 }
 export const ProductContentTab = ({ product }: ProductContentTabProps) => {
   const { activeTab, setRef, scrollTo } =
@@ -20,7 +23,11 @@ export const ProductContentTab = ({ product }: ProductContentTabProps) => {
           <ProductDetailImages images={product.detailImages} />
         </div>
         <div ref={setRef("reviews")} className="border-t border-gray-300">
-          <ProductReview productId={product.id} />
+          <ProductReview
+            productId={product.id}
+            rating={product.rating}
+            reviewCount={product.reviewCount}
+          />
         </div>
         <div ref={setRef("qna")} className="border-t border-gray-300">
           <div className="h-300">상품 문의</div>

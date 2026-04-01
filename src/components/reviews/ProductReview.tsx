@@ -1,7 +1,17 @@
 import { Star } from "lucide-react";
 import { ReviewList } from "./ReviewList";
 
-export const ProductReview = ({ productId }: { productId: number }) => {
+interface ProductReviewProps {
+  productId: number;
+  rating: number;
+  reviewCount: number;
+}
+
+export const ProductReview = ({
+  productId,
+  rating,
+  reviewCount,
+}: ProductReviewProps) => {
   return (
     <div className="py-5 flex flex-col">
       <h1 className="text-2xl font-medium font-pretendard">상품 리뷰</h1>
@@ -13,11 +23,10 @@ export const ProductReview = ({ productId }: { productId: number }) => {
               height={20}
               className="text-brand-primary fill-brand-primary"
             />
-            {/** 평균 평점 */}
-            <span className="text-xl">{3}</span>
+            <span className="text-xl">{rating}</span>
           </div>
           <div>
-            <span className="font-pretendard">총 {100}개</span>
+            <span className="font-pretendard">총 {reviewCount}개</span>
           </div>
         </div>
         <div>
