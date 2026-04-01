@@ -1,8 +1,6 @@
 import { ProductBasicInfo } from "@/src/components/products/ProductBasicInfo";
 import { ProductContentTab } from "@/src/components/products/ProductContentTab";
-import { ProductDetailImages } from "@/src/components/products/ProductDetailImages";
 import { ProductImageView } from "@/src/components/products/ProductImageView";
-import { ProductNavigation } from "@/src/components/products/ProductNavigation";
 import { ProductOptionSelector } from "@/src/components/products/ProductOptionSelector";
 import { ProductDetail } from "@/src/types/product";
 
