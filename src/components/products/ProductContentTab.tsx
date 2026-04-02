@@ -18,7 +18,7 @@ export const ProductContentTab = ({ product }: ProductContentTabProps) => {
   return (
     <div className="flex flex-col gap-20">
       <ProductNavigation active={activeTab} setActive={scrollTo} />
-      <div className="flex flex-col gap-20 pt-10 pb-[50vh]">
+      <div className="flex flex-col gap-20 pt-10 pb-[20vh]">
         <div ref={setRef("description")}>
           <ProductDescriptionImages images={product.descriptionImages} />
         </div>
