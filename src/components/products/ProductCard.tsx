@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <Link href={`/products/${product.id}`} className="w-full flex flex-col">
-      <div className="aspect-[3/4] overflow-hidden rounded-sm select-none">
+    <Link href={`/product/${product.id}`} className="w-full flex flex-col">
+      <div className="aspect-3/4 overflow-hidden rounded-sm select-none">
         {/** TODO cdn 이미지 태그로 변경 */}
         <img
           src={product.thumbnailUrl}
@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
         />
       </div>
       <div className="mt-2 flex flex-col select-none">
-        <h2 className="line-clamp-2 mb-1 break-words text-lg font-medium font-pretendard leading-snug">
+        <h2 className="line-clamp-2 mb-1 wrap-break-word text-lg font-medium font-pretendard leading-snug">
           {product.name}
         </h2>
         <div className="flex flex-col">

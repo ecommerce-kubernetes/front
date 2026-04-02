@@ -37,7 +37,6 @@ export default function Header({
 
   return (
     <>
-      {/** 상단 헤더 */}
       <header className="w-full bg-white select-none">
         <div className="w-full max-w-250 mx-auto">
           <div className="flex justify-end h-8">
@@ -55,7 +54,6 @@ export default function Header({
           </div>
         </div>
       </header>
-      {/** 네비게이션 바 */}
       <nav className="w-full bg-white border-b border-base-line sticky top-0 z-header shadow-sm font-pretendard font-medium text-lg select-none">
         <div className="w-full max-w-250 mx-auto h-15 flex items-center">
           <CategoryNavigation rootCategories={initCategories} />
