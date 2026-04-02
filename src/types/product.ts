@@ -29,7 +29,7 @@ export interface ProductImage {
   thumbnail: boolean;
 }
 
-export interface ProductDetailImage {
+export interface ProductDescriptionImage {
   url: string;
   order: number;
 }
@@ -66,7 +66,7 @@ export interface ProductDetail {
   rating: number;
   reviewCount: number;
   popularityScore: number;
-  detailImages: ProductDetailImage[];
+  descriptionImages: ProductDescriptionImage[];
   optionGroups: OptionGroup[];
   images: ProductImage[];
   variants: ProductVariant[];

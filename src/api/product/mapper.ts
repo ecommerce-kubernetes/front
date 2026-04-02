@@ -1,5 +1,5 @@
-import { Product } from "@/src/types/product";
-import { ProductResponse } from "./types";
+import { Product, ProductDetail } from "@/src/types/product";
+import { ProductDetailResponse, ProductResponse } from "./types";
 import { PageResponse } from "../common/types";
 import { PaginatedList } from "@/src/types/common";
 
@@ -35,5 +35,39 @@ export const mapProductPageToDomain = (
     totalPage: rawPage.totalPage,
     pageSize: rawPage.pageSize,
     totalCount: rawPage.totalElement,
+  };
+};
+
+export const mapProductDetail = (raw: ProductDetailResponse): ProductDetail => {
+  return {
+    id: raw.productId,
+    name: raw.name,
+    categoryId: raw.categoryId,
+    description: raw.description,
+    price: raw.displayPrice,
+    originalPrice: raw.originalPrice,
+    discountRate: raw.maxDiscountRate,
+    rating: raw.rating,
+    reviewCount: raw.reviewCount,
+    popularityScore: raw.popularityScore,
+    descriptionImages: raw.descriptionImages.map((img) => ({
+      url: img.imageUrl,
+      order: img.order,
+    })),
+    optionGroups: raw.optionGroups,
+    images: raw.images.map((img) => ({
+      url: img.imageUrl,
+      order: img.order,
+      thumbnail: img.thumbnail,
+    })),
+    variants: raw.variants.map((variant) => ({
+      id: variant.variantId,
+      sku: variant.sku,
+      optionValueIds: variant.optionValueIds,
+      price: variant.originalPrice,
+      discountedPrice: variant.discountedPrice,
+      discountRate: variant.discountRate,
+      stockQuantity: variant.stockQuantity,
+    })),
   };
 };

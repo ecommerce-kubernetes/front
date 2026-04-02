@@ -1,119 +1,37 @@
+import { fetchProductDetail } from "@/src/api/product";
 import { ProductBasicInfo } from "@/src/components/products/ProductBasicInfo";
 import { ProductContentTab } from "@/src/components/products/ProductContentTab";
 import { ProductImageView } from "@/src/components/products/ProductImageView";
 import { ProductOptionSelector } from "@/src/components/products/ProductOptionSelector";
-import { ProductDetail } from "@/src/types/product";
+import { notFound } from "next/navigation";
 
-export default function ProductDetailPage() {
-  const mockProduct: ProductDetail = {
-    id: 1,
-    name: "아이폰 16",
-    categoryId: 1,
-    description: "상품 설명",
-    price: 9000,
-    originalPrice: 10000,
-    discountRate: 10,
-    rating: 3.0,
-    reviewCount: 1020,
-    popularityScore: 3.5,
-    optionGroups: [
-      {
-        optionTypeId: 1,
-        name: "사이즈",
-        priority: 1,
-        values: [
-          {
-            optionValueId: 1,
-            name: "XL",
-          },
-          { optionValueId: 2, name: "L" },
-        ],
-      },
-      {
-        optionTypeId: 2,
-        name: "용량",
-        priority: 2,
-        values: [
-          {
-            optionValueId: 3,
-            name: "256GB",
-          },
-          {
-            optionValueId: 4,
-            name: "512GB",
-          },
-        ],
-      },
-    ],
-    images: [
-      {
-        url: "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
-        order: 1,
-        thumbnail: true,
-      },
-      {
-        url: "https://istore.xcache.kinxcdn.com/prd/data/goods/1/2025/02/135_temp_17403760727119large.jpg",
-        order: 2,
-        thumbnail: false,
-      },
-    ],
-    detailImages: [
-      {
-        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/83171118776182-5b45d589-e15f-4605-9ba0-994157f92b97.jpg",
-        order: 1,
-      },
-      {
-        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/3584975322182-e358376e-878c-469f-b261-c05961382a6a.jpg",
-        order: 2,
-      },
-      {
-        url: "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/68021975115483-c2a260e7-442a-450e-8678-4c2adbf26e4c.jpg",
-        order: 3,
-      },
-    ],
-    variants: [
-      {
-        id: 1,
-        sku: "PROD_XL_256GB",
-        optionValueIds: [1, 3],
-        price: 100000,
-        discountedPrice: 90000,
-        discountRate: 10,
-        stockQuantity: 10,
-      },
-      {
-        id: 2,
-        sku: "PROD_L_256GB",
-        optionValueIds: [2, 3],
-        price: 100000,
-        discountedPrice: 90000,
-        discountRate: 10,
-        stockQuantity: 10,
-      },
-      {
-        id: 3,
-        sku: "PROD_L_256GB",
-        optionValueIds: [1, 4],
-        price: 100000,
-        discountedPrice: 90000,
-        discountRate: 10,
-        stockQuantity: 10,
-      },
-    ],
-  };
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const productId = Number(resolvedParams.id);
+  if (isNaN(productId)) {
+    notFound();
+  }
+  const product = await fetchProductDetail(productId);
+  if (!product) {
+    notFound();
+  }
   return (
     <div className="w-full max-w-250 mx-auto flex items-center py-5 flex-col">
       <section className="w-full flex gap-20 mb-20">
         <div className="w-112.5 flex flex-col select-none">
-          <ProductImageView images={mockProduct.images} />
+          <ProductImageView images={product.images} />
         </div>
         <div className="flex-1">
-          <ProductBasicInfo product={mockProduct} />
-          <ProductOptionSelector product={mockProduct} />
+          <ProductBasicInfo product={product} />
+          <ProductOptionSelector product={product} />
         </div>
       </section>
       <section className="w-full">
-        <ProductContentTab product={mockProduct} />
+        <ProductContentTab product={product} />
       </section>
     </div>
   );

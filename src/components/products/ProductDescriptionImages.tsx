@@ -1,10 +1,12 @@
-import { ProductDetailImage } from "@/src/types/product";
+import { ProductDescriptionImage } from "@/src/types/product";
 import { useState } from "react";
 
-export interface ProductDetailImagesProps {
-  images: ProductDetailImage[];
+export interface ProductDescriptionImagesProps {
+  images: ProductDescriptionImage[];
 }
-export const ProductDetailImages = ({ images }: ProductDetailImagesProps) => {
+export const ProductDescriptionImages = ({
+  images,
+}: ProductDescriptionImagesProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   return (

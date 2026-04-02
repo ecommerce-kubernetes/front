@@ -27,7 +27,7 @@ export const ReviewList = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="select-none">
+        <div className="select-none py-5 border-b border-gray-200 last:border-b-0">
           <h1 className="font-pretendard font-medium text-lg">최민식</h1>
           <div className="flex items-center gap-1">
             <Star

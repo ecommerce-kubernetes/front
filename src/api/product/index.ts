@@ -1,10 +1,18 @@
 import { PaginatedList } from "@/src/types/common";
-import { Product, ProductFilterState } from "@/src/types/product";
-import { ProductListParams, ProductResponse } from "./types";
+import {
+  Product,
+  ProductDetail,
+  ProductFilterState,
+} from "@/src/types/product";
+import {
+  ProductDetailResponse,
+  ProductListParams,
+  ProductResponse,
+} from "./types";
 import { parseParamsToUrl } from "@/src/util/requestUtil";
 import { apiFetch } from "../client";
 import { PageResponse } from "../common/types";
-import { mapProductPageToDomain } from "./mapper";
+import { mapProductDetail, mapProductPageToDomain } from "./mapper";
 
 export const fetchProductList = async (
   filters: ProductFilterState,
@@ -27,4 +35,14 @@ export const fetchProductList = async (
   });
 
   return mapProductPageToDomain(response);
+};
+
+export const fetchProductDetail = async (
+  id: number,
+): Promise<ProductDetail> => {
+  const url = `/product-service/products/${id}`;
+  const response = await apiFetch<ProductDetailResponse>(url, {
+    method: "GET",
+  });
+  return mapProductDetail(response);
 };
