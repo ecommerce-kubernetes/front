@@ -17,7 +17,7 @@ export const ProductDescriptionImages = ({
         }`}
       >
         {images.map((image) => (
-          <div key={image.order} className="relative w-full">
+          <div key={image.id} className="relative w-full">
             <img src={image.url} className="w-full h-auto block" />
           </div>
         ))}

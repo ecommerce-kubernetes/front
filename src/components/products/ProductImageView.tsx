@@ -24,7 +24,7 @@ export const ProductImageView = ({ images }: { images: ProductImage[] }) => {
           {images.map((image) => {
             const isSelected = image.url === selectedImage.url;
             return (
-              <li key={image.order}>
+              <li key={image.id}>
                 <button
                   onClick={() => setSelectedImage(image)}
                   className={`w-20 h-20 relative cursor-pointer border transition-colors ${isSelected ? "border-black" : "border-transparent hover:border-brand-primary"}`}
