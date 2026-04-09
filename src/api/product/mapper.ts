@@ -4,15 +4,10 @@ import { PageResponse } from "../common/types";
 import { PaginatedList } from "@/src/types/common";
 
 export const mapProductToDomain = (raw: ProductResponse): Product => {
-  {
-    /** TODO cdn 사용으로 변경한 후 설정 */
-  }
   // const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
-
   return {
     id: raw.productId,
     name: raw.name,
-    // cdn 사용으로 변경한 후 설정
     // thumbnailUrl: raw.thumbnail ? `${imageBaseUrl}/${raw.thumbnail}` : "",
     thumbnailUrl: raw.thumbnail,
     price: raw.displayPrice,
@@ -39,6 +34,7 @@ export const mapProductPageToDomain = (
 };
 
 export const mapProductDetail = (raw: ProductDetailResponse): ProductDetail => {
+  // const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
   return {
     id: raw.productId,
     name: raw.name,
@@ -51,13 +47,17 @@ export const mapProductDetail = (raw: ProductDetailResponse): ProductDetail => {
     reviewCount: raw.reviewCount,
     popularityScore: raw.popularityScore,
     descriptionImages: raw.descriptionImages.map((img) => ({
-      url: img.imageUrl,
-      order: img.order,
+      id: img.imageId,
+      url: img.imagePath,
+      // url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
+      order: img.sortOrder,
     })),
     optionGroups: raw.optionGroups,
     images: raw.images.map((img) => ({
-      url: img.imageUrl,
-      order: img.order,
+      id: img.imageId,
+      // url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
+      url: img.imagePath,
+      order: img.sortOrder,
       thumbnail: img.thumbnail,
     })),
     variants: raw.variants.map((variant) => ({

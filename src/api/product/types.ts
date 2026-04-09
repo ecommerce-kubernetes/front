@@ -22,8 +22,9 @@ export interface ProductResponse {
 }
 
 export interface ProductImageResponse {
-  imageUrl: string;
-  order: number;
+  imageId: number;
+  imagePath: string;
+  sortOrder: number;
   thumbnail: boolean;
 }
 
@@ -50,8 +51,9 @@ export interface ProductVariantResponse {
 }
 
 export interface ProductDescriptionImageResponse {
-  imageUrl: string;
-  order: number;
+  imageId: number;
+  imagePath: string;
+  sortOrder: number;
 }
 
 export interface ProductDetailResponse {

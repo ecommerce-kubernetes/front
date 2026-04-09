@@ -24,12 +24,14 @@ export interface Product {
 }
 
 export interface ProductImage {
+  id: number;
   url: string;
   order: number;
   thumbnail: boolean;
 }
 
 export interface ProductDescriptionImage {
+  id: number;
   url: string;
   order: number;
 }

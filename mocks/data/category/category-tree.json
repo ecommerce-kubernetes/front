@@ -4,7 +4,7 @@
     "name": "패션/의류",
     "depth": 1,
     "parentId": null,
-    "imageUrl": null,
+    "imagePath": null,
     "children": []
   },
   {
@@ -12,7 +12,7 @@
     "name": "식품",
     "depth": 1,
     "parentId": null,
-    "imageUrl": null,
+    "imagePath": null,
     "children": []
   },
   {
@@ -20,7 +20,7 @@
     "name": "전자",
     "depth": 1,
     "parentId": null,
-    "imageUrl": null,
+    "imagePath": null,
     "children": []
   },
   {
@@ -28,7 +28,7 @@
     "name": "가구",
     "depth": 1,
     "parentId": null,
-    "imageUrl": null,
+    "imagePath": null,
     "children": []
   }
 ]

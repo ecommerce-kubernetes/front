@@ -9,7 +9,7 @@ export const mapCategoryTreeToDomain = (
     .filter((c) => c.depth === 1 || c.parentId === null)
     .map((c) => ({
       ...c,
-      imageUrl: c.imageUrl ? `${imageBaseUrl}/${c.imageUrl}` : null,
+      imageUrl: c.imagePath ? `${imageBaseUrl}/${c.imagePath}` : null,
       children: c.children ? mapCategoryTreeToDomain(c.children) : [],
     }));
 };

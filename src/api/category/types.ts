@@ -3,7 +3,7 @@ export interface CategoryResponse {
   name: string;
   parentId: number | null;
   depth: number;
-  imageUrl: string | null;
+  imagePath: string | null;
 }
 
 export interface CategoryTreeResponse extends CategoryResponse {
