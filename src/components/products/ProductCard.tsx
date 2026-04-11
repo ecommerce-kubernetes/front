@@ -1,16 +1,17 @@
 import { Product } from "@/src/types/product";
 import { MessageCircle, Star } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Link href={`/product/${product.id}`} className="w-full flex flex-col">
-      <div className="aspect-3/4 overflow-hidden rounded-sm select-none">
-        {/** TODO cdn 이미지 태그로 변경 */}
-        <img
+      <div className="relative aspect-3/4 overflow-hidden rounded-sm select-none">
+        <Image
           src={product.thumbnailUrl}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-110"
         />
       </div>
       <div className="mt-2 flex flex-col select-none">

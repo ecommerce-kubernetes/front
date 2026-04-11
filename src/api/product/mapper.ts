@@ -4,12 +4,11 @@ import { PageResponse } from "../common/types";
 import { PaginatedList } from "@/src/types/common";
 
 export const mapProductToDomain = (raw: ProductResponse): Product => {
-  // const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
+  const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
   return {
     id: raw.productId,
     name: raw.name,
-    // thumbnailUrl: raw.thumbnail ? `${imageBaseUrl}/${raw.thumbnail}` : "",
-    thumbnailUrl: raw.thumbnail,
+    thumbnailUrl: raw.thumbnail ? `${imageBaseUrl}/${raw.thumbnail}` : "",
     price: raw.displayPrice,
     originalPrice: raw.originalPrice,
     discountRate: raw.maxDiscountRate,
@@ -34,7 +33,7 @@ export const mapProductPageToDomain = (
 };
 
 export const mapProductDetail = (raw: ProductDetailResponse): ProductDetail => {
-  // const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
+  const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
   return {
     id: raw.productId,
     name: raw.name,
@@ -48,15 +47,13 @@ export const mapProductDetail = (raw: ProductDetailResponse): ProductDetail => {
     popularityScore: raw.popularityScore,
     descriptionImages: raw.descriptionImages.map((img) => ({
       id: img.imageId,
-      url: img.imagePath,
-      // url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
+      url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
       order: img.sortOrder,
     })),
     optionGroups: raw.optionGroups,
     images: raw.images.map((img) => ({
       id: img.imageId,
-      // url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
-      url: img.imagePath,
+      url: img.imagePath ? `${imageBaseUrl}/${img.imagePath}` : "",
       order: img.sortOrder,
       thumbnail: img.thumbnail,
     })),

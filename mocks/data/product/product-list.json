@@ -3,7 +3,7 @@
     {
       "productId": 1,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -16,7 +16,7 @@
     {
       "productId": 2,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -29,7 +29,7 @@
     {
       "productId": 3,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -42,7 +42,7 @@
     {
       "productId": 4,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -55,7 +55,7 @@
     {
       "productId": 5,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -68,7 +68,7 @@
     {
       "productId": 6,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
@@ -81,7 +81,7 @@
     {
       "productId": 7,
       "name": "상품1",
-      "thumbnail": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "displayPrice": 3000,
       "originalPrice": 3300,
       "maxDiscountRate": 10,
