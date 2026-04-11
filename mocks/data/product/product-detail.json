@@ -41,13 +41,13 @@
   "images": [
     {
       "imageId": 1,
-      "imagePath": "https://cdn.it.chosun.com/news/photo/202412/2023092129833_402646_552.png",
+      "imagePath": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
       "sortOrder": 1,
       "thumbnail": true
     },
     {
       "imageId": 2,
-      "imagePath": "https://istore.xcache.kinxcdn.com/prd/data/goods/1/2025/02/135_temp_17403760727119large.jpg",
+      "imagePath": "product/product/2880279b-93b1-4e94-9f82-52498200eb6f.jpg",
       "sortOrder": 2,
       "thumbnail": false
     }
@@ -55,18 +55,8 @@
   "descriptionImages": [
     {
       "imageId": 1,
-      "imagePath": "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/83171118776182-5b45d589-e15f-4605-9ba0-994157f92b97.jpg",
+      "imagePath": "product/description/f484a6b3-153b-4d4d-9628-eb87f1982ee2.jpg",
       "sortOrder": 1
-    },
-    {
-      "imageId": 2,
-      "imagePath": "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/3584975322182-e358376e-878c-469f-b261-c05961382a6a.jpg",
-      "sortOrder": 2
-    },
-    {
-      "imageId": 3,
-      "imagePath": "https://thumbnail.coupangcdn.com/thumbnails/remote/q89/image/retail/images/68021975115483-c2a260e7-442a-450e-8678-4c2adbf26e4c.jpg",
-      "sortOrder": 3
     }
   ],
   "variants": [

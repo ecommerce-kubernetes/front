@@ -4,7 +4,7 @@
     "name": "패션/의류",
     "depth": 1,
     "parentId": null,
-    "imagePath": null,
+    "imagePath": "product/category/95ce50ab-8e3f-4eaa-9cac-08a3fda27175.png",
     "children": []
   },
   {
@@ -12,7 +12,7 @@
     "name": "식품",
     "depth": 1,
     "parentId": null,
-    "imagePath": null,
+    "imagePath": "product/category/95ce50ab-8e3f-4eaa-9cac-08a3fda27175.png",
     "children": []
   },
   {
@@ -20,7 +20,7 @@
     "name": "전자",
     "depth": 1,
     "parentId": null,
-    "imagePath": null,
+    "imagePath": "product/category/95ce50ab-8e3f-4eaa-9cac-08a3fda27175.png",
     "children": []
   },
   {
@@ -28,7 +28,7 @@
     "name": "가구",
     "depth": 1,
     "parentId": null,
-    "imagePath": null,
+    "imagePath": "product/category/95ce50ab-8e3f-4eaa-9cac-08a3fda27175.png",
     "children": []
   }
 ]
