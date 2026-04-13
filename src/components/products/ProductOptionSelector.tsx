@@ -6,6 +6,7 @@ import { useState } from "react";
 import { SelectedOptionItem } from "./SelectedOptionItem";
 import { Heart } from "lucide-react";
 import { useCartActions } from "@/src/hooks/useCartActions";
+import { Notification } from "../modal/Notification";
 
 export interface ProductOptionSelectorProps {
   product: Pick<ProductDetail, "name" | "optionGroups" | "variants">;
@@ -23,7 +24,8 @@ export const ProductOptionSelector = ({
     handleUpdateQuantity,
   } = useProductOptions(product.optionGroups, product.variants, product.name);
   const [openSelectId, setOpenSelectId] = useState<number | null>(null);
-  const { addToCart, buyNow } = useCartActions();
+  const { addToCart, buyNow, isLoginModal, handleLoginConfirm } =
+    useCartActions();
   return (
     <div className="flex flex-col gap-6 w-full">
       {!isSingleProduct && (
@@ -95,6 +97,12 @@ export const ProductOptionSelector = ({
           <span className="text-white font-medium text-lg">주문하기</span>
         </button>
       </div>
+      {isLoginModal && (
+        <Notification
+          message="로그인이 필요한 서비스 입니다"
+          onConfirm={handleLoginConfirm}
+        />
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { SelectedItem } from "@/src/hooks/useProductOptions";
+import { SelectedItem } from "@/src/types/product";
 import { X } from "lucide-react";
 
 interface SelectedOptionItemProps {
