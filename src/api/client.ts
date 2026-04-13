@@ -2,6 +2,20 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+export const refreshAccessToken = async (): Promise<{
+  accessToken: string;
+}> => {
+  const response = await fetch(`${BASE_URL}/user-service/auth/refresh`, {
+    method: "POST",
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("리프레시 토큰 만료");
+  }
+
+  return response.json();
+};
+
 export const apiFetch = async <T>(
   url: string,
   options: RequestInit = {},
@@ -39,19 +53,7 @@ export const authFetch = async <T>(
 
   if (response.status === 401) {
     try {
-      const refreshResponse = await fetch(
-        `${BASE_URL}/user-service/auth/refresh`,
-        {
-          method: "POST",
-          credentials: "include",
-        },
-      );
-
-      if (!refreshResponse.ok) {
-        throw new Error("리프레시 토큰 만료");
-      }
-
-      const newTokenData = await refreshResponse.json();
+      const newTokenData = await refreshAccessToken();
       setAccessToken(newTokenData.accessToken);
 
       const retryHeaders = {
@@ -65,8 +67,8 @@ export const authFetch = async <T>(
       });
     } catch (error) {
       clearAuth();
-      window.location.href = "/login";
-      throw error;
+      console.log(error);
+      throw new Error("UNAUTHORIZED");
     }
   }
 

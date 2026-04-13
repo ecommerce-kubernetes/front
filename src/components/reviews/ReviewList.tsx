@@ -1,4 +1,4 @@
-import { useModal } from "@/src/hooks/queries/useModal";
+import { useModal } from "@/src/hooks/useModal";
 import { Star } from "lucide-react";
 import { ReviewImageView } from "../modal/ReviewImageView";
 import { useState } from "react";
