@@ -1,10 +1,13 @@
-import { AddCartItemRequest, AddCartRequest } from "./../api/cart/types";
+import { AddCartItemRequest, AddCartRequest } from "../api/cart/types";
 import { useCallback } from "react";
 import { SelectedItem } from "../types/product";
 import { useAddCartMutation } from "./queries/useCartQuery";
 import { useAuthStore } from "../store/useAuthStore";
 import { useModal } from "./useModal";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { CartItem } from "../types/cart";
+import { CartToast } from "../components/toast/CartToast";
 
 const mapToAddCartRequest = (items: SelectedItem[]): AddCartRequest => {
   const cartItemRequest: AddCartItemRequest[] = items.map((item) => {
@@ -27,15 +30,33 @@ export const useCartActions = () => {
     modalOpen: loginModalOpen,
     modalClose: loginModalClose,
   } = useModal();
+
   const router = useRouter();
   const addToCart = useCallback(
-    (items: SelectedItem[]) => {
+    (items: SelectedItem[], options?: { onSuccess?: () => void }) => {
       if (!isLoggedIn) {
-        loginModalOpen();
-        return;
+        return loginModalOpen();
       }
+
+      if (items.length === 0) {
+        return toast.error("주문할 상품을 선택해주세요.", {
+          className: "font-pretendard",
+          id: "cart-item-error",
+          position: "top-center",
+          duration: 1500,
+        });
+      }
+
       const request = mapToAddCartRequest(items);
-      addCart(request);
+      addCart(request, {
+        onSuccess: (response: CartItem[]) => {
+          if (options?.onSuccess) {
+            options.onSuccess();
+          }
+          const firstItem = response[0];
+          toast.custom(() => <CartToast item={firstItem} />);
+        },
+      });
     },
     [addCart, isLoggedIn, loginModalOpen],
   );

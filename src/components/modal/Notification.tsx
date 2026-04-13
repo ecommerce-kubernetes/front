@@ -11,7 +11,7 @@ export const Notification = ({ message, onConfirm }: NotificationProps) => {
           <div className="px-7 py-5 flex-1">
             <h1 className="text-lg font-medium">알림</h1>
             <div className="mt-5 flex justify-center items-center">
-              <span>{message}</span>
+              <span className="font-pretendard font-sm">{message}</span>
             </div>
           </div>
           <button

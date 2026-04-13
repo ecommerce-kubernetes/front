@@ -6,6 +6,7 @@ import {
 import { CartItem, CartItemOption, CartItemPrice } from "@/src/types/cart";
 
 export const mapToCartItemDomain = (raw: CartItemResponse): CartItem => {
+  const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE;
   return {
     id: raw.id,
     status: raw.status,
@@ -13,7 +14,7 @@ export const mapToCartItemDomain = (raw: CartItemResponse): CartItem => {
     productId: raw.productId,
     productVariantId: raw.productVariantId,
     productName: raw.productName,
-    thumbnail: raw.thumbnail,
+    thumbnail: raw.thumbnail ? `${imageBaseUrl}/${raw.thumbnail}` : "",
     quantity: raw.quantity,
     price: mapToCartItemPriceDomain(raw.price),
     lineTotal: raw.lineTotal,

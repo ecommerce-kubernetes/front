@@ -20,6 +20,7 @@ export const ProductOptionSelector = ({
     availableOptions,
     selectedItems,
     totalPrice,
+    resetSelection,
     handleRemoveItem,
     handleUpdateQuantity,
   } = useProductOptions(product.optionGroups, product.variants, product.name);
@@ -86,7 +87,13 @@ export const ProductOptionSelector = ({
         </button>
         <button
           className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
-          onClick={() => addToCart(selectedItems)}
+          onClick={() =>
+            addToCart(selectedItems, {
+              onSuccess: () => {
+                resetSelection();
+              },
+            })
+          }
         >
           <span className="text-white font-medium text-lg">장바구니 담기</span>
         </button>
