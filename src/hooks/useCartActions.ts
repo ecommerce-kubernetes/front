@@ -7,7 +7,7 @@ import { useModal } from "./useModal";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { CartItem } from "../types/cart";
-import { CartToast } from "../components/toast/CartToast";
+import { useCartToastStore } from "../store/useCartToastStore";
 
 const mapToAddCartRequest = (items: SelectedItem[]): AddCartRequest => {
   const cartItemRequest: AddCartItemRequest[] = items.map((item) => {
@@ -25,6 +25,7 @@ const mapToAddCartRequest = (items: SelectedItem[]): AddCartRequest => {
 export const useCartActions = () => {
   const { mutate: addCart, isPending: isAddingToCart } = useAddCartMutation();
   const { isLoggedIn } = useAuthStore();
+  const { showToast } = useCartToastStore();
   const {
     isModalOpen: isLoginModal,
     modalOpen: loginModalOpen,
@@ -54,11 +55,11 @@ export const useCartActions = () => {
             options.onSuccess();
           }
           const firstItem = response[0];
-          toast.custom(() => <CartToast item={firstItem} />);
+          showToast(firstItem);
         },
       });
     },
-    [addCart, isLoggedIn, loginModalOpen],
+    [addCart, isLoggedIn, loginModalOpen, showToast],
   );
 
   const handleLoginConfirm = () => {
