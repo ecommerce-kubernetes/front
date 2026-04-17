@@ -33,13 +33,22 @@ export const useProductOptions = (
   productName: string,
 ) => {
   const isSingleProduct = !optionGroups || optionGroups.length === 0;
-
   const [selectedItems, setSelectedItems] = useState<SelectedItem[]>(() => {
     if (isSingleProduct && variants.length > 0) {
       return [{ ...variants[0], quantity: 1, optionName: productName }];
     }
     return [];
   });
+
+  const resetSelection = useCallback(() => {
+    if (isSingleProduct && variants.length > 0) {
+      setSelectedItems([
+        { ...variants[0], quantity: 1, optionName: productName },
+      ]);
+    } else {
+      setSelectedItems([]);
+    }
+  }, [isSingleProduct, productName, variants]);
 
   const [currentSelection, setCurrentSelection] = useState<
     Record<number, number>
@@ -146,6 +155,7 @@ export const useProductOptions = (
     availableOptions,
     selectedItems,
     totalPrice,
+    resetSelection,
     handleRemoveItem,
     handleUpdateQuantity,
   };

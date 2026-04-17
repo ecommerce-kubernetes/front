@@ -1,7 +1,7 @@
 import { AuthUser } from "@/src/types/user";
 import { apiFetch, authFetch } from "../client";
-import { mapTokenToAuthUser } from "./mapper";
 import { LoginRequest, LoginResponse } from "./types";
+import { decodeTokenToUser } from "@/src/util/jwt";
 
 export const login = async (
   data: LoginRequest,
@@ -11,7 +11,7 @@ export const login = async (
     body: JSON.stringify(data),
     credentials: "include",
   });
-  const authUser = mapTokenToAuthUser(response.accessToken);
+  const authUser = decodeTokenToUser(response.accessToken);
   return { authUser, accessToken: response.accessToken };
 };
 

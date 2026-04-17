@@ -50,7 +50,7 @@ export default function Header({
               onClear={handleClear}
               onSubmit={handleSearch}
             />
-            <UserMenu />
+            <UserMenu showToast={!isScrolled} />
           </div>
         </div>
       </header>
@@ -72,7 +72,7 @@ export default function Header({
                   inputClassName="pl-3 pr-8 text-sm"
                   iconSize={20}
                 />
-                <UserMenu />
+                <UserMenu showToast={true} />
               </div>
             )}
           </div>

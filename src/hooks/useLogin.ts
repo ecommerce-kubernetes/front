@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import { LoginFormType, loginSchema } from "../validations/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "./queries/useAuthQuery";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { LoginRequest } from "../api/auth/types";
 
 export const useLogin = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const {
     register,
     handleSubmit,
@@ -27,7 +28,8 @@ export const useLogin = () => {
 
     loginMutate(requestBody, {
       onSuccess: () => {
-        router.push("/");
+        const redirectUrl = searchParams.get("redirect") || "/";
+        router.push(redirectUrl);
       },
       onError: () => {
         reset();

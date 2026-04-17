@@ -10,6 +10,7 @@
 
   --z-index-base: 0;
   --z-index-header: 50;
+  --z-index-toast: 110;
 }
 
 @keyframes slideRight {
