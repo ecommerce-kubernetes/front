@@ -4,7 +4,11 @@ import { ShoppingCart, User } from "lucide-react";
 import { useCartToastStore } from "@/src/store/useCartToastStore";
 import { CartToast } from "../../toast/CartToast";
 
-export const UserMenu = () => {
+interface UserMenuProps {
+  showToast?: boolean;
+}
+
+export const UserMenu = ({ showToast = true }: UserMenuProps) => {
   const { isOpen, addedItem } = useCartToastStore();
   return (
     <ul data-testid="user-menu" className="flex gap-5">
@@ -17,7 +21,7 @@ export const UserMenu = () => {
         <Link href="/">
           <ShoppingCart size={30} />
         </Link>
-        {isOpen && addedItem && <CartToast item={addedItem} />}
+        {showToast && isOpen && addedItem && <CartToast item={addedItem} />}
       </li>
     </ul>
   );
