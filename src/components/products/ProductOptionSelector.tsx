@@ -2,7 +2,7 @@
 import { ProductDetail } from "@/src/types/product";
 import { SelectBox } from "../common/SelectBox";
 import { useProductOptions } from "@/src/hooks/useProductOptions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectedOptionItem } from "./SelectedOptionItem";
 import { Heart } from "lucide-react";
 import { useCartActions } from "@/src/hooks/useCartActions";
@@ -27,6 +27,15 @@ export const ProductOptionSelector = ({
   const [openSelectId, setOpenSelectId] = useState<number | null>(null);
   const { addToCart, buyNow, isLoginModal, handleLoginConfirm } =
     useCartActions();
+
+  useEffect(() => {
+    if (isLoginModal) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLoginModal]);
   return (
     <div className="flex flex-col gap-6 w-full">
       {!isSingleProduct && (

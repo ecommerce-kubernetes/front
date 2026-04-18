@@ -1,7 +1,12 @@
+"use client";
 import { CartItem } from "@/src/components/cart/CartItem";
 import CheckBox from "@/src/components/common/CheckBox";
+import { useCheckBox } from "@/src/hooks/useCheckBox";
 
 export default function CartPage() {
+  const ids = [1, 2, 3, 4];
+  const { checkedIds, isAllChecked, handleToggleAll, handleToggleItem } =
+    useCheckBox(ids);
   return (
     <div className="w-full bg-gray-100 min-h-screen select-none">
       <div className="max-w-250 mx-auto px-10 pb-20">
@@ -14,7 +19,7 @@ export default function CartPage() {
             <div className="sticky top-15 z-20 bg-gray-100 pt-25 -mt-25">
               <div className="bg-white border flex items-center justify-between border-gray-200 px-5 py-4 rounded-t-lg shadow-sm">
                 <div className="flex gap-2">
-                  <CheckBox />
+                  <CheckBox checked={isAllChecked} onChange={handleToggleAll} />
                   <span className="font-pretendard font-medium text-sm">
                     전체 선택
                   </span>
@@ -24,12 +29,17 @@ export default function CartPage() {
                 </button>
               </div>
             </div>
-            <div className="bg-white border-x border-b border-gray-200 p-5 rounded-b-lg min-h-100 flex flex-col gap-5">
-              <CartItem />
-              <CartItem />
-              <CartItem />
-              <CartItem />
-            </div>
+            <ul className="bg-white border-x border-b border-gray-200 px-5 rounded-b-lg min-h-100 flex flex-col gap-5 divide-y divide-gray-200">
+              {ids.map((id) => (
+                <li key={id} className="py-5">
+                  <CartItem
+                    id={id}
+                    isChecked={checkedIds.includes(id)}
+                    onToggle={handleToggleItem}
+                  />
+                </li>
+              ))}
+            </ul>
           </section>
           <section className="sticky top-40 w-80 px-2 pt-5 pb-2 bg-white rounded-lg shadow-sm">
             <h1 className="font-pretendard font-medium text-lg mb-4">
