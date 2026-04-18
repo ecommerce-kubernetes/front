@@ -18,7 +18,7 @@ export const UserMenu = ({ showToast = true }: UserMenuProps) => {
         </Link>
       </li>
       <li className="relative flex items-center">
-        <Link href="/">
+        <Link href="/cart">
           <ShoppingCart size={30} />
         </Link>
         {showToast && isOpen && addedItem && <CartToast item={addedItem} />}

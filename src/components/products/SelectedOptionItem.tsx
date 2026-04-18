@@ -34,7 +34,7 @@ export const SelectedOptionItem = ({
         <div className="flex items-center border border-gray-300 rounded-sm bg-white">
           <button
             onClick={() => onUpdateQuantity(item.id, -1)}
-            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-r border-gray-300"
+            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-r border-gray-300 cursor-pointer"
           >
             -
           </button>
@@ -43,7 +43,7 @@ export const SelectedOptionItem = ({
           </span>
           <button
             onClick={() => onUpdateQuantity(item.id, 1)}
-            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300"
+            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300 cursor-pointer"
           >
             +
           </button>
