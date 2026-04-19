@@ -2,6 +2,7 @@ import Image from "next/image";
 import CheckBox from "../common/CheckBox";
 import { Minus, Plus, X } from "lucide-react";
 import { CartItem as CartItemType } from "@/src/types/cart";
+import { useCartQuantity } from "@/src/hooks/useCartQuantity";
 
 interface CartItemProps {
   item: CartItemType;
@@ -13,6 +14,10 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
   const optionNames = item.options
     .map((option) => option.valueName)
     .join(" / ");
+  const { quantity, handleDecrease, handleIncrease } = useCartQuantity(
+    item.id,
+    item.quantity,
+  );
   return (
     <div className="flex items-start gap-2.5">
       <CheckBox checked={isChecked} onChange={() => onToggle(item.id)} />
@@ -38,13 +43,19 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
               </span>
               <div className="flex justify-between items-end">
                 <div className="flex items-center border border-gray-300 rounded-sm bg-white">
-                  <button className="w-8 h-8  hover:bg-gray-100 border-r border-gray-300 cursor-pointer flex items-center justify-center">
+                  <button
+                    onClick={handleDecrease}
+                    className="w-8 h-8  hover:bg-gray-100 border-r border-gray-300 cursor-pointer flex items-center justify-center"
+                  >
                     <Minus className="text-gray-500" size={16} />
                   </button>
                   <span className="w-10 text-center text-sm font-medium">
-                    1
+                    {quantity}
                   </span>
-                  <button className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300 cursor-pointer flex items-center justify-center">
+                  <button
+                    className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300 cursor-pointer flex items-center justify-center"
+                    onClick={handleIncrease}
+                  >
                     <Plus className="text-gray-500" size={16} />
                   </button>
                 </div>
