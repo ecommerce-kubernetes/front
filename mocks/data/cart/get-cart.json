@@ -50,5 +50,8 @@
         }
       ]
     }
-  ]
+  ],
+  "totalOriginalPrice": 12000,
+  "totalDiscountAmount": 1200,
+  "totalFinalPrice": 10800
 }

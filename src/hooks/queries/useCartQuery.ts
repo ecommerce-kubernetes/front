@@ -1,6 +1,5 @@
-import { addCart } from "@/src/api/cart";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
+import { addCart, getCart } from "@/src/api/cart";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useAddCartMutation = () => {
   return useMutation({
@@ -12,5 +11,12 @@ export const useAddCartMutation = () => {
         console.log("에러");
       }
     },
+  });
+};
+
+export const useCartFetch = () => {
+  return useQuery({
+    queryKey: ["cart"],
+    queryFn: getCart,
   });
 };

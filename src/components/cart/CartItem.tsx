@@ -1,36 +1,40 @@
 import Image from "next/image";
 import CheckBox from "../common/CheckBox";
 import { Minus, Plus, X } from "lucide-react";
+import { CartItem as CartItemType } from "@/src/types/cart";
 
 interface CartItemProps {
-  id: number;
+  item: CartItemType;
   isChecked: boolean;
   onToggle: (id: number) => void;
 }
 
-export const CartItem = ({ id, isChecked, onToggle }: CartItemProps) => {
+export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
+  const optionNames = item.options
+    .map((option) => option.valueName)
+    .join(" / ");
   return (
     <div className="flex items-start gap-2.5">
-      <CheckBox checked={isChecked} onChange={() => onToggle(id)} />
+      <CheckBox checked={isChecked} onChange={() => onToggle(item.id)} />
       <div className="flex-1 flex flex-col">
         <div className="flex gap-2.5">
           <div className="relative w-18 h-22 rounded-sm">
             <Image
               fill
               className="objext-cover"
-              src={
-                "https://cdn.buynest.cloud/buynest-images/product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png"
-              }
+              src={item.thumbnail}
               alt="상품 썸네일"
             />
           </div>
           <div className="flex-1 flex items-start text-sm font-pretendard">
             <div className="flex-1 flex flex-col gap-0.5">
-              <span>상품 1</span>
-              <span className="text-gray-500">XL / BLUE</span>
-              <span className="text-gray-500 line-through">10,000원</span>
+              <span>{item.productName}</span>
+              <span className="text-gray-500">{optionNames}</span>
+              <span className="text-gray-500 line-through">
+                {item.price.originalPrice}원
+              </span>
               <span className="text-base font-medium text-brand-primary">
-                9000원
+                {item.price.discountedPrice}원
               </span>
               <div className="flex justify-between items-end">
                 <div className="flex items-center border border-gray-300 rounded-sm bg-white">

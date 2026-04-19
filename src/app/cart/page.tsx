@@ -1,12 +1,14 @@
 "use client";
 import { CartItem } from "@/src/components/cart/CartItem";
 import CheckBox from "@/src/components/common/CheckBox";
+import { useCartFetch } from "@/src/hooks/queries/useCartQuery";
 import { useCheckBox } from "@/src/hooks/useCheckBox";
 
 export default function CartPage() {
-  const ids = [1, 2, 3, 4];
+  const { data: cartData } = useCartFetch();
+  const itemsId = cartData?.items.map((item) => item.id) || [];
   const { checkedIds, isAllChecked, handleToggleAll, handleToggleItem } =
-    useCheckBox(ids);
+    useCheckBox(itemsId);
   return (
     <div className="w-full bg-gray-100 min-h-screen select-none">
       <div className="max-w-250 mx-auto px-10 pb-20">
@@ -30,11 +32,11 @@ export default function CartPage() {
               </div>
             </div>
             <ul className="bg-white border-x border-b border-gray-200 px-5 rounded-b-lg min-h-100 flex flex-col gap-5 divide-y divide-gray-200">
-              {ids.map((id) => (
-                <li key={id} className="py-5">
+              {cartData?.items.map((item) => (
+                <li key={item.id} className="py-5">
                   <CartItem
-                    id={id}
-                    isChecked={checkedIds.includes(id)}
+                    item={item}
+                    isChecked={checkedIds.includes(item.id)}
                     onToggle={handleToggleItem}
                   />
                 </li>
@@ -48,17 +50,17 @@ export default function CartPage() {
             <div className="flex flex-col text-sm font-pretendard gap-1.5 mb-2.5 pb-5 border-b border-gray-300">
               <div className="flex justify-between">
                 <span>상품 금액</span>
-                <span>10,000원</span>
+                <span>{cartData?.totalOriginalPrice}원</span>
               </div>
               <div className="flex justify-between">
                 <span>할인 금액</span>
-                <span>1000원</span>
+                <span>{cartData?.totalDiscountAmount}원</span>
               </div>
             </div>
             <div className="flex justify-between font-pretendard">
               <span className="text-lg">총 결제 금액</span>
               <span className="font-bold text-xl text-brand-primary">
-                9000원
+                {cartData?.totalFinalPrice}원
               </span>
             </div>
             <button className="py-3 mt-10 rounded-lg cursor-pointer w-full bg-brand-primary text-white">
