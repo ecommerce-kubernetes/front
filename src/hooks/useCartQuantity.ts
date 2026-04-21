@@ -1,40 +1,34 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useRef } from "react";
-import { updateCartItemQuantity } from "../api/cart";
 import { CartItem } from "../types/cart";
+import { useUpdateQuantityMutation } from "./queries/useCartQuery";
 
 export const useCartQuantity = (item: CartItem) => {
   const queryClient = useQueryClient();
   const previousCartRef = useRef<CartItem[] | undefined>(undefined);
-
-  const mutation = useMutation({
-    mutationFn: (newQuantity: number) =>
-      updateCartItemQuantity(item.id, newQuantity),
-    onError: () => {
-      // 업데이트 실패시 업데이트 이전의 장바구니 상품 리스트를 캐시로 복구
-      if (previousCartRef.current) {
-        queryClient.setQueryData(["cart"], previousCartRef.current);
-      }
-    },
-    //수량 업데이트를 완료(실패 또는 성공) 하면 장바구니 다시 조회
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
-    },
-  });
-
-  // 디바운스 타임아웃
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const { mutate } = useUpdateQuantityMutation();
+
   const debounceMutate = useCallback(
     (newQuantity: number) => {
-      // 수량 조절 버튼 클릭시 디바운스 타임아웃 초기화
+      // 수량 조절 버튼 클릭시 타임아웃 초기화 => 디바운스 기능
       if (timerRef.current) clearTimeout(timerRef.current);
-
-      // 디바운스 타임아웃이 0.5초 지날 시 수량 변경 호출
+      // 타임아웃이 0.5초 지날 시 수량 변경 api 호출
       timerRef.current = setTimeout(() => {
-        mutation.mutate(newQuantity);
+        mutate(
+          { id: item.id, quantity: newQuantity },
+          {
+            // 에러 발생시 이전 장바구니로 롤백
+            onError: () => {
+              if (previousCartRef.current) {
+                queryClient.setQueryData(["cart"], previousCartRef.current);
+              }
+            },
+          },
+        );
       }, 500);
     },
-    [mutation],
+    [item.id, mutate, queryClient],
   );
 
   const updateQuantity = (newQuantity: number) => {

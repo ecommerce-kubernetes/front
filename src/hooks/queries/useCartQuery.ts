@@ -1,5 +1,11 @@
-import { addCart, getCart } from "@/src/api/cart";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+  addCart,
+  deleteCartItem,
+  getCart,
+  updateCartItemQuantity,
+} from "@/src/api/cart";
+import { CartItem } from "@/src/types/cart";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useAddCartMutation = () => {
   return useMutation({
@@ -18,5 +24,53 @@ export const useCartFetch = () => {
   return useQuery({
     queryKey: ["cart"],
     queryFn: getCart,
+  });
+};
+
+export const useCartDelete = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteCartItem,
+    // 낙관적 업데이트
+    // api 호출 전 실행
+    onMutate: async (idsToDelete) => {
+      await queryClient.cancelQueries({ queryKey: ["cart"] });
+      // 업데이트 전 장바구니 상품 저장
+      const previousCart = queryClient.getQueryData<CartItem[]>(["cart"]);
+
+      queryClient.setQueryData(
+        ["cart"],
+        (oldCartData: CartItem[] | undefined) => {
+          if (!oldCartData) return oldCartData;
+          // 기존 캐시에서 삭제할 상품을 미리 제거
+          return oldCartData.filter((item) => !idsToDelete.includes(item.id));
+        },
+      );
+      return { previousCart };
+    },
+    onError: (err, variables, context) => {
+      // 삭제 실패시 이전 장바구니로 롤백
+      if (context?.previousCart) {
+        queryClient.setQueryData(["cart"], context.previousCart);
+      }
+    },
+
+    // 삭제 시도 후 장바구니 리프레시
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+};
+
+export const useUpdateQuantityMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, quantity }: { id: number; quantity: number }) =>
+      updateCartItemQuantity(id, quantity),
+    // 업데이트후 장바구니 리프레시
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
   });
 };

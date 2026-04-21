@@ -1,8 +1,7 @@
 "use client";
 import { CartItem } from "@/src/components/cart/CartItem";
 import CheckBox from "@/src/components/common/CheckBox";
-import { useCartFetch } from "@/src/hooks/queries/useCartQuery";
-import { useCartDelete } from "@/src/hooks/useCartDelete";
+import { useCartDelete, useCartFetch } from "@/src/hooks/queries/useCartQuery";
 import { useCheckBox } from "@/src/hooks/useCheckBox";
 import { toast } from "sonner";
 
@@ -15,20 +14,21 @@ export default function CartPage() {
     isAllChecked,
     handleToggleAll,
     handleToggleItem,
+    handleRemoveItem,
     clearChecked,
   } = useCheckBox(itemsId);
-
+  console.log(checkedIds);
   const checkedItem = cartData?.filter((item) => checkedIds.includes(item.id));
-  const { totalOriginalPrice, totalDiscountAmount } = (checkedItem ?? [])
-    .filter((item) => checkedIds.includes(item.id))
-    .reduce(
-      (acc, item) => {
-        acc.totalOriginalPrice += item.price.originalPrice * item.quantity;
-        acc.totalDiscountAmount += item.price.discountAmount * item.quantity;
-        return acc;
-      },
-      { totalOriginalPrice: 0, totalDiscountAmount: 0 },
-    );
+  const { totalOriginalPrice, totalDiscountAmount } = (
+    checkedItem ?? []
+  ).reduce(
+    (acc, item) => {
+      acc.totalOriginalPrice += item.price.originalPrice * item.quantity;
+      acc.totalDiscountAmount += item.price.discountAmount * item.quantity;
+      return acc;
+    },
+    { totalOriginalPrice: 0, totalDiscountAmount: 0 },
+  );
   const totalFinalPrice =
     (totalOriginalPrice || 0) - (totalDiscountAmount || 0);
 
@@ -43,6 +43,11 @@ export default function CartPage() {
     }
     deleteItems(checkedIds);
     clearChecked();
+  };
+
+  const handleDeleteSingleItem = (id: number) => {
+    deleteItems([id]);
+    handleRemoveItem(id);
   };
 
   return (
@@ -77,6 +82,7 @@ export default function CartPage() {
                     item={item}
                     isChecked={checkedIds.includes(item.id)}
                     onToggle={handleToggleItem}
+                    onDelete={handleDeleteSingleItem}
                   />
                 </li>
               ))}

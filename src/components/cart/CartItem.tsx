@@ -3,21 +3,25 @@ import CheckBox from "../common/CheckBox";
 import { Minus, Plus, X } from "lucide-react";
 import { CartItem as CartItemType } from "@/src/types/cart";
 import { useCartQuantity } from "@/src/hooks/useCartQuantity";
-import { useCartDelete } from "@/src/hooks/useCartDelete";
 
 interface CartItemProps {
   item: CartItemType;
   isChecked: boolean;
   onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
 }
 
-export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
+export const CartItem = ({
+  item,
+  isChecked,
+  onToggle,
+  onDelete,
+}: CartItemProps) => {
   const optionNames = item.options
     .map((option) => option.valueName)
     .join(" / ");
 
   const { handleDecrease, handleIncrease } = useCartQuantity(item);
-  const { mutate: deleteItems } = useCartDelete();
   return (
     <div className="flex items-start gap-2.5">
       <CheckBox checked={isChecked} onChange={() => onToggle(item.id)} />
@@ -68,7 +72,7 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
               </div>
             </div>
             <button
-              onClick={() => deleteItems([item.id])}
+              onClick={() => onDelete(item.id)}
               className="cursor-pointer"
             >
               <X className="text-gray-600" size={20} />

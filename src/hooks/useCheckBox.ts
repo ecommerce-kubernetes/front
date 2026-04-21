@@ -25,10 +25,14 @@ export const useCheckBox = (ids: number[]) => {
 
   const handleToggleItem = (id: number) => {
     if (checkedIds.includes(id)) {
-      setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
+      setCheckedIds((prev) => prev.filter((checkedId) => checkedId !== id));
     } else {
       setCheckedIds([...checkedIds, id]);
     }
+  };
+
+  const handleRemoveItem = (id: number) => {
+    setCheckedIds((prev) => prev.filter((checkedId) => checkedId !== id));
   };
 
   return {
@@ -36,6 +40,7 @@ export const useCheckBox = (ids: number[]) => {
     isAllChecked,
     handleToggleAll,
     handleToggleItem,
+    handleRemoveItem,
     clearChecked,
   };
 };
