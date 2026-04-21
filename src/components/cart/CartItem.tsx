@@ -3,6 +3,7 @@ import CheckBox from "../common/CheckBox";
 import { Minus, Plus, X } from "lucide-react";
 import { CartItem as CartItemType } from "@/src/types/cart";
 import { useCartQuantity } from "@/src/hooks/useCartQuantity";
+import { useCartDelete } from "@/src/hooks/useCartDelete";
 
 interface CartItemProps {
   item: CartItemType;
@@ -14,10 +15,9 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
   const optionNames = item.options
     .map((option) => option.valueName)
     .join(" / ");
-  const { quantity, handleDecrease, handleIncrease } = useCartQuantity(
-    item.id,
-    item.quantity,
-  );
+
+  const { handleDecrease, handleIncrease } = useCartQuantity(item);
+  const { mutate: deleteItems } = useCartDelete();
   return (
     <div className="flex items-start gap-2.5">
       <CheckBox checked={isChecked} onChange={() => onToggle(item.id)} />
@@ -36,10 +36,16 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
               <span>{item.productName}</span>
               <span className="text-gray-500">{optionNames}</span>
               <span className="text-gray-500 line-through">
-                {item.price.originalPrice}원
+                {(item.price.originalPrice * item.quantity).toLocaleString(
+                  "ko-KR",
+                )}
+                원
               </span>
               <span className="text-base font-medium text-brand-primary">
-                {item.price.discountedPrice}원
+                {(item.price.discountedPrice * item.quantity).toLocaleString(
+                  "ko-KR",
+                )}
+                원
               </span>
               <div className="flex justify-between items-end">
                 <div className="flex items-center border border-gray-300 rounded-sm bg-white">
@@ -50,7 +56,7 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
                     <Minus className="text-gray-500" size={16} />
                   </button>
                   <span className="w-10 text-center text-sm font-medium">
-                    {quantity}
+                    {item.quantity}
                   </span>
                   <button
                     className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300 cursor-pointer flex items-center justify-center"
@@ -61,7 +67,10 @@ export const CartItem = ({ item, isChecked, onToggle }: CartItemProps) => {
                 </div>
               </div>
             </div>
-            <button className="cursor-pointer">
+            <button
+              onClick={() => deleteItems([item.id])}
+              className="cursor-pointer"
+            >
               <X className="text-gray-600" size={20} />
             </button>
           </div>

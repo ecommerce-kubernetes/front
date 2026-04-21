@@ -2,6 +2,13 @@ import { useState } from "react";
 
 export const useCheckBox = (ids: number[]) => {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
+  const [isInitialized, setInitialized] = useState<boolean>(false);
+
+  if (ids.length > 0 && !isInitialized) {
+    setCheckedIds(ids);
+    setInitialized(true);
+  }
+
   const isAllChecked = checkedIds.length === ids.length && ids.length > 0;
 
   const handleToggleAll = () => {
@@ -10,6 +17,10 @@ export const useCheckBox = (ids: number[]) => {
     } else {
       setCheckedIds(ids);
     }
+  };
+
+  const clearChecked = () => {
+    setCheckedIds([]);
   };
 
   const handleToggleItem = (id: number) => {
@@ -25,5 +36,6 @@ export const useCheckBox = (ids: number[]) => {
     isAllChecked,
     handleToggleAll,
     handleToggleItem,
+    clearChecked,
   };
 };

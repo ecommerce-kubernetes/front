@@ -12,7 +12,7 @@
       "price": {
         "originalPrice": 3000,
         "discountRate": 10,
-        "discountAmount": 0,
+        "discountAmount": 300,
         "discountedPrice": 2700
       },
       "lineTotal": 5400,
@@ -39,7 +39,7 @@
       "price": {
         "originalPrice": 3000,
         "discountRate": 10,
-        "discountAmount": 0,
+        "discountAmount": 300,
         "discountedPrice": 2700
       },
       "lineTotal": 5400,
@@ -47,11 +47,12 @@
         {
           "optionTypeName": "색상",
           "optionValueName": "BLUE"
+        },
+        {
+          "optionTypeName": "용량",
+          "optionValueName": "256GB"
         }
       ]
     }
-  ],
-  "totalOriginalPrice": 12000,
-  "totalDiscountAmount": 1200,
-  "totalFinalPrice": 10800
+  ]
 }

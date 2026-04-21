@@ -23,10 +23,3 @@ export interface CartItemPrice {
   discountAmount: number;
   discountedPrice: number;
 }
-
-export interface Cart {
-  items: CartItem[];
-  totalOriginalPrice: number;
-  totalDiscountAmount: number;
-  totalFinalPrice: number;
-}
