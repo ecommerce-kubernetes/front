@@ -17,7 +17,6 @@ export default function CartPage() {
     handleRemoveItem,
     clearChecked,
   } = useCheckBox(itemsId);
-  console.log(checkedIds);
   const checkedItem = cartData?.filter((item) => checkedIds.includes(item.id));
   const { totalOriginalPrice, totalDiscountAmount } = (
     checkedItem ?? []

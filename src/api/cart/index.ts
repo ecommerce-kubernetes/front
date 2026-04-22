@@ -41,7 +41,7 @@ export const updateCartItemQuantity = async (
 
 export const deleteCartItem = async (ids: number[]): Promise<void> => {
   const queryString = ids.join(",");
-  await authFetch<void>(`/order-service/carts?ids=${queryString}`, {
+  await authFetch<void>(`/order-service/carts?cartItemIds=${queryString}`, {
     method: "DELETE",
   });
 };
