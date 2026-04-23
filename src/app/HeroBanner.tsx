@@ -2,9 +2,19 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCarousel } from "../hooks/useCarousel";
 import Autoplay from "embla-carousel-autoplay";
+export interface Banner {
+  id: number;
+  color: string;
+  text: string;
+}
+
+// 2. 컴포넌트 Props의 타입을 정의합니다.
+interface HeroBannerProps {
+  banners: Banner[];
+}
 
 //TODO 배너 타입 정의
-export const HeroBanner = ({ banners }) => {
+export const HeroBanner = ({ banners }: HeroBannerProps) => {
   const { emblaRef, scrollPrev, scrollNext, selectIndex, totalCount } =
     useCarousel({ loop: true }, [
       Autoplay({ delay: 4000, stopOnInteraction: false }),

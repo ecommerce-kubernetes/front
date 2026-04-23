@@ -2,9 +2,9 @@
 import { Notification } from "@/src/components/modal/Notification";
 import { useModal } from "@/src/hooks/useModal";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
-export default function UnAuthorizedPage() {
+function UnAuthorizedContent() {
   const router = useRouter();
   const searchParam = useSearchParams();
 
@@ -21,7 +21,6 @@ export default function UnAuthorizedPage() {
     };
   }, []);
 
-  useModal();
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="fixed inset-0 z-mask bg-black/40 flex items-center justify-center">
@@ -33,5 +32,15 @@ export default function UnAuthorizedPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function UnAuthorizedPage() {
+  return (
+    // 쿼리를 읽어오기 전까지 찰나의 순간에 띄워줄 fallback 화면을 지정합니다.
+    // 모달창이 뜨기 전이므로 빈 화면이나 로딩 스피너를 넣는 것이 자연스럽습니다.
+    <Suspense fallback={<div className="min-h-screen bg-gray-50" />}>
+      <UnAuthorizedContent />
+    </Suspense>
   );
 }
