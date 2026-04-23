@@ -8,8 +8,13 @@ import { CartItem } from "@/src/types/cart";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useAddCartMutation = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: addCart,
+    // 장바구니 상품 추가 성공시 쿼리 무효화
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
     onError: (error) => {
       if (error instanceof Error && error.message === "UNAUTHORIZED") {
         console.log("로그인 만료");
@@ -20,10 +25,11 @@ export const useAddCartMutation = () => {
   });
 };
 
-export const useCartFetch = () => {
+export const useCartFetch = (options?: { enabled?: boolean }) => {
   return useQuery({
     queryKey: ["cart"],
     queryFn: getCart,
+    enabled: options?.enabled !== false,
   });
 };
 

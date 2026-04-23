@@ -3,6 +3,7 @@ import CheckBox from "../common/CheckBox";
 import { Minus, Plus, X } from "lucide-react";
 import { CartItem as CartItemType } from "@/src/types/cart";
 import { useCartQuantity } from "@/src/hooks/useCartQuantity";
+import Link from "next/link";
 
 interface CartItemProps {
   item: CartItemType;
@@ -27,17 +28,21 @@ export const CartItem = ({
       <CheckBox checked={isChecked} onChange={() => onToggle(item.id)} />
       <div className="flex-1 flex flex-col">
         <div className="flex gap-2.5">
-          <div className="relative w-18 h-22 rounded-sm">
-            <Image
-              fill
-              className="objext-cover"
-              src={item.thumbnail}
-              alt="상품 썸네일"
-            />
-          </div>
+          <Link href={`/product/${item.id}`}>
+            <div className="relative w-18 h-22 rounded-sm">
+              <Image
+                fill
+                className="object-cover"
+                src={item.thumbnail}
+                alt="상품 썸네일"
+              />
+            </div>
+          </Link>
           <div className="flex-1 flex items-start text-sm font-pretendard">
             <div className="flex-1 flex flex-col gap-0.5">
-              <span>{item.productName}</span>
+              <Link href={`/product/${item.id}`}>
+                <span>{item.productName}</span>
+              </Link>
               <span className="text-gray-500">{optionNames}</span>
               <span className="text-gray-500 line-through">
                 {(item.price.originalPrice * item.quantity).toLocaleString(

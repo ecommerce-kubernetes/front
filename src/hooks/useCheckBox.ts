@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useCheckBox = (ids: number[]) => {
   const [checkedIds, setCheckedIds] = useState<number[]>([]);
-  const [isInitialized, setInitialized] = useState<boolean>(false);
+  const prevIdsRef = useRef<number[]>([]);
+  useEffect(() => {
+    const newIds = ids.filter((id) => !prevIdsRef.current.includes(id));
 
-  if (ids.length > 0 && !isInitialized) {
-    setCheckedIds(ids);
-    setInitialized(true);
-  }
+    if (newIds.length > 0) {
+      setCheckedIds((prev) => [...prev, ...newIds]);
+    }
+
+    prevIdsRef.current = ids;
+  }, [ids]);
 
   const isAllChecked = checkedIds.length === ids.length && ids.length > 0;
 

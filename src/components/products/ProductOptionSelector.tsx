@@ -97,6 +97,7 @@ export const ProductOptionSelector = ({
         <button
           className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
           onClick={() =>
+            // 버튼 클릭시 추가할 상품을 추가하고 추가가 성공한 뒤 선택된 옵션 상태를 비움
             addToCart(selectedItems, {
               onSuccess: () => {
                 resetSelection();
