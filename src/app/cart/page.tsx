@@ -1,14 +1,17 @@
 "use client";
 import { CartItem } from "@/src/components/cart/CartItem";
 import CheckBox from "@/src/components/common/CheckBox";
+import { Confirmation } from "@/src/components/modal/Confirmation";
 import { useCartDelete, useCartFetch } from "@/src/hooks/queries/useCartQuery";
 import { useCheckBox } from "@/src/hooks/useCheckBox";
+import { useModal } from "@/src/hooks/useModal";
 import { toast } from "sonner";
 
 export default function CartPage() {
   const { data: cartData } = useCartFetch();
   const { mutate: deleteItems } = useCartDelete();
   const itemsId = cartData?.map((item) => item.id) || [];
+  const { isModalOpen, modalOpen, modalClose } = useModal();
   const {
     checkedIds,
     isAllChecked,
@@ -40,8 +43,13 @@ export default function CartPage() {
         duration: 1500,
       });
     }
+    modalOpen();
+  };
+
+  const handleConfirm = () => {
     deleteItems(checkedIds);
     clearChecked();
+    modalClose();
   };
 
   const handleDeleteSingleItem = (id: number) => {
@@ -113,6 +121,13 @@ export default function CartPage() {
           </section>
         </div>
       </div>
+      {isModalOpen && (
+        <Confirmation
+          message="선택한 상품을 삭제하시겠습니까?"
+          onConfirm={handleConfirm}
+          onCancel={modalClose}
+        />
+      )}
     </div>
   );
 }
