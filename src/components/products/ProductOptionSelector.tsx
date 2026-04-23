@@ -2,7 +2,7 @@
 import { ProductDetail } from "@/src/types/product";
 import { SelectBox } from "../common/SelectBox";
 import { useProductOptions } from "@/src/hooks/useProductOptions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectedOptionItem } from "./SelectedOptionItem";
 import { Heart } from "lucide-react";
 import { useCartActions } from "@/src/hooks/useCartActions";
@@ -27,6 +27,15 @@ export const ProductOptionSelector = ({
   const [openSelectId, setOpenSelectId] = useState<number | null>(null);
   const { addToCart, buyNow, isLoginModal, handleLoginConfirm } =
     useCartActions();
+
+  useEffect(() => {
+    if (isLoginModal) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLoginModal]);
   return (
     <div className="flex flex-col gap-6 w-full">
       {!isSingleProduct && (
@@ -88,6 +97,7 @@ export const ProductOptionSelector = ({
         <button
           className="flex-1 py-3 bg-brand-primary rounded-lg cursor-pointer"
           onClick={() =>
+            // 버튼 클릭시 추가할 상품을 추가하고 추가가 성공한 뒤 선택된 옵션 상태를 비움
             addToCart(selectedItems, {
               onSuccess: () => {
                 resetSelection();

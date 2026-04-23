@@ -36,3 +36,10 @@ export interface CartItemOptionResponse {
   optionTypeName: string;
   optionValueName: string;
 }
+
+export interface CartResponse {
+  items: CartItemResponse[];
+  totalOriginalPrice: number;
+  totalDiscountAmount: number;
+  totalFinalPrice: number;
+}

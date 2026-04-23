@@ -49,6 +49,7 @@ export const useCartActions = () => {
       }
 
       const request = mapToAddCartRequest(items);
+      // 장바구니 추가 요청 성공시 컴포넌트로 받은 onSuccess(선택된 옵션 상태 비우기) 실행 후 상품 추가 토스트 전역상태 변경
       addCart(request, {
         onSuccess: (response: CartItem[]) => {
           if (options?.onSuccess) {

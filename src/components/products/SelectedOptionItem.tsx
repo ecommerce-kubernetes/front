@@ -1,5 +1,5 @@
 import { SelectedItem } from "@/src/types/product";
-import { X } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 
 interface SelectedOptionItemProps {
   item: SelectedItem;
@@ -34,18 +34,18 @@ export const SelectedOptionItem = ({
         <div className="flex items-center border border-gray-300 rounded-sm bg-white">
           <button
             onClick={() => onUpdateQuantity(item.id, -1)}
-            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-r border-gray-300"
+            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-r border-gray-300 cursor-pointer flex items-center justify-center"
           >
-            -
+            <Minus size={16} className="text-gray-500" />
           </button>
           <span className="w-10 text-center text-sm font-medium">
             {item.quantity}
           </span>
           <button
             onClick={() => onUpdateQuantity(item.id, 1)}
-            className="w-8 h-8 text-gray-500 hover:bg-gray-100 border-l border-gray-300"
+            className="w-8 h-8 hover:bg-gray-100 border-l border-gray-300 cursor-pointer flex items-center justify-center"
           >
-            +
+            <Plus size={16} className="text-gray-500" />
           </button>
         </div>
         <span className="font-bold text-gray-900">
