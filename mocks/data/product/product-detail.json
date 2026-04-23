@@ -1,0 +1,91 @@
+{
+  "productId": 1,
+  "name": "아이폰 16",
+  "categoryId": 1,
+  "description": "상품 설명",
+  "displayPrice": 9000,
+  "originalPrice": 10000,
+  "maxDiscountRate": 10,
+  "rating": 3.0,
+  "reviewCount": 1020,
+  "popularityScore": 3.5,
+  "optionGroups": [
+    {
+      "optionTypeId": 1,
+      "name": "사이즈",
+      "priority": 1,
+      "values": [
+        {
+          "optionValueId": 1,
+          "name": "XL"
+        },
+        { "optionValueId": 2, "name": "L" }
+      ]
+    },
+    {
+      "optionTypeId": 2,
+      "name": "용량",
+      "priority": 2,
+      "values": [
+        {
+          "optionValueId": 3,
+          "name": "256GB"
+        },
+        {
+          "optionValueId": 4,
+          "name": "512GB"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "imageId": 1,
+      "imagePath": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "sortOrder": 1,
+      "thumbnail": true
+    },
+    {
+      "imageId": 2,
+      "imagePath": "product/product/2880279b-93b1-4e94-9f82-52498200eb6f.jpg",
+      "sortOrder": 2,
+      "thumbnail": false
+    }
+  ],
+  "descriptionImages": [
+    {
+      "imageId": 1,
+      "imagePath": "product/description/f484a6b3-153b-4d4d-9628-eb87f1982ee2.jpg",
+      "sortOrder": 1
+    }
+  ],
+  "variants": [
+    {
+      "variantId": 1,
+      "sku": "PROD_XL_256GB",
+      "optionValueIds": [1, 3],
+      "originalPrice": 100000,
+      "discountedPrice": 90000,
+      "discountRate": 10,
+      "stockQuantity": 10
+    },
+    {
+      "variantId": 2,
+      "sku": "PROD_L_256GB",
+      "optionValueIds": [2, 3],
+      "originalPrice": 100000,
+      "discountedPrice": 90000,
+      "discountRate": 10,
+      "stockQuantity": 10
+    },
+    {
+      "variantId": 3,
+      "sku": "PROD_L_256GB",
+      "optionValueIds": [1, 4],
+      "originalPrice": 100000,
+      "discountedPrice": 90000,
+      "discountRate": 10,
+      "stockQuantity": 10
+    }
+  ]
+}

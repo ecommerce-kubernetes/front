@@ -1,0 +1,60 @@
+import { Product } from "@/src/types/product";
+import { MessageCircle, Star } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+export const ProductCard = ({ product }: { product: Product }) => {
+  return (
+    <Link href={`/product/${product.id}`} className="w-full flex flex-col">
+      <div className="relative aspect-3/4 overflow-hidden rounded-sm select-none">
+        <Image
+          src={product.thumbnailUrl}
+          alt={product.name}
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-110"
+        />
+      </div>
+      <div className="mt-2 flex flex-col select-none">
+        <h2 className="line-clamp-2 mb-1 wrap-break-word text-lg font-medium font-pretendard leading-snug">
+          {product.name}
+        </h2>
+        <div className="flex flex-col">
+          <div className="flex justify-between items-center">
+            <span className="line-through text-gray-500 text-sm">
+              {Number(product.originalPrice).toLocaleString()}원
+            </span>
+            <span className="flex items-baseline gap-1">
+              <span className="text-xs">최대</span>
+              <span className="text-brand-primary font-bold text-lg">
+                {product.discountRate}%
+              </span>
+            </span>
+          </div>
+          <span className="font-bold text-lg items-center">
+            {Number(product.price).toLocaleString()}원
+          </span>
+          <div className="flex justify-start gap-3">
+            <div className="flex items-center gap-0.5">
+              <Star
+                width={14}
+                height={14}
+                className="text-brand-primary fill-brand-primary"
+              />
+              <span className="text-sm text-gray-500">{product.rating}</span>
+            </div>
+            <div className="flex items-center gap-0.5">
+              <MessageCircle
+                width={14}
+                height={14}
+                className="text-brand-primary fill-brand-primary"
+              />
+              <span className="text-sm text-gray-500">
+                {product.reviewCount}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};

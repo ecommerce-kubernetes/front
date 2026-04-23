@@ -1,0 +1,99 @@
+{
+  "content": [
+    {
+      "productId": 1,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 2,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 3,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 4,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 5,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 6,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    },
+    {
+      "productId": 7,
+      "name": "상품1",
+      "thumbnail": "product/product/78521853-d0ec-4c1d-9a39-71da06b6b0c8.png",
+      "displayPrice": 3000,
+      "originalPrice": 3300,
+      "maxDiscountRate": 10,
+      "categoryId": 1,
+      "publishedAt": "1010",
+      "rating": 4.1,
+      "reviewCount": 100,
+      "status": "ON_SALE"
+    }
+  ],
+  "currentPage": 1,
+  "totalPage": 7,
+  "pageSize": 20,
+  "totalElement": 1
+}
